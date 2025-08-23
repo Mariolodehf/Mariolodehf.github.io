@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mariolodehf.github.io/sitemap.xml

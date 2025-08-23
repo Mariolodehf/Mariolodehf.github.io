@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | Mario De Hoyos F</title>
+  <meta name="description" content="Portafolio profesional de Mario De Hoyos F: proyectos, experiencia y contacto." />
+  <meta name="theme-color" content="#0e1116" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://mariolodehf.github.io/" />
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Portafolio de Mario De Hoyos F" />
+  <meta property="og:title" content="Portafolio | Mario De Hoyos F" />
+  <meta property="og:description" content="Portafolio de proyectos: telecomunicaciones, seguridad de la información e innovación." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mariolodehf.github.io/" />
+  <meta property="og:image" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
+  <meta property="og:image:secure_url" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Portafolio de Mario De Hoyos F - Telecomunicaciones y Seguridad" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Portafolio | Mario De Hoyos F" />
+  <meta name="twitter:description" content="Proyectos y aprendizaje en telecomunicaciones y ciberseguridad." />
+  <meta name="twitter:image" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
+  <!-- Author / Theme -->
+  <meta name="author" content="Mario De Hoyos F" />
+  <meta name="keywords" content="telecomunicaciones, seguridad de la información, ciberseguridad, IoT, BLE, portafolio" />
+  <script>
+    // Pre-carga: establecer tema antes de pintar para evitar flash
+    (function(){
+      try {
+        const almacenado = localStorage.getItem('theme');
+        const preferido = almacenado || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', preferido);
+      } catch(e) { /* noop */ }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- JSON-LD Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mario De Hoyos F",
+    "description": "Estudiante de Ingeniería de Telecomunicaciones enfocado en seguridad de la información e IoT.",
+    "url": "https://mariolodehf.github.io/",
+    "sameAs": [],
+    "hasPart": [
+      {
+        "@type": "CreativeWork",
+        "name": "UbicaTec",
+        "about": "Red colaborativa IoT con BLE para localizar objetos.",
+        "dateCreated": "2025-01-01",
+        "inLanguage": "es",
+        "url": "https://mariolodehf.github.io/#proyecto=ubicatec"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a href="#inicio" class="skip-link">Saltar al contenido</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Principal">
+      <a class="logo" href="#">Mario De Hoyos<span>.</span></a>
+      <div class="nav__group-left">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación">☰</button>
+      </div>
+      <div class="nav__actions">
+        <button id="theme-toggle" class="btn-theme" aria-label="Cambiar a tema claro" aria-pressed="false" title="Alternar tema" type="button">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+      <ul id="nav-menu" class="nav__menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio" class="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Hola, soy <span class="resaltado">Mario De Hoyos F</span></h1>
+  <p class="lead">Estudiante de Ingeniería de Telecomunicaciones enfocado en seguridad de la información. Comparto aquí proyectos mientras experimento con tecnologías y creatividad.</p>
+      <a href="#proyectos" class="btn primario">Ver proyectos</a>
+    </section>
+
+    <section id="proyectos" class="seccion" aria-labelledby="proyectos-title">
+      <h2 id="proyectos-title">Proyectos Destacados</h2>
+      <!-- Controles de filtrado -->
+      <div class="filtros" id="filtros" hidden>
+        <form id="form-filtros" aria-label="Filtros de proyectos" onsubmit="return false" novalidate>
+          <div class="filtros__grupo" id="filtros-stack-grupo">
+            <span class="filtros__label">Stack:</span>
+            <div class="filtros__chips" role="group" aria-label="Tecnologías" id="chips-stack"></div>
+          </div>
+          <div class="filtros__grupo" id="filtros-estado-grupo">
+            <span class="filtros__label">Estado:</span>
+            <div class="filtros__chips" role="group" aria-label="Estado" id="chips-estado"></div>
+          </div>
+          <div class="filtros__acciones">
+            <button type="button" class="btn btn--sm" id="btn-limpiar-filtros" aria-label="Limpiar filtros activos">Limpiar</button>
+          </div>
+        </form>
+      </div>
+      <div class="grid-proyectos" id="lista-proyectos" aria-live="polite" aria-busy="true">
+        <article class="proyecto placeholder" id="proyectos-loading">
+          <h3>Cargando proyectos...</h3>
+          <p>Preparando red colaborativa de ideas.</p>
+        </article>
+      </div>
+      <div class="proyectos-actions" hidden>
+        <button class="btn" id="btn-ver-todos" type="button">Ver todos</button>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="seccion" aria-labelledby="sobre-title">
+      <h2 id="sobre-title">Sobre mí</h2>
+  <p>Soy estudiante de Ingeniería de Telecomunicaciones en formación en ciberseguridad / seguridad de la información. Exploro redes, hardening, scripting y desarrollo web moderno para construir soluciones seguras y escalables. Este portafolio crecerá progresivamente mientras documento aprendizajes y publico proyectos reales.</p>
+  <p>Mi objetivo: combinar fundamentos sólidos de telecomunicaciones con prácticas de seguridad ofensiva y defensiva para diseñar arquitecturas resilientes. Próximamente añadiré laboratorios, writeups y herramientas propias.</p>
+    </section>
+
+    <section id="contacto" class="seccion" aria-labelledby="contacto-title">
+      <h2 id="contacto-title">Contacto</h2>
+      <form id="form-contacto" class="form" novalidate>
+        <label>Nombre
+          <input name="nombre" required />
+        </label>
+        <label>Email
+          <input type="email" name="email" required />
+        </label>
+        <label>Mensaje
+          <textarea name="mensaje" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn primario">Enviar</button>
+        <p class="form__estado" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Mario De Hoyos F. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Modal de detalle de proyecto -->
+  <div id="modal-proyecto" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-proyecto-titulo" tabindex="-1">
+    <div class="modal__overlay" data-close="true"></div>
+    <div class="modal__dialog" role="document">
+      <button class="modal__close" type="button" aria-label="Cerrar detalle" data-close="true">×</button>
+      <header class="modal__header">
+        <h2 id="modal-proyecto-titulo" class="modal__title"></h2>
+        <p class="modal__tagline"></p>
+      </header>
+      <div class="modal__body">
+        <p class="modal__desc"></p>
+        <div class="modal__stack" aria-label="Tecnologías"></div>
+        <div class="modal__links"></div>
+      </div>
+      <footer class="modal__footer">
+        <small class="modal__meta"></small>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
