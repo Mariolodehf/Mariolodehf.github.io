@@ -148,13 +148,14 @@ Listado cronológico (alta nivel) de lo construido hasta ahora para retomar fác
 8. SEO base: meta tags esenciales, canonical, keywords, JSON-LD `Person` + `CreativeWork`, `robots.txt`, `sitemap.xml`.
 9. Imagen Open Graph: `assets/img/og-default.svg` con dimensiones y tipo; documentación de posible fallback PNG.
 10. Filtrado de proyectos: chips dinámicos por stack y estado, toggles accesibles (`aria-pressed`), botón "Limpiar" y mensaje de cero resultados.
+11. Sección de Formación y Certificaciones: timeline dinámico desde `data/formacion.json`, estilos de línea de tiempo, JSON-LD ampliado (`alumniOf`, `hasCredential`).
 
 ## Roadmap priorizado (próximas iteraciones)
 Orden sugerido; cada punto añade valor incremental. Marcar ✅ al completarse y mover al historial si procede.
 
 1. Búsqueda textual (nombre / descripción) combinable con chips.
 2. Persistir filtros y búsqueda en URL (hash o query) para compartir estado.
-3. Añadir más proyectos (mínimo 3 adicionales) y actualizar JSON-LD (`hasPart`) + `sitemap.xml`.
+3. Añadir más proyectos (mínimo 3 adicionales) y actualizar JSON-LD (`hasPart`) + `sitemap.xml` + ampliar `formacion.json` (cursos previos).
 4. Sección "Roadmap / Aprendizajes": changelog resumido + aprendizajes técnicos / experimentos.
 5. Fallback raster OG (`og-default.png`) + favicon set completo (16/32/ico, mask-icon, manifest básico).
 6. Optimización performance: preloads críticos (fuente si se auto-hosteada), lazy más granular, evaluación Lighthouse y mejoras (CLS, LCP, color contrast).
@@ -169,6 +170,8 @@ Orden sugerido; cada punto añade valor incremental. Marcar ✅ al completarse y
 15. Internacionalización futura (en/es) si se amplía alcance.
 
 ## Notas de continuidad
+- La línea de tiempo se ordena descendentemente por campo `inicio`. Ajustar a futuro para mezclar fin / inicio si hay muchas entradas.
+- Campo `estado` admite valores sugeridos: `en-curso`, `pendiente`, `completado` para controlar dot animado y texto.
 - Código de filtrado en `js/main.js` (funciones: `inicializarFiltros`, `aplicarFiltros`). Extender ahí para búsqueda textual.
 - Al agregar proyectos: recordar actualizar `hasPart` en JSON-LD y regenerar `sitemap.xml` (puede automatizarse con script futuro).
 - Mantener consistencia de campos en `projects.json` para evitar rupturas (usar `slug` único, `anio` número, `stack` array).

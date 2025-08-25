@@ -257,6 +257,48 @@
 
   cargarProyectos();
 
+  // ========== Formación / Certificaciones ==========
+  async function cargarFormacion(){
+    const cont = document.getElementById('linea-formacion');
+    if(!cont) return;
+    try {
+      const resp = await fetch('data/formacion.json', { cache: 'no-store' });
+      if(!resp.ok) throw new Error('No se pudo cargar formacion.json');
+      const items = await resp.json();
+      cont.setAttribute('aria-busy','false');
+      cont.innerHTML='';
+      // Orden cronológico descendente por inicio (asumiendo YYYY)
+      items.sort((a,b)=> (b.inicio||'').localeCompare(a.inicio||''));
+      items.forEach(it => cont.appendChild(crearNodoFormacion(it)));
+    } catch(e){
+      console.error(e);
+      cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">No se pudo cargar la formación.</p>';
+      cont.setAttribute('aria-busy','false');
+    }
+  }
+
+  function crearNodoFormacion(item){
+    const el = document.createElement('div');
+    el.className = 'timeline__item';
+    if(item.estado === 'en-curso') el.dataset.estado = 'en-curso';
+    const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pendiente' : 'Actual'}`;
+    const badgeMapa = { 'universidad':'Académico', 'certificacion':'Certificación', 'programa':'Programa' };
+    const badge = badgeMapa[item.tipo] || 'Formación';
+    el.innerHTML = `
+      <div class="timeline__entidad">
+        <span class="timeline__periodo" aria-label="Periodo">${periodo}</span>
+        <span class="timeline__badge" aria-label="Tipo">${badge}</span>
+      </div>
+      <h3 class="timeline__titulo">${item.titulo}</h3>
+      <p class="timeline__desc">${item.entidad}${item.ubicacion ? ' · ' + item.ubicacion : ''}</p>
+      <p class="timeline__desc">${item.descripcion}</p>
+      ${item.enlace ? `<p class="timeline__desc"><a class="link" href="${item.enlace}" target="_blank" rel="noopener">Ver más</a></p>` : ''}
+    `;
+    return el;
+  }
+
+  cargarFormacion();
+
   // ========== Filtrado de proyectos ==========
   function inicializarFiltros(proyectos){
     const filtrosWrap = document.getElementById('filtros');
