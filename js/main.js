@@ -9,34 +9,50 @@
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
   if (navToggle) {
+    const overlay = document.querySelector('[data-nav-overlay]');
+    const openClass = 'nav-open';
+    const closeMenu = (focusToggle = false) => {
+      navMenu.setAttribute('data-open','false');
+      navToggle.setAttribute('aria-expanded','false');
+      navToggle.setAttribute('aria-label','Abrir menú de navegación');
+      navToggle.classList.remove('is-open');
+      document.body.classList.remove(openClass);
+      if(overlay) overlay.hidden = true;
+      if(focusToggle) navToggle.focus();
+    };
+    const openMenu = () => {
+      navMenu.setAttribute('data-open','true');
+      navToggle.setAttribute('aria-expanded','true');
+      navToggle.setAttribute('aria-label','Cerrar menú de navegación');
+      navToggle.classList.add('is-open');
+      document.body.classList.add(openClass);
+      if(overlay) overlay.hidden = false;
+      const firstLink = navMenu.querySelector('a');
+      if(firstLink) firstLink.focus({ preventScroll:true });
+    };
     const toggleMenu = () => {
       const abierto = navMenu.getAttribute('data-open') === 'true';
-      const nuevo = (!abierto).toString();
-      navMenu.setAttribute('data-open', nuevo);
-      navToggle.setAttribute('aria-expanded', nuevo);
-      navToggle.setAttribute('aria-label', nuevo === 'true' ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
-      if (nuevo === 'true') {
-        // Foco al primer link cuando se abre
-        const firstLink = navMenu.querySelector('a');
-        if (firstLink) firstLink.focus({ preventScroll: true });
-      }
+      abierto ? closeMenu() : openMenu();
     };
     navToggle.addEventListener('click', toggleMenu);
+    if(overlay){
+      overlay.addEventListener('click', () => closeMenu());
+      overlay.addEventListener('touchstart', () => closeMenu(), { passive:true });
+    }
     navMenu.addEventListener('click', (e) => {
       const target = e.target;
       if (target.tagName === 'A' && window.matchMedia('(max-width: 720px)').matches) {
-        // Cerrar menú tras navegar en móvil
-        navMenu.setAttribute('data-open', 'false');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+        closeMenu();
       }
     });
-    // Cerrar con Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && navMenu.getAttribute('data-open') === 'true') {
-        toggleMenu();
-        navToggle.focus();
+        closeMenu(true);
       }
+    });
+    // Cerrar si se redimensiona a desktop
+    window.addEventListener('resize', () => {
+      if(window.matchMedia('(min-width: 721px)').matches && navMenu.getAttribute('data-open') === 'true') closeMenu();
     });
   }
 
@@ -410,7 +426,8 @@
       root.setAttribute('data-theme', tema);
       btn.setAttribute('aria-pressed', tema === 'light');
       btn.setAttribute('aria-label', tema === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
-      btn.querySelector('.theme-icon').textContent = tema === 'light' ? '☀️' : '🌙';
+      const iconSpan = btn.querySelector('.theme-icon');
+      if(iconSpan) iconSpan.textContent = tema === 'light' ? '☀️' : '🌙';
       // Ajuste theme-color para móviles
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute('content', tema === 'light' ? '#f5f7fb' : '#0e1116');

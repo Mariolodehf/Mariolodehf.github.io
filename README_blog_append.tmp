@@ -1,0 +1,57 @@
+## Blog (Eleventy) – Integración incremental
+
+Base de blog usando Eleventy (11ty) SIN alterar `index.html`. Genera HTML estático en `blog/` desde `blog-src/`.
+
+### Estructura
+```
+blog-src/
+  _includes/
+    layout.njk
+  index.njk
+  posts/
+    2025-08-25-post-demo.md
+.eleventy.blog.cjs
+blog/
+package.json
+```
+
+### Scripts
+```
+npm run build:blog
+npm run serve:blog
+```
+
+### Crear un post
+Archivo: `blog-src/posts/AAAA-MM-DD-slug.md`
+```markdown
+---
+title: Título
+summary: Resumen breve
+tags: [tag1, tag2]
+date: 2025-09-01
+---
+Contenido...
+```
+
+### Búsqueda
+Actual: filtrado client-side simple. Futuro: índice JSON para mejor relevancia.
+
+### Lectura estimada
+Filtro `readTime` (200 wpm) calculado en build.
+
+### Aislamiento
+- Sitio principal intacto.
+- `.nojekyll` se mantiene.
+- Reutiliza estilos/tema existentes.
+
+### Próximas mejoras
+1. RSS/Atom.
+2. Tags pages.
+3. JSON-LD Article.
+4. Índice de búsqueda avanzado.
+5. Tipografía `.prose`.
+6. Imágenes optimizadas.
+7. Drafts (`draft: true`).
+
+---
+Migración total futura: mover `index.html` a layout Eleventy y unificar colecciones.

@@ -96,7 +96,9 @@
         <button id="theme-toggle" class="btn-theme" aria-label="Cambiar a tema claro" aria-pressed="false" title="Alternar tema" type="button">
           <span class="theme-icon" aria-hidden="true">🌙</span>
         </button>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación" type="button">☰</button>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación" type="button">
+          <span class="nav__toggle-inner" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+        </button>
       </div>
       <ul id="nav-menu" class="nav__menu">
         <li><a href="#inicio">Inicio</a></li>
@@ -108,6 +110,7 @@
       </ul>
     </nav>
   </header>
+  <div class="nav__overlay" data-nav-overlay hidden></div>
 
   <main id="inicio" class="main">
     <section class="hero" aria-labelledby="hero-title">
