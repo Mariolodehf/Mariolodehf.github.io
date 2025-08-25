@@ -3,10 +3,6 @@ name: Build Blog
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'blog-src/**'
-      - '.eleventy.blog.cjs'
-      - 'package.json'
   workflow_dispatch:
 
 jobs:
