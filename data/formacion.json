@@ -1,5 +1,6 @@
 [
   {
+    "id": "udea-teleco",
     "tipo": "universidad",
     "titulo": "Ingeniería de Telecomunicaciones",
     "entidad": "Universidad de Antioquia",
@@ -11,6 +12,7 @@
     "enlace": "https://www.udea.edu.co/"
   },
   {
+    "id": "gcloud-cyber",
     "tipo": "certificacion",
     "titulo": "Google Cloud Cybersecurity Certificate (Inscripción)",
     "entidad": "Google Career Launchpad Program",
@@ -22,6 +24,7 @@
     "enlace": "https://cloud.google.com/learn/certification"
   },
   {
+    "id": "cisco-analista-jr",
     "tipo": "programa",
     "titulo": "Carrera Profesional Analista Junior en Ciberseguridad",
     "entidad": "Cisco Networking Academy",

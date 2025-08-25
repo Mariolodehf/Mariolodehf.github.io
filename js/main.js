@@ -266,22 +266,41 @@
       if(!resp.ok) throw new Error('No se pudo cargar formacion.json');
       const items = await resp.json();
       cont.setAttribute('aria-busy','false');
-      // Mapear fallback existentes por título para posible reemplazo
+      // Mapear fallback existentes por id (si hay) o por título como respaldo
       const fallbackMap = new Map();
-      cont.querySelectorAll('.timeline__item[data-fallback] .timeline__titulo').forEach(t => {
-        fallbackMap.set(t.textContent.trim(), t.closest('.timeline__item'));
+      cont.querySelectorAll('.timeline__item[data-fallback]').forEach(node => {
+        const id = node.getAttribute('data-id');
+        const titulo = node.querySelector('.timeline__titulo')?.textContent.trim();
+        if(id) fallbackMap.set(id, node);
+        else if(titulo) fallbackMap.set(`t:${titulo.toLowerCase()}`, node);
       });
       // Orden cronológico descendente
       items.sort((a,b)=> (b.inicio||'').localeCompare(a.inicio||''));
       items.forEach(it => {
-        const existente = fallbackMap.get(it.titulo);
+        const key = it.id ? it.id : `t:${(it.titulo||'').toLowerCase()}`;
+        const existente = fallbackMap.get(key);
         const nodoNuevo = crearNodoFormacion(it);
-        if(existente) {
-          existente.replaceWith(nodoNuevo); // Reemplaza para actualizar descripción/estado
-        } else {
-          cont.appendChild(nodoNuevo);
-        }
+        if(existente) existente.replaceWith(nodoNuevo); else cont.appendChild(nodoNuevo);
       });
+
+      // Reordenamiento global: reunir todos los items y ordenar por inicio desc, luego estado prioridad
+      const prioridadEstado = { 'en-curso':1, 'pendiente':2, 'completado':3 };
+      const nodos = Array.from(cont.querySelectorAll('.timeline__item'));
+      // Extraer datos para ordenar (infiriendo desde texto periodo si no hay data)
+      const parseInicio = (n)=>{
+        const periodo = n.querySelector('.timeline__periodo')?.textContent || '';
+        const match = periodo.match(/^(\d{4})/);
+        return match ? match[1] : '0000';
+      };
+      nodos.sort((a,b)=>{
+        const ia = parseInicio(a);
+        const ib = parseInicio(b);
+        if(ia !== ib) return ib.localeCompare(ia); // desc
+        const ea = a.getAttribute('data-estado') || 'pendiente';
+        const eb = b.getAttribute('data-estado') || 'pendiente';
+        return (prioridadEstado[ea]||9) - (prioridadEstado[eb]||9);
+      });
+      nodos.forEach(n=> cont.appendChild(n));
     } catch(e){
       console.error(e);
       cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">No se pudo cargar la formación.</p>';
@@ -293,11 +312,11 @@
     const el = document.createElement('div');
     el.className = 'timeline__item';
     if(item.estado === 'en-curso') el.dataset.estado = 'en-curso';
-    const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pendiente' : 'Actual'}`;
+  const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pendiente' : (item.estado==='completado' ? item.inicio : 'Actual')}`;
   const badgeMapa = { 'universidad':'Académico', 'certificacion':'Certificación', 'programa':'Programa' };
   const badge = badgeMapa[item.tipo] || 'Formación';
   const estadoClase = item.estado === 'pendiente' ? 'timeline__badge--pendiente' : item.estado === 'completado' ? 'timeline__badge--completado' : 'timeline__badge--en-curso';
-    el.innerHTML = `
+  el.innerHTML = `
       <div class="timeline__entidad">
         <span class="timeline__periodo" aria-label="Periodo">${periodo}</span>
         <span class="timeline__badge ${estadoClase}" aria-label="Tipo">${badge}</span>
@@ -307,6 +326,7 @@
       <p class="timeline__desc">${item.descripcion}</p>
       ${item.enlace ? `<p class="timeline__desc"><a class="link" href="${item.enlace}" target="_blank" rel="noopener">Ver más</a></p>` : ''}
     `;
+  if(item.id) el.setAttribute('data-id', item.id);
     return el;
   }
 
