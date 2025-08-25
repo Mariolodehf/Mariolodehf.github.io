@@ -1,4 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="es" class="no-js" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Mario De Hoyos F</title>
+  <meta name="description" content="Artículos y experiencias de Mario De Hoyos F en telecomunicaciones y ciberseguridad." />
+  <link rel="canonical" href="https://mariolodehf.github.io/blog/feed.xml" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  
+  
+</head>
+<body class="blog-body">
+  <header class="site-header">
+    <nav class="nav" aria-label="Principal">
+      <a class="logo" href="/">Mario De Hoyos<span>.</span></a>
+      <ul class="nav__menu">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/index.html#proyectos">Proyectos</a></li>
+        <li><a href="/index.html#formacion">Formación</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button id="theme-toggle" class="btn-theme" type="button">🌙</button>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="prose">
+  
+      
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -26,3 +58,11 @@
     
   </channel>
 </rss>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Mario De Hoyos F. Todos los derechos reservados.</p>
+  </footer>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
