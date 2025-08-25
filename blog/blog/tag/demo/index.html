@@ -16,15 +16,18 @@
   <header class="site-header">
     <nav class="nav" aria-label="Principal">
       <a class="logo" href="/">Mario De Hoyos<span>.</span></a>
-      <ul class="nav__menu">
+      <div class="nav__group-left">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación" type="button">☰</button>
+      </div>
+      <div class="nav__actions">
+        <button id="theme-toggle" class="btn-theme" type="button">🌙</button>
+      </div>
+      <ul id="nav-menu" class="nav__menu">
         <li><a href="/">Inicio</a></li>
         <li><a href="/index.html#proyectos">Proyectos</a></li>
         <li><a href="/index.html#formacion">Formación</a></li>
         <li><a href="/blog/">Blog</a></li>
       </ul>
-      <div class="nav__actions">
-        <button id="theme-toggle" class="btn-theme" type="button">🌙</button>
-      </div>
     </nav>
   </header>
   <main class="main">
