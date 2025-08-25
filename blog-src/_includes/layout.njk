@@ -9,6 +9,32 @@
   <meta name="color-scheme" content="dark light" />
   <link rel="stylesheet" href="/css/styles.css" />
   <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  {# Open Graph & JSON-LD solo para posts con front matter #}
+  {% if page.filePathStem contains '/posts/' %}
+    {% set ogTitle = title + ' | Blog | Mario De Hoyos F' %}
+    {% set ogDesc = summary or site.description %}
+    {% if cover %}<meta property="og:image" content="https://mariolodehf.github.io{{ cover }}" />{% endif %}
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ ogTitle }}" />
+    <meta property="og:description" content="{{ ogDesc }}" />
+    <meta property="og:url" content="https://mariolodehf.github.io{{ page.url }}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ ogTitle }}" />
+    <meta name="twitter:description" content="{{ ogDesc }}" />
+    {% if cover %}<meta name="twitter:image" content="https://mariolodehf.github.io{{ cover }}" />{% endif %}
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://mariolodehf.github.io{{ page.url }}"},
+      "headline": {{ ogTitle | dump }},
+      {% if cover %}"image": ["https://mariolodehf.github.io{{ cover }}"],{% endif %}
+      "datePublished": "{{ page.date | date('%Y-%m-%d') }}",
+      "dateModified": "{{ page.date | date('%Y-%m-%d') }}",
+      "author": {"@type":"Person","name":"Mario De Hoyos F"},
+      "publisher": {"@type":"Person","name":"Mario De Hoyos F"},
+      "description": {{ ogDesc | dump }}
+    }</script>
+  {% endif %}
 </head>
 <body class="blog-body">
   <header class="site-header">
