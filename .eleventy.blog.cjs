@@ -17,6 +17,20 @@ module.exports = function(eleventyConfig) {
     return (dateObj instanceof Date ? dateObj : new Date(dateObj)).toUTCString();
   });
 
+  // Generic date formatting filter used as: {{ someDate | date("%Y-%m-%d") }}
+  // Supports minimal tokens: %Y (year), %m (zero-padded month), %d (zero-padded day)
+  eleventyConfig.addFilter('date', (dateObj, pattern = '%Y-%m-%d') => {
+    const d = (dateObj instanceof Date) ? dateObj : new Date(dateObj);
+    if (isNaN(d)) return '';
+    const yyyy = d.getUTCFullYear();
+    const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const dd = String(d.getUTCDate()).padStart(2, '0');
+    return pattern
+      .replace('%Y', yyyy)
+      .replace('%m', mm)
+      .replace('%d', dd);
+  });
+
   // Basic XML escape
   eleventyConfig.addFilter('xmlEscape', str => {
     if(!str) return '';
