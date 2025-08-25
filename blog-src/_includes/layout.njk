@@ -52,7 +52,9 @@
     </nav>
   </header>
   <main class="main">
-    {{ content | safe }}
+    <div class="prose">
+      {{ content | safe }}
+    </div>
   </main>
   <footer class="site-footer">
     <p>&copy; <span id="year"></span> Mario De Hoyos F. Todos los derechos reservados.</p>
