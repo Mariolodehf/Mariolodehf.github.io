@@ -52,6 +52,14 @@ module.exports = function(eleventyConfig) {
     return `<figure class="${cls} img-wrapper"><img src="${src}" alt="${escapedAlt}" loading="lazy" decoding="async" /></figure>`;
   });
 
+  // Layout por defecto para todo (posts, index, tags) salvo que se sobreescriba
+  eleventyConfig.addGlobalData('layout', 'layout.njk');
+
+  // No generar salida para drafts: permalink false
+  eleventyConfig.addGlobalData('eleventyComputed', {
+    permalink: data => data.draft ? false : data.permalink
+  });
+
   return {
     dir: {
       input: 'blog-src',
