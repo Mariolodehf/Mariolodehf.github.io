@@ -34,5 +34,17 @@
     "estado": "en-curso",
     "descripcion": "Formación práctica para adquirir habilidades de defensa, análisis de amenazas y fundamentos de seguridad empresarial.",
     "enlace": "https://www.netacad.com/"
+  },
+  {
+    "id": "bootcamp-arquitectura-nube-basico",
+    "tipo": "certificacion",
+    "titulo": "Bootcamp Arquitectura en la Nube - Nivel Básico",
+    "entidad": "Ministerio TIC / IU Training / UdeA / Univ. de Caldas",
+    "ubicacion": "Colombia (Híbrido)",
+    "inicio": "2025",
+    "fin": "2025",
+    "estado": "completado",
+    "descripcion": "Bootcamp de 159 horas: fundamentos de arquitectura cloud, modelo de capas, despliegues y buenas prácticas iniciales.",
+    "enlace": null
   }
 ]
