@@ -33,6 +33,23 @@ jobs:
           echo 'Contenido de blog/: '
           ls -R blog || echo 'No se generó blog/'
 
+      - name: Eleventy version & env
+        run: npx @11ty/eleventy --version || echo 'No se pudo obtener versión'
+
+      - name: Verify output exists
+        run: |
+          if [ ! -f blog/index.html ]; then
+            echo 'ERROR: blog/index.html no existe tras el build';
+            exit 1;
+          fi
+          echo 'OK: blog/index.html generado'
+
+      - name: Upload blog artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blog-output
+          path: blog/
+
       - name: Commit blog output if changed
         run: |
           if [ -d blog ]; then
