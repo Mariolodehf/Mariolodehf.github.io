@@ -1,0 +1,33 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tagCollection
+  filter: [all, post]
+permalink: /blog/tag/{{ tagCollection | slug }}/
+eleventyComputed:
+  tagName: '{{ tagCollection }}'
+---
+{% set posts = collections[tagName] %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tag: {{ tagName }} | Blog | Mario De Hoyos F</title>
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="{{ site.url }}/blog/tag/{{ tagName | slug }}/" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="main">
+    <h1>Tag: {{ tagName }}</h1>
+    <p>{{ posts | length }} artículo(s)</p>
+    <ul>
+    {% for post in posts %}
+      <li><a href="{{ post.url }}">{{ post.data.title }}</a> <small>{{ post.date | date('%Y-%m-%d') }}</small></li>
+    {% endfor %}
+    </ul>
+    <p><a href="/blog/">← Volver al blog</a></p>
+  </main>
+</body>
+</html>
