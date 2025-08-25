@@ -53,6 +53,12 @@
   </header>
   <main class="main">
     <div class="prose">
+      {% if page.filePathStem contains '/posts/' %}
+        <h1 class="post-title">{{ title }}</h1>
+        <p class="post-meta" style="font-size:.8rem; color:var(--color-texto-sec); margin-top:-.6rem;">
+          Publicado el {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} min lectura
+        </p>
+      {% endif %}
       {{ content | safe }}
     </div>
   </main>

@@ -1,6 +1,6 @@
 ---
 title: "CTF vs. Bug Bounty: ¿Gimnasio de Habilidades o Arena Profesional?"
-summary: "Comparación crítica entre CTFs y Bug Bounty: entrenamiento estructurado vs. impacto real y profesionalización."
+summary: "CTFs te entrenan; el Bug Bounty te proyecta: diferencias prácticas para enfocar tu camino en seguridad."
 tags: [ctf, bug-bounty, hacking, ciberseguridad]
 cover: /assets/img/og-default.svg
 date: 2025-08-25
@@ -37,3 +37,15 @@ Los CTFs son el mejor gimnasio que existe para entrenar músculos específicos y
 En ciberseguridad, esa arena es el Bug Bounty. Es donde las habilidades se traducen en impacto, el aprendizaje se convierte en innovación y la pasión puede llegar a ser una profesión.
 
 Mi recomendación para quienes empiezan es clara: usen los CTFs como su campo de entrenamiento, pero nunca pierdan de vista el objetivo final. Construyan sus bases, afilen sus herramientas y luego den el salto. Apliquen esas habilidades para romper barreras en el mundo real, donde cada hallazgo cuenta.
+
+---
+
+### Acciones Recomendadas
+
+1. Define un calendario: alterna 70% tiempo en aprendizaje aplicado / bug bounty y 30% en CTFs específicos que refuercen debilidades.
+2. Documenta cada hallazgo (aunque sea duplicado) para crear tu playbook personal.
+3. Crea laboratorios propios: replica vulnerabilidades reales que encuentres para profundizar.
+4. Sigue un framework de reporte (Título, Impacto, Reproducción, Mitigación) desde el inicio.
+5. Construye visibilidad: publica resúmenes (sin revelar datos sensibles) de lo aprendido.
+
+¿Te gustaría una guía práctica para tu primer reporte Bug Bounty? Dímelo y la preparo como próximo artículo.
