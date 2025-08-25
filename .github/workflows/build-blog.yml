@@ -1,0 +1,43 @@
+name: Build Blog
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'blog-src/**'
+      - '.eleventy.blog.cjs'
+      - 'package.json'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci || npm install --no-audit --no-fund
+
+      - name: Build Eleventy blog
+        run: npm run build:blog
+
+      - name: Commit blog output if changed
+        run: |
+          if [ -d blog ]; then
+            git config user.name 'github-actions'
+            git config user.email 'actions@users.noreply.github.com'
+            if ! git diff --quiet --exit-code blog; then
+              git add blog/
+              git commit -m 'chore(blog): actualizar salida generada [skip ci]' || true
+              git push
+            fi
+          fi

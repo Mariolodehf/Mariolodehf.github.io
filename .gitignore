@@ -9,7 +9,7 @@ blog/.DS_Store
 .DS_Store
 Thumbs.db
 
-# Construcciones futuras
+# Construcciones futuras (permitimos /blog porque es salida publicada)
 /dist
 /build
 .tmp
