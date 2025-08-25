@@ -266,13 +266,20 @@
       if(!resp.ok) throw new Error('No se pudo cargar formacion.json');
       const items = await resp.json();
       cont.setAttribute('aria-busy','false');
-      // Crear un conjunto de títulos ya presentes (fallback) para no duplicar
-      const existentes = new Set(Array.from(cont.querySelectorAll('.timeline__item[data-fallback] .timeline__titulo')).map(n=>n.textContent.trim()));
+      // Mapear fallback existentes por título para posible reemplazo
+      const fallbackMap = new Map();
+      cont.querySelectorAll('.timeline__item[data-fallback] .timeline__titulo').forEach(t => {
+        fallbackMap.set(t.textContent.trim(), t.closest('.timeline__item'));
+      });
       // Orden cronológico descendente
       items.sort((a,b)=> (b.inicio||'').localeCompare(a.inicio||''));
       items.forEach(it => {
-        if(!existentes.has(it.titulo)) {
-          cont.appendChild(crearNodoFormacion(it));
+        const existente = fallbackMap.get(it.titulo);
+        const nodoNuevo = crearNodoFormacion(it);
+        if(existente) {
+          existente.replaceWith(nodoNuevo); // Reemplaza para actualizar descripción/estado
+        } else {
+          cont.appendChild(nodoNuevo);
         }
       });
     } catch(e){
@@ -287,12 +294,13 @@
     el.className = 'timeline__item';
     if(item.estado === 'en-curso') el.dataset.estado = 'en-curso';
     const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pendiente' : 'Actual'}`;
-    const badgeMapa = { 'universidad':'Académico', 'certificacion':'Certificación', 'programa':'Programa' };
-    const badge = badgeMapa[item.tipo] || 'Formación';
+  const badgeMapa = { 'universidad':'Académico', 'certificacion':'Certificación', 'programa':'Programa' };
+  const badge = badgeMapa[item.tipo] || 'Formación';
+  const estadoClase = item.estado === 'pendiente' ? 'timeline__badge--pendiente' : item.estado === 'completado' ? 'timeline__badge--completado' : 'timeline__badge--en-curso';
     el.innerHTML = `
       <div class="timeline__entidad">
         <span class="timeline__periodo" aria-label="Periodo">${periodo}</span>
-        <span class="timeline__badge" aria-label="Tipo">${badge}</span>
+        <span class="timeline__badge ${estadoClase}" aria-label="Tipo">${badge}</span>
       </div>
       <h3 class="timeline__titulo">${item.titulo}</h3>
       <p class="timeline__desc">${item.entidad}${item.ubicacion ? ' · ' + item.ubicacion : ''}</p>
