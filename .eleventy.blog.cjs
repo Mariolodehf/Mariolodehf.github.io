@@ -32,6 +32,12 @@ module.exports = function(eleventyConfig) {
     return collectionApi.getFilteredByGlob('blog-src/posts/*.md').filter(item => !item.data.draft);
   });
 
+  // Shortcode para imágenes responsivas simples
+  eleventyConfig.addShortcode('img', (src, alt='', cls='') => {
+    const escapedAlt = (alt||'').replace(/"/g,'&quot;');
+    return `<figure class="${cls} img-wrapper"><img src="${src}" alt="${escapedAlt}" loading="lazy" decoding="async" /></figure>`;
+  });
+
   return {
     dir: {
       input: 'blog-src',
