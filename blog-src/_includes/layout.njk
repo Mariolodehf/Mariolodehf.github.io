@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
   {# Open Graph & JSON-LD solo para posts con front matter #}
-  {% if page.filePathStem contains '/posts/' %}
+  {% if '/posts/' in page.filePathStem %}
     {% set ogTitle = title + ' | Blog | Mario De Hoyos F' %}
     {% set ogDesc = summary or site.description %}
     {% if cover %}<meta property="og:image" content="https://mariolodehf.github.io{{ cover }}" />{% endif %}
@@ -53,7 +53,7 @@
   </header>
   <main class="main">
     <div class="prose">
-      {% if page.filePathStem contains '/posts/' %}
+  {% if '/posts/' in page.filePathStem %}
         <h1 class="post-title">{{ title }}</h1>
         <p class="post-meta" style="font-size:.8rem; color:var(--color-texto-sec); margin-top:-.6rem;">
           Publicado el {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} min lectura
