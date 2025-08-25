@@ -27,6 +27,11 @@ module.exports = function(eleventyConfig) {
       .replace(/"/g,'&quot;');
   });
 
+  // Collection posts sin drafts
+  eleventyConfig.addCollection('post', collectionApi => {
+    return collectionApi.getFilteredByGlob('blog-src/posts/*.md').filter(item => !item.data.draft);
+  });
+
   return {
     dir: {
       input: 'blog-src',
