@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,10 +23,15 @@ jobs:
           cache: 'npm'
 
       - name: Install deps
-        run: npm ci || npm install --no-audit --no-fund
+        run: npm install --no-audit --no-fund
 
       - name: Build Eleventy blog
         run: npm run build:blog
+
+      - name: Debug listing
+        run: |
+          echo 'Contenido de blog/: '
+          ls -R blog || echo 'No se generó blog/'
 
       - name: Commit blog output if changed
         run: |
