@@ -266,10 +266,15 @@
       if(!resp.ok) throw new Error('No se pudo cargar formacion.json');
       const items = await resp.json();
       cont.setAttribute('aria-busy','false');
-      cont.innerHTML='';
-      // Orden cronológico descendente por inicio (asumiendo YYYY)
+      // Crear un conjunto de títulos ya presentes (fallback) para no duplicar
+      const existentes = new Set(Array.from(cont.querySelectorAll('.timeline__item[data-fallback] .timeline__titulo')).map(n=>n.textContent.trim()));
+      // Orden cronológico descendente
       items.sort((a,b)=> (b.inicio||'').localeCompare(a.inicio||''));
-      items.forEach(it => cont.appendChild(crearNodoFormacion(it)));
+      items.forEach(it => {
+        if(!existentes.has(it.titulo)) {
+          cont.appendChild(crearNodoFormacion(it));
+        }
+      });
     } catch(e){
       console.error(e);
       cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">No se pudo cargar la formación.</p>';
