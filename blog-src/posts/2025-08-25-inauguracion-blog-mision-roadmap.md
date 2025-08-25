@@ -1,19 +1,11 @@
 ---
-title: "Redirección: Inauguración del Blog"
-summary: "Este slug fue reemplazado por uno definitivo."
-tags: [redirect]
-permalink: /blog/posts/2025-08-25-post-demo/
-eleventyExcludeFromCollections: true
+title: "Inauguración del Blog: Telecomunicaciones, Ciberseguridad y Construcción de Habilidades Reales"
+summary: "Propósito del blog, enfoque (Redes, Cloud Security, Hacking Ético, IoT) y hoja de ruta inicial para transformar curiosidad técnica en impacto real."
+tags: [introduccion, roadmap, ciberseguridad]
 cover: /assets/img/og-default.svg
 date: 2025-08-25
 ---
-<meta http-equiv="refresh" content="0; url=/blog/posts/2025-08-25-inauguracion-blog-mision-roadmap/" />
-
-Este recurso fue movido a la URL definitiva.
-
-Si no eres redirigido automáticamente haz clic aquí:
-
-<p><a href="/blog/posts/2025-08-25-inauguracion-blog-mision-roadmap/">Ir al artículo “Inauguración del Blog”</a></p>
+Bienvenido/a. Si llegaste aquí seguramente compartimos alguna combinación de intereses entre redes, seguridad, hacking ético, computación en la nube e IoT. Este primer artículo establece el “por qué” y el “cómo” de lo que publicaré.
 
 ## ¿Quién escribe y desde qué punto de partida?
 
@@ -66,7 +58,7 @@ Solo investigaré sistemas donde exista autorización explícita (programas de B
 
 ## Próximo artículo
 
-Profundizaré en el valor comparativo entre CTF y Bug Bounty (el que ya publiqué) complementándolo con una mini guía de transición estructurada: de rompecabezas controlados a auditorías de superficie real.
+Profundizaré en el valor comparativo entre CTF y Bug Bounty complementándolo con una mini guía de transición estructurada: de rompecabezas controlados a auditorías de superficie real.
 
 ---
 
@@ -74,4 +66,4 @@ Profundizaré en el valor comparativo entre CTF y Bug Bounty (el que ya publiqu�
 
 Gracias por leer y bienvenido/a al inicio de este mapa de aprendizaje continuo.
 
-{% img "/assets/img/og-default.svg", "Redirección" %}
+{% img "/assets/img/og-default.svg", "Imagen representativa de conectividad y seguridad" %}
