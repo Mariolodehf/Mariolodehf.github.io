@@ -1,5 +1,7 @@
 # Dependencias / entornos locales potenciales
 node_modules/
+package-lock.json
+blog/.DS_Store
 .env
 .env.*
 

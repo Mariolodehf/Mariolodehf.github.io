@@ -1,0 +1,37 @@
+---
+layout: layout.njk
+pagination:
+  data: collections.post
+  size: 10
+  alias: posts
+permalink: /blog/
+---
+<h1>Blog</h1>
+<p class="lead">Artículos, notas y experiencias en telecomunicaciones, seguridad e innovación.</p>
+<input id="busqueda" type="search" placeholder="Buscar..." aria-label="Buscar artículos" class="blog-search" />
+<ul class="lista-posts" id="lista-posts">
+  {% for post in posts reversed %}
+  <li class="post-item">
+    <article>
+      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p class="meta">{{ post.date | date("%Y-%m-%d") }} · {{ post.templateContent | readTime }} min</p>
+      {% if post.data.summary %}<p>{{ post.data.summary }}</p>{% endif %}
+      {% if post.data.tags %}<p class="tags">{% for tag in post.data.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>{% endif %}
+    </article>
+  </li>
+  {% endfor %}
+</ul>
+<script>
+(function(){
+  const input = document.getElementById('busqueda');
+  const lista = document.getElementById('lista-posts');
+  if(!input) return;
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase();
+    [...lista.querySelectorAll('.post-item')].forEach(li => {
+      const text = li.textContent.toLowerCase();
+      li.hidden = q && !text.includes(q);
+    });
+  });
+})();
+</script>

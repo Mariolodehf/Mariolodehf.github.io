@@ -1,0 +1,13 @@
+{
+  "name": "mariolodehf-portfolio-blog",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Blog integration (Eleventy) for Mario De Hoyos F portfolio without affecting existing static site.",
+  "scripts": {
+    "build:blog": "npx @11ty/eleventy --config=.eleventy.blog.cjs",
+    "serve:blog": "npx @11ty/eleventy --serve --config=.eleventy.blog.cjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
