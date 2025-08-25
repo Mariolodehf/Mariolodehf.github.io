@@ -60,11 +60,19 @@ a:hover, a:focus { color: var(--color-primario); }
 .skip-link:focus { left:0; top:0; width:auto; height:auto; background:#000; color:#fff; padding:0.75rem 1rem; z-index:100; }
 
 @media (max-width: 720px) {
-  .nav__toggle { display: inline-block; }
-  .nav__menu { position: absolute; right:1rem; top:60px; min-width: 250px; flex-direction: column; background: #1a1f27; padding: 0.75rem 0.75rem 0.9rem; border: 1px solid #242b35; border-radius: var(--radio); display: none; box-shadow:0 8px 24px -8px rgba(0,0,0,0.5); }
-  .nav__menu[data-open='true'] { display: flex; }
-  .nav__menu a { padding:0.55rem 0.5rem; border-radius: var(--radio); }
+  .nav { position: relative; padding-block: .6rem; }
+  .nav__group-left { display:flex; align-items:center; gap:.5rem; }
+  .logo { font-size:1.05rem; }
+  .nav__actions { margin-left:auto; }
+  .nav__toggle { display: inline-flex; align-items:center; justify-content:center; width:2.4rem; height:2.4rem; padding:0; border:1px solid var(--color-borde); background:var(--color-card-alt); border-radius:var(--radio); font-size:1.1rem; }
+  .nav__toggle:focus, .nav__toggle:hover { background:var(--color-card); }
+  .nav__menu { position: absolute; inset-inline:0; top:100%; margin-top:.4rem; background:#1a1f27; padding:.75rem .85rem 1rem; border:1px solid #242b35; border-radius:var(--radio-lg); display:none; flex-direction:column; gap:.25rem; box-shadow:0 14px 34px -10px rgba(0,0,0,.55); }
+  .nav__menu[data-open='true'] { display:flex; animation:fadeSlide .18s ease; }
+  .nav__menu a { padding:.65rem .7rem; border-radius:var(--radio); width:100%; display:block; }
   .nav__menu a:focus, .nav__menu a:hover { background:#232a33; }
+  body[data-theme='light'] .nav__menu { background:#f3f6f9; border-color:#d3dae2; }
+  body[data-theme='light'] .nav__menu a:focus, body[data-theme='light'] .nav__menu a:hover { background:#e3e9ef; }
+  @keyframes fadeSlide { from{opacity:0; transform:translateY(-4px);} to{opacity:1; transform:translateY(0);} }
 }
 
 .main { max-width: var(--ancho-max); margin: 0 auto; padding: 2rem 1rem 4rem; }
