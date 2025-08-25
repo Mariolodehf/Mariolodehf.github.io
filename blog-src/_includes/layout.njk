@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} | Blog | Mario De Hoyos F{% else %}Blog | Mario De Hoyos F{% endif %}</title>
   <meta name="description" content="{% if summary %}{{ summary | safe }}{% else %}Artículos y experiencias de Mario De Hoyos F en telecomunicaciones y ciberseguridad.{% endif %}" />
-  <link rel="canonical" href="https://mariolodehf.github.io{{ page.url }}" />
+  <link rel="canonical" href="https://mariolodehf.github.io/blog{{ page.url }}" />
   <meta name="color-scheme" content="dark light" />
   <link rel="stylesheet" href="/css/styles.css" />
   <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
@@ -17,7 +17,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{ ogTitle }}" />
     <meta property="og:description" content="{{ ogDesc }}" />
-    <meta property="og:url" content="https://mariolodehf.github.io{{ page.url }}" />
+  <meta property="og:url" content="https://mariolodehf.github.io/blog{{ page.url }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ ogTitle }}" />
     <meta name="twitter:description" content="{{ ogDesc }}" />
@@ -25,7 +25,7 @@
     <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Article",
-      "mainEntityOfPage": {"@type":"WebPage","@id":"https://mariolodehf.github.io{{ page.url }}"},
+  "mainEntityOfPage": {"@type":"WebPage","@id":"https://mariolodehf.github.io/blog{{ page.url }}"},
       "headline": {{ ogTitle | dump }},
       {% if cover %}"image": ["https://mariolodehf.github.io{{ cover }}"],{% endif %}
       "datePublished": "{{ page.date | date('%Y-%m-%d') }}",

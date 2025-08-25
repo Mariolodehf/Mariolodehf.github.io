@@ -54,6 +54,7 @@ module.exports = function(eleventyConfig) {
 
   // Layout por defecto para todo (posts, index, tags) salvo que se sobreescriba
   eleventyConfig.addGlobalData('layout', 'layout.njk');
+  eleventyConfig.addGlobalData('blogBase', '/blog');
 
   // No generar salida para drafts: permalink false
   eleventyConfig.addGlobalData('eleventyComputed', {

@@ -12,9 +12,9 @@ canonicalPath: /blog/
 <input id="busqueda" type="search" placeholder="Buscar..." aria-label="Buscar artículos" class="blog-search" />
 <ul class="lista-posts" id="lista-posts" data-count="{{ posts.length }}">
 {% for post in posts | reverse %}
-  <li class="post-item" data-url="{{ post.url }}" data-tags="{% if post.data.tags %}{{ post.data.tags | join(',') }}{% endif %}">
+  <li class="post-item" data-url="/blog{{ post.url }}" data-tags="{% if post.data.tags %}{{ post.data.tags | join(',') }}{% endif %}">
     <article>
-      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+      <h2><a href="/blog{{ post.url }}">{{ post.data.title }}</a></h2>
       <p class="meta">{{ post.date | date("%Y-%m-%d") }} · {{ post.templateContent | readTime }} min</p>
       {% if post.data.summary %}<p class="summary">{{ post.data.summary }}</p>{% endif %}
       {% if post.data.tags %}<p class="tags">{% for tag in post.data.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>{% endif %}
