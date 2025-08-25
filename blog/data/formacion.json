@@ -1,0 +1,50 @@
+[
+  {
+    "id": "udea-teleco",
+    "tipo": "universidad",
+    "titulo": "Ingeniería de Telecomunicaciones",
+    "entidad": "Universidad de Antioquia",
+    "ubicacion": "Medellín, Colombia",
+    "inicio": "2024",
+    "fin": null,
+    "estado": "en-curso",
+    "descripcion": "Programa universitario centrado en redes, sistemas de comunicación y fundamentos que soportan infraestructuras seguras.",
+    "enlace": "https://www.udea.edu.co/"
+  },
+  {
+    "id": "gcloud-cyber",
+    "tipo": "certificacion",
+    "titulo": "Google Cloud Cybersecurity Certificate (Inscripción)",
+    "entidad": "Google Career Launchpad Program",
+    "ubicacion": "Online",
+    "inicio": "2025",
+    "fin": null,
+    "estado": "pendiente",
+    "descripcion": "Certificación orientada a fundamentos de ciberseguridad en entornos cloud y respuesta ante incidentes.",
+    "enlace": "https://cloud.google.com/learn/certification"
+  },
+  {
+    "id": "cisco-analista-jr",
+    "tipo": "programa",
+    "titulo": "Carrera Profesional Analista Junior en Ciberseguridad",
+    "entidad": "Cisco Networking Academy",
+    "ubicacion": "Online",
+    "inicio": "2025",
+    "fin": null,
+    "estado": "en-curso",
+    "descripcion": "Formación práctica para adquirir habilidades de defensa, análisis de amenazas y fundamentos de seguridad empresarial.",
+    "enlace": "https://www.netacad.com/"
+  },
+  {
+    "id": "bootcamp-arquitectura-nube-basico",
+    "tipo": "certificacion",
+    "titulo": "Bootcamp Arquitectura en la Nube - Nivel Básico",
+    "entidad": "Ministerio TIC / IU Training / UdeA / Univ. de Caldas",
+    "ubicacion": "Colombia (Híbrido)",
+    "inicio": "2025",
+    "fin": "2025",
+    "estado": "completado",
+    "descripcion": "Bootcamp de 159 horas: fundamentos de arquitectura cloud, modelo de capas, despliegues y buenas prácticas iniciales.",
+    "enlace": null
+  }
+]

@@ -1,0 +1,28 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog de Mario De Hoyos F</title>
+    <link>https://mariolodehf.github.io/blog/</link>
+    <description>Artículos y experiencias en telecomunicaciones, seguridad e innovación.</description>
+    <language>es</language>
+    <atom:link href="https://mariolodehf.github.io/blog/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Primer Post Demo</title>
+      <link>https://mariolodehf.github.io/posts/2025-08-25-post-demo/</link>
+      <guid>https://mariolodehf.github.io/posts/2025-08-25-post-demo/</guid>
+      <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
+      <description>Breve demostración de cómo se verán los artículos en el nuevo blog integrado.</description>
+    </item>
+    
+    <item>
+      <title>CTF vs. Bug Bounty: ¿Gimnasio de Habilidades o Arena Profesional?</title>
+      <link>https://mariolodehf.github.io/posts/2025-08-25-ctf-vs-bug-bounty-gimnasio-o-arena/</link>
+      <guid>https://mariolodehf.github.io/posts/2025-08-25-ctf-vs-bug-bounty-gimnasio-o-arena/</guid>
+      <pubDate>Mon, 25 Aug 2025 00:00:00 GMT</pubDate>
+      <description>CTFs te entrenan; el Bug Bounty te proyecta: diferencias prácticas para enfocar tu camino en seguridad.</description>
+    </item>
+    
+  </channel>
+</rss>

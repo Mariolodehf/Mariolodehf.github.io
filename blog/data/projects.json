@@ -1,0 +1,15 @@
+[
+  {
+    "slug": "ubicatec",
+    "nombre": "UbicaTec",
+    "tagline": "Red colaborativa IoT para encontrar lo que importa.",
+    "descripcionCorta": "Plataforma colaborativa que usa nodos BLE de bajo consumo para localizar objetos perdidos de forma privada, escalable y económica.",
+    "descripcionLarga": "UbicaTec combina una red distribuida de micro‑balizas Bluetooth Low Energy (BLE) y la participación de la comunidad para crear un 'radar urbano' capaz de ayudarte a recuperar objetos personales. El enfoque prioriza bajo consumo, privacidad mediante identificadores rotativos y una arquitectura escalable pensada para integrarse con apps móviles y paneles web. Próximamente incluirá cifrado extremo a extremo y analítica de cobertura.",
+    "anio": 2025,
+    "estado": "Exploración inicial",
+    "stack": ["BLE", "IoT", "Edge", "JavaScript", "Seguridad"],
+    "repoUrl": "https://github.com/Mariolodehf/UbicaTec", 
+    "demoUrl": null,
+    "destacado": true
+  }
+]

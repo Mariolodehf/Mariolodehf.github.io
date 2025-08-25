@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e1116"/>
+      <stop offset="55%" stop-color="#1b2230"/>
+      <stop offset="100%" stop-color="#2b1640"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="100%" y2="0">
+      <stop stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 86px 'Inter', 'Segoe UI', Arial, sans-serif; fill: url(#accent); letter-spacing:-2px; }
+      .subtitle { font: 400 34px 'Inter', 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+      .tag { font: 600 22px 'Inter', 'Segoe UI', Arial, sans-serif; fill:#94a3b8; letter-spacing:2px; }
+      @media (prefers-color-scheme: light) { .subtitle { fill:#334155; } .tag { fill:#475569; } }
+    </style>
+  </defs>
+  <rect width="1200" height="630" rx="40" fill="url(#bg)"/>
+  <g filter="url(#glow)">
+    <circle cx="1060" cy="110" r="160" fill="#6366f1" fill-opacity="0.12"/>
+    <circle cx="160" cy="520" r="190" fill="#ec4899" fill-opacity="0.10"/>
+  </g>
+  <text x="80" y="230" class="tag">PORTAFOLIO</text>
+  <text x="80" y="340" class="title">Mario De Hoyos F</text>
+  <text x="80" y="405" class="subtitle">Telecomunicaciones · Seguridad de la Información · IoT</text>
+  <text x="80" y="475" class="subtitle" fill="#818cf8">UbicaTec & Proyectos en evolución</text>
+  <defs>
+    <filter id="glow" x="0" y="0" width="1200" height="630" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="80" result="blur"/>
+    </filter>
+  </defs>
+</svg>

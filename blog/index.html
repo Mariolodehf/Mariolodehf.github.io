@@ -1,16 +1,109 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Blog (Generando...)</title>
-  <meta http-equiv="refresh" content="10" />
-  <style>body{font-family:system-ui;background:#0e1116;color:#e5e7eb;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:2rem;text-align:center}a{color:#818cf8}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Mario De Hoyos F</title>
+  <meta name="description" content="Artículos y experiencias de Mario De Hoyos F en telecomunicaciones y ciberseguridad." />
+  <link rel="canonical" href="https://mariolodehf.github.io/" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  
+  
 </head>
-<body>
-  <div>
-    <h1>Blog en proceso de compilación</h1>
-    <p>Este es un placeholder temporal. Si ves esto tras varios minutos, el workflow falló.</p>
-    <p><a href="/">Volver al inicio</a></p>
-  </div>
+<body class="blog-body">
+  <header class="site-header">
+    <nav class="nav" aria-label="Principal">
+      <a class="logo" href="/">Mario De Hoyos<span>.</span></a>
+      <ul class="nav__menu">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/index.html#proyectos">Proyectos</a></li>
+        <li><a href="/index.html#formacion">Formación</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+      <div class="nav__actions">
+        <button id="theme-toggle" class="btn-theme" type="button">🌙</button>
+      </div>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="prose">
+  
+      <h1>Blog</h1>
+<p class="lead">Artículos, notas y experiencias en telecomunicaciones, seguridad e innovación.</p>
+<input id="busqueda" type="search" placeholder="Buscar..." aria-label="Buscar artículos" class="blog-search" />
+<ul class="lista-posts" id="lista-posts" data-count="2">
+
+  <li class="post-item" data-url="/posts/2025-08-25-post-demo/" data-tags="demo,introduccion">
+    <article>
+      <h2><a href="/posts/2025-08-25-post-demo/">Primer Post Demo</a></h2>
+      <p class="meta">2025-08-25 · 1 min</p>
+      <p class="summary">Breve demostración de cómo se verán los artículos en el nuevo blog integrado.</p>
+      <p class="tags"><span class="tag">demo</span><span class="tag">introduccion</span></p>
+    </article>
+  </li>
+
+  <li class="post-item" data-url="/posts/2025-08-25-ctf-vs-bug-bounty-gimnasio-o-arena/" data-tags="ctf,bug-bounty,hacking,ciberseguridad">
+    <article>
+      <h2><a href="/posts/2025-08-25-ctf-vs-bug-bounty-gimnasio-o-arena/">CTF vs. Bug Bounty: ¿Gimnasio de Habilidades o Arena Profesional?</a></h2>
+      <p class="meta">2025-08-25 · 4 min</p>
+      <p class="summary">CTFs te entrenan; el Bug Bounty te proyecta: diferencias prácticas para enfocar tu camino en seguridad.</p>
+      <p class="tags"><span class="tag">ctf</span><span class="tag">bug-bounty</span><span class="tag">hacking</span><span class="tag">ciberseguridad</span></p>
+    </article>
+  </li>
+
+</ul>
+<p id="resultados-info" class="result-info" aria-live="polite"></p>
+<script>
+(function(){
+  const input = document.getElementById('busqueda');
+  const lista = document.getElementById('lista-posts');
+  const info = document.getElementById('resultados-info');
+  let indice = [];
+  fetch('/blog/posts.json')
+    .then(r => r.json())
+    .then(json => { indice = json; actualizar(''); })
+    .catch(()=>{ indice = []; });
+  function normalizar(t){return t.toLowerCase();}
+  function score(post, q){
+    if(!q) return 0;
+    let s=0; const nq=normalizar(q);
+    const titulo=normalizar(post.title), resumen=normalizar(post.summary||''), tags=(post.tags||[]).map(normalizar).join(' ');
+    if(titulo.includes(nq)) s+=3;
+    if(resumen.includes(nq)) s+=1;
+    if(tags.includes(nq)) s+=2;
+    return s;
+  }
+  function actualizar(q){
+    const ul = lista; ul.innerHTML='';
+    let resultados = indice.map(p=>({p, sc: score(p,q)}));
+    if(q) resultados = resultados.filter(r=>r.sc>0);
+    resultados.sort((a,b)=> b.sc - a.sc);
+    resultados.forEach(r=>{
+      const li=document.createElement('li'); li.className='post-item';
+      li.innerHTML = `<article><h2><a href="${r.p.url}">${r.p.title}</a></h2>`+
+        `<p class="meta">${r.p.date||''}</p>`+
+        (r.p.summary?`<p class="summary">${r.p.summary}</p>`:'')+
+        (r.p.tags&&r.p.tags.length?`<p class="tags">${r.p.tags.map(t=>`<span class=tag>${t}</span>`).join(' ')}</p>`:'')+
+        `</article>`;
+      ul.appendChild(li);
+    });
+    if(info){
+      info.textContent = q ? `${resultados.length} resultado(s)` : '';
+    }
+  }
+  if(input){
+    input.addEventListener('input', ()=> actualizar(input.value.trim()));
+  }
+})();
+</script>
+
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Mario De Hoyos F. Todos los derechos reservados.</p>
+  </footer>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>
