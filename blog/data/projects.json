@@ -11,5 +11,18 @@
     "repoUrl": "https://github.com/Mariolodehf/UbicaTec", 
     "demoUrl": null,
     "destacado": true
+  },
+  {
+    "slug": "guardiot",
+    "nombre": "GuardIoT",
+    "tagline": "Arquitectura IoT enfocada en privacidad y resiliencia.",
+    "descripcionCorta": "Diseño e implementación de sistemas IoT seguros priorizando cifrado, segmentación de red, monitoreo e integridad de dispositivos.",
+    "descripcionLarga": "GuardIoT es una iniciativa que fusiona telecomunicaciones y ciberseguridad para construir soluciones IoT conectadas y protegidas extremo a extremo. Abarca: modelado de amenazas específico para dispositivos embebidos, autenticación fuerte entre nodos y gateway, cifrado de datos en tránsito y en reposo, segmentación de red (principio de mínimo alcance), observabilidad útil (logs firmados y métricas de comportamiento), y un pipeline seguro de firmware (verificación de integridad y control de versiones). La meta es una referencia modular que permita desplegar verticales IoT con garantías de confidencialidad, integridad y disponibilidad desde su diseño inicial.",
+    "anio": 2025,
+    "estado": "Diseño",
+    "stack": ["IoT", "Seguridad", "Firmware", "Redes", "Criptografía"],
+    "repoUrl": null,
+    "demoUrl": null,
+    "destacado": false
   }
 ]
