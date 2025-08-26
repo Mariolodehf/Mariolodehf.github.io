@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="no-js" data-theme="dark">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +8,15 @@
   <link rel="canonical" href="https://mariolodehf.github.io/blog/blog/tag/ctf/" />
   <meta name="color-scheme" content="dark light" />
   <link rel="stylesheet" href="/css/styles.css" />
-  <script>(function(){try{const t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <script>
+    (function(){
+      try {
+        const stored = localStorage.getItem('theme');
+        const preferred = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', preferred);
+      } catch(e) {}
+    })();
+  </script>
   
   
 </head>
