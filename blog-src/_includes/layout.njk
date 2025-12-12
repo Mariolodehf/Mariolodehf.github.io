@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es" class="no-js">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% if title %}{{ title }} | Blog | Mario De Hoyos F{% else %}Blog | Mario De Hoyos F{% endif %}</title>
-  <meta name="description" content="{% if summary %}{{ summary | safe }}{% else %}Artículos y experiencias de Mario De Hoyos F en telecomunicaciones y ciberseguridad.{% endif %}" />
+  <meta name="description" content="{% if summary %}{{ summary | safe }}{% else %}Articles and experiences by Mario De Hoyos in telecommunications and cybersecurity.{% endif %}" />
   <link rel="canonical" href="https://mariolodehf.github.io/blog{{ page.url }}" />
   <meta name="color-scheme" content="dark light" />
   <link rel="stylesheet" href="/css/styles.css" />
@@ -50,14 +50,14 @@
       <a class="logo" href="/">Mario De Hoyos<span>.</span></a>
       <div class="nav__actions">
         <button id="theme-toggle" class="btn-theme" type="button"><span class="theme-icon" aria-hidden="true">🌙</span></button>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú de navegación" type="button">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu" type="button">
           <span class="nav__toggle-inner" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
         </button>
       </div>
       <ul id="nav-menu" class="nav__menu">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/index.html#proyectos">Proyectos</a></li>
-        <li><a href="/index.html#formacion">Formación</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/index.html#proyectos">Projects</a></li>
+        <li><a href="/index.html#formacion">Education</a></li>
         <li><a href="/blog/">Blog</a></li>
       </ul>
     </nav>
@@ -68,14 +68,14 @@
   {% if '/posts/' in page.filePathStem %}
         <h1 class="post-title">{{ title }}</h1>
         <p class="post-meta" style="font-size:.8rem; color:var(--color-texto-sec); margin-top:-.6rem;">
-          Publicado el {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} min lectura
+          Published on {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} min read
         </p>
       {% endif %}
       {{ content | safe }}
     </div>
   </main>
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Mario De Hoyos F. Todos los derechos reservados.</p>
+    <p>&copy; <span id="year"></span> Mario De Hoyos. All rights reserved.</p>
   </footer>
   <script src="/js/main.js" defer></script>
 </body>

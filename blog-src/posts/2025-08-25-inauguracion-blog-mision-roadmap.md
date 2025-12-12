@@ -1,69 +1,69 @@
 ---
-title: "Inauguración del Blog: Telecomunicaciones, Ciberseguridad y Construcción de Habilidades Reales"
-summary: "Propósito del blog, enfoque (Redes, Cloud Security, Hacking Ético, IoT) y hoja de ruta inicial para transformar curiosidad técnica en impacto real."
-tags: [introduccion, roadmap, ciberseguridad]
+title: "Blog Inauguration: Telecommunications, Cybersecurity, and Building Real-World Skills"
+summary: "Purpose of this blog, focus areas (Networks, Cloud Security, Ethical Hacking, IoT), and initial roadmap to turn technical curiosity into real impact."
+tags: [introduction, roadmap, cybersecurity]
 cover: /assets/img/og-default.svg
 date: 2025-08-25
 ---
-Bienvenido/a. Si llegaste aquí seguramente compartimos alguna combinación de intereses entre redes, seguridad, hacking ético, computación en la nube e IoT. Este primer artículo establece el “por qué” y el “cómo” de lo que publicaré.
+Welcome. If you found your way here, we probably share some combination of interests in networks, security, ethical hacking, cloud computing, and IoT. This first article establishes the "why" and the "how" of what I'll be publishing.
 
-## ¿Quién escribe y desde qué punto de partida?
+## Who's Writing and From What Starting Point?
 
-Soy estudiante de Ingeniería de Telecomunicaciones especializándome en Seguridad de la Información. Mi curiosidad técnica comenzó intentando entender cómo viaja un bit de un punto A a un punto B de forma confiable; evolucionó hacia cómo un atacante puede interferir, observar o manipular ese tránsito y cómo podemos diseñar defensas que realmente funcionen.
+I'm a Telecommunications Engineering student specializing in Information Security. My technical curiosity started with trying to understand how a bit reliably travels from point A to point B; it evolved into understanding how an attacker can interfere with, observe, or manipulate that transit—and how we can design defenses that actually work.
 
-## Misión del blog
+## Blog Mission
 
-Construir un registro público y estructurado de:
+Build a public, structured record of:
 
-1. Fundamentos aplicados (modelos de red, segmentación, control de flujo, DNS, TLS, identidad) explicados con ejemplos prácticos.
-2. Seguridad ofensiva y defensiva: metodología de enumeración, abuso de mal diseño, hardening gradual y detección temprana.
-3. Transición a Cloud Security: superficie de ataque en arquitecturas distribuidas, identidad y privilegios mínimos, aislamiento, logging útil (no ruido), patrones IaC seguros.
-4. IoT y bordes inseguros: BLE, dispositivos expuestos, amenazas físicas y cadenas de suministro.
-5. Bug Bounty / CTF con enfoque de transferencia: qué aprendí en un entorno gamificado y cómo lo llevo a escenarios reales.
+1. Applied fundamentals (network models, segmentation, flow control, DNS, TLS, identity) explained with practical examples.
+2. Offensive and defensive security: enumeration methodology, exploiting design flaws, gradual hardening, and early detection.
+3. Transition to Cloud Security: attack surface in distributed architectures, identity and least privilege, isolation, useful logging (not noise), secure IaC patterns.
+4. IoT and insecure edges: BLE, exposed devices, physical threats, and supply chains.
+5. Bug Bounty / CTF with a transfer focus: what I learned in a gamified environment and how I apply it to real-world scenarios.
 
-## Filosofía de aprendizaje
+## Learning Philosophy
 
-- Profundidad sobre atajos: antes de tocar una herramienta, entender qué abstrae.
-- Reproducibilidad: cada laboratorio documentado (prerrequisitos, comandos clave, limpieza) para que cualquiera pueda reconstruirlo.
-- Incrementalidad: mejorar un mismo caso práctico (p.ej. un servicio web vulnerable) iterando capas de defensa; no crear decenas de demos inconexas.
-- Métricas personales: horas de práctica dirigida > tiempo de “consumo pasivo”.
+- Depth over shortcuts: before touching a tool, understand what it abstracts.
+- Reproducibility: every lab documented (prerequisites, key commands, cleanup) so anyone can recreate it.
+- Incrementalism: improve the same practical case (e.g., a vulnerable web service) by iterating defense layers—not creating dozens of disconnected demos.
+- Personal metrics: hours of directed practice > time spent on "passive consumption."
 
-## Formatos que verás
+## Formats You'll See
 
-| Formato | Propósito | Cadencia tentativa |
-|---------|-----------|--------------------|
-| Laboratorios guiados | Reforzar fundamentos con práctica | Quincenal |
-| Writeups de vulnerabilidades (responsible disclosure) | Comunicar impacto y proceso | Cuando sea permitido |
-| Mini series (p.ej. DNS Security, Modelo Zero Trust) | Desglosar temas densos | Por bloques |
-| Listas de chequeo (checklists) | Operativizar conceptos | Revisión continua |
-| Reflexiones / Roadmap | Ajustar dirección y prioridades | Trimestral |
+| Format | Purpose | Tentative Cadence |
+|--------|---------|-------------------|
+| Guided Labs | Reinforce fundamentals with practice | Biweekly |
+| Vulnerability Writeups (responsible disclosure) | Communicate impact and process | When permitted |
+| Mini Series (e.g., DNS Security, Zero Trust Model) | Break down dense topics | In blocks |
+| Checklists | Operationalize concepts | Continuous revision |
+| Reflections / Roadmap | Adjust direction and priorities | Quarterly |
 
-## Hoja de ruta inicial (primeras 6–8 semanas)
+## Initial Roadmap (First 6–8 Weeks)
 
-1. Laboratorio: Topología mínima para observar handshake TLS y puntos de falla.
-2. Introducción práctica a enumeración HTTP / DNS sin depender de herramientas “black box”.
-3. Serie breve: “Errores de diseño frecuentes en APIs” (autenticación débil, filtrado parcial, falta de segregación de datos multi-tenant).
-4. Laboratorio IoT: captura y análisis de tráfico BLE básico y riesgos de emparejamiento.
-5. Guía: estructura de un reporte de vulnerabilidad claro (Título → Impacto → PoC → Mitigación).
+1. Lab: Minimal topology to observe TLS handshake and failure points.
+2. Practical introduction to HTTP / DNS enumeration without relying on "black box" tools.
+3. Brief series: "Common API Design Mistakes" (weak authentication, partial filtering, lack of multi-tenant data segregation).
+4. IoT Lab: basic BLE traffic capture and analysis, pairing risks.
+5. Guide: structure of a clear vulnerability report (Title → Impact → PoC → Mitigation).
 
-## Principios éticos
+## Ethical Principles
 
-Solo investigaré sistemas donde exista autorización explícita (programas de Bug Bounty, entornos propios o laboratorios diseñados). Todo contenido seguirá buenas prácticas de divulgación responsable, evitando exponer datos sensibles o reproducir riesgo en producción.
+I will only research systems where explicit authorization exists (Bug Bounty programs, my own environments, or purpose-built labs). All content will follow responsible disclosure best practices, avoiding exposure of sensitive data or replicating risk in production.
 
-## Cómo puedes aprovechar este espacio
+## How You Can Leverage This Space
 
-- Replica laboratorios y modifica parámetros (latencia, tamaño de MTU, políticas IAM) para observar diferencias.
-- Mantén un cuaderno personal (analógico o digital) donde conviertas cada hallazgo en una regla: “Si veo X, pruebo Y”.
-- Enfócate en la *capacidad de explicar*: si no puedes explicar un flujo (ej. cómo un token se emite, viaja y valida) en un diagrama simple, aún no lo dominas.
+- Replicate labs and modify parameters (latency, MTU size, IAM policies) to observe differences.
+- Keep a personal notebook (analog or digital) where you turn each finding into a rule: "If I see X, I try Y."
+- Focus on the *ability to explain*: if you can't explain a flow (e.g., how a token is issued, travels, and validates) in a simple diagram, you haven't mastered it yet.
 
-## Próximo artículo
+## Next Article
 
-Profundizaré en el valor comparativo entre CTF y Bug Bounty complementándolo con una mini guía de transición estructurada: de rompecabezas controlados a auditorías de superficie real.
+I'll dive deeper into the comparative value of CTF vs. Bug Bounty, supplemented with a mini transition guide: from controlled puzzles to real-world surface audits.
 
 ---
 
-¿Te interesa priorizar algún tema (Cloud IAM, Threat Modeling, BLE Security, metodologías de reporte)? Escríbeme y lo priorizo en la cola de investigación.
+Interested in prioritizing a topic (Cloud IAM, Threat Modeling, BLE Security, reporting methodologies)? Drop me a line and I'll move it up the research queue.
 
-Gracias por leer y bienvenido/a al inicio de este mapa de aprendizaje continuo.
+Thanks for reading and welcome to the beginning of this continuous learning map.
 
-{% img "/assets/img/og-default.svg", "Imagen representativa de conectividad y seguridad" %}
+{% img "/assets/img/og-default.svg", "Illustrative image of connectivity and security" %}

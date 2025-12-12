@@ -14,7 +14,7 @@
     const closeMenu = (focusToggle = false) => {
       navMenu.setAttribute('data-open','false');
       navToggle.setAttribute('aria-expanded','false');
-      navToggle.setAttribute('aria-label','Abrir menú de navegación');
+      navToggle.setAttribute('aria-label','Open navigation menu');
       navToggle.classList.remove('is-open');
       document.body.classList.remove(openClass);
       if(overlay) overlay.hidden = true;
@@ -23,7 +23,7 @@
     const openMenu = () => {
       navMenu.setAttribute('data-open','true');
       navToggle.setAttribute('aria-expanded','true');
-      navToggle.setAttribute('aria-label','Cerrar menú de navegación');
+      navToggle.setAttribute('aria-label','Close navigation menu');
       navToggle.classList.add('is-open');
       document.body.classList.add(openClass);
       if(overlay) overlay.hidden = false;
@@ -68,21 +68,21 @@
       const mensaje = formData.get('mensaje').toString().trim();
 
       if (!nombre || !email || !mensaje) {
-        estado.textContent = 'Por favor completa todos los campos.';
+        estado.textContent = 'Please fill in all fields.';
         estado.className = 'form__estado error';
         return;
       }
 
-      // Validación básica de email
+      // Basic email validation
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        estado.textContent = 'Email no válido.';
+        estado.textContent = 'Invalid email address.';
         estado.className = 'form__estado error';
         return;
       }
 
-      // Simulación de envío
+      // Simulate submission
   setTimeout(() => {
-        estado.textContent = 'Mensaje enviado (simulación). ¡Gracias!';
+        estado.textContent = 'Message sent (simulation). Thank you!';
         estado.className = 'form__estado ok';
         form.reset();
       }, 600);
@@ -100,20 +100,20 @@
     const FALLBACK_PROJECTS = [
       {
         nombre: 'UbicaTec',
-        descripcionCorta: 'Plataforma colaborativa BLE para localizar objetos personales de forma privada y eficiente.',
-        stack: ['BLE','IoT','Seguridad'],
-        estado: 'Exploración',
+        descripcionCorta: 'Collaborative BLE platform to locate personal items privately and efficiently.',
+        stack: ['BLE','IoT','Security'],
+        estado: 'Exploration',
         anio: new Date().getFullYear(),
-        tagline: 'Red colaborativa IoT',
+        tagline: 'Collaborative IoT network',
         destacado: true,
         repoUrl: 'https://github.com/Mariolodehf/UbicaTec',
         demoUrl: null
       }
     ];
 
-    // Si se abrió el archivo sin servidor (file://) advertimos
+    // Warn if opened as file:// without server
     if (location.protocol === 'file:') {
-      contenedor.innerHTML = '<p style="font-size:0.85rem;opacity:.8;">Para cargar proyectos dinámicos necesitas un servidor local (por ejemplo: <code>python3 -m http.server 8000</code>). Usando fallback embebido.</p>';
+      contenedor.innerHTML = '<p style="font-size:0.85rem;opacity:.8;">To load dynamic projects, please use a local server (e.g.: <code>python3 -m http.server 8000</code>). Using embedded fallback.</p>';
       contenedor.appendChild(crearTarjeta(FALLBACK_PROJECTS[0]));
       contenedor.setAttribute('aria-busy','false');
       return;
@@ -140,7 +140,7 @@
   checkHashProyecto();
     } catch (err) {
       console.error(err);
-      contenedor.innerHTML = '<p style="color:#f87171;">Error cargando proyectos remotos. Mostrando fallback local.</p>';
+      contenedor.innerHTML = '<p style="color:#f87171;">Error loading remote projects. Showing local fallback.</p>';
   const fb = FALLBACK_PROJECTS[0];
   fb.slug = fb.slug || 'fallback';
   proyectosCache = [fb];
@@ -167,12 +167,12 @@
         ${p.tagline ? `<span>${p.tagline}</span>` : ''}
       </div>
       <div class="proyecto-links">
-        ${p.repoUrl ? `<a href="${p.repoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Repositorio de ${p.nombre}">Código</a>` : ''}
-        ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Demo de ${p.nombre}">Demo</a>` : ''}
+        ${p.repoUrl ? `<a href="${p.repoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Repository for ${p.nombre}">Code</a>` : ''}
+        ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Demo for ${p.nombre}">Demo</a>` : ''}
       </div>`;
     art.tabIndex = 0;
     art.setAttribute('role','button');
-    art.setAttribute('aria-label', `Abrir detalle del proyecto ${p.nombre}`);
+    art.setAttribute('aria-label', `Open details for project ${p.nombre}`);
     art.addEventListener('click', ()=> abrirModalProyecto(p));
     art.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); abrirModalProyecto(p);} });
     return art;
@@ -194,7 +194,7 @@
     stackEl.innerHTML = (p.stack||[]).map(s=>`<span>${s}</span>`).join('');
     const linksEl = modal.querySelector('.modal__links');
     linksEl.innerHTML = '';
-    if(p.repoUrl) linksEl.innerHTML += `<a href="${p.repoUrl}" target="_blank" rel="noopener">Repositorio</a>`;
+    if(p.repoUrl) linksEl.innerHTML += `<a href="${p.repoUrl}" target="_blank" rel="noopener">Repository</a>`;
     if(p.demoUrl) linksEl.innerHTML += `<a href="${p.demoUrl}" target="_blank" rel="noopener">Demo</a>`;
     modal.querySelector('.modal__meta').textContent = `${p.anio} • ${p.estado}`;
     modal.dataset.open = 'true';
@@ -319,7 +319,7 @@
       nodos.forEach(n=> cont.appendChild(n));
     } catch(e){
       console.error(e);
-      cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">No se pudo cargar la formación.</p>';
+      cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">Failed to load education data.</p>';
       cont.setAttribute('aria-busy','false');
     }
   }
@@ -328,9 +328,9 @@
     const el = document.createElement('div');
     el.className = 'timeline__item';
     if(item.estado === 'en-curso') el.dataset.estado = 'en-curso';
-  const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pendiente' : (item.estado==='completado' ? item.inicio : 'Actual')}`;
-  const badgeMapa = { 'universidad':'Académico', 'certificacion':'Certificación', 'programa':'Programa' };
-  const badge = badgeMapa[item.tipo] || 'Formación';
+  const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pending' : (item.estado==='completado' ? item.inicio : 'Present')}`;
+  const badgeMapa = { 'universidad':'Academic', 'certificacion':'Certification', 'programa':'Program' };
+  const badge = badgeMapa[item.tipo] || 'Education';
   const estadoClase = item.estado === 'pendiente' ? 'timeline__badge--pendiente' : item.estado === 'completado' ? 'timeline__badge--completado' : 'timeline__badge--en-curso';
   el.innerHTML = `
       <div class="timeline__entidad">
@@ -340,7 +340,7 @@
       <h3 class="timeline__titulo">${item.titulo}</h3>
       <p class="timeline__desc">${item.entidad}${item.ubicacion ? ' · ' + item.ubicacion : ''}</p>
       <p class="timeline__desc">${item.descripcion}</p>
-      ${item.enlace ? `<p class="timeline__desc"><a class="link" href="${item.enlace}" target="_blank" rel="noopener">Ver más</a></p>` : ''}
+      ${item.enlace ? `<p class="timeline__desc"><a class="link" href="${item.enlace}" target="_blank" rel="noopener">Learn more</a></p>` : ''}
     `;
   if(item.id) el.setAttribute('data-id', item.id);
     return el;
@@ -413,7 +413,7 @@
     contenedor.innerHTML = '';
     proyectosFiltrados.forEach(p => contenedor.appendChild(crearTarjeta(p)));
     if(!proyectosFiltrados.length){
-      contenedor.innerHTML = '<p style="opacity:.75; font-size:.85rem;">No hay resultados para los filtros aplicados.</p>';
+      contenedor.innerHTML = '<p style="opacity:.75; font-size:.85rem;">No results match the applied filters.</p>';
     }
   }
 
@@ -425,7 +425,7 @@
     const setVisual = (tema)=>{
       root.setAttribute('data-theme', tema);
       btn.setAttribute('aria-pressed', tema === 'light');
-      btn.setAttribute('aria-label', tema === 'light' ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+      btn.setAttribute('aria-label', tema === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
       const iconSpan = btn.querySelector('.theme-icon');
       if(iconSpan) iconSpan.textContent = tema === 'light' ? '☀️' : '🌙';
       // Ajuste theme-color para móviles
