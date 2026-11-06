@@ -14,6 +14,7 @@
   --line:rgba(233,223,203,.13);
   --line-strong:rgba(233,223,203,.28);
   --ok:#9fd39a; --warn:#e6c07b;
+  --gold:#e3a72f;
   --display:"Instrument Serif","Iowan Old Style",Georgia,serif;
   --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -24,18 +25,20 @@
   color-scheme:dark;
 }
 :root[data-theme="light"]{
-  --bg:#eef0ea; --bg-2:#e4e7df; --surface:#f7f8f4;
-  --fg:#1c211b; --muted:#5d655a; --signal:#1f7a74; --signal-ink:#f7f8f4;
-  --line:rgba(28,33,27,.12); --line-strong:rgba(28,33,27,.28);
+  --bg:#f3eee4; --bg-2:#ebe4d6; --surface:#faf7f0;
+  --fg:#211c16; --muted:#665d50; --signal:#1d6f69; --signal-ink:#faf7f0;
+  --line:rgba(33,28,22,.12); --line-strong:rgba(33,28,22,.28);
   --ok:#2f7a37; --warn:#8a5d12;
+  --gold:#a8720f;
   color-scheme:light;
 }
 @media (prefers-color-scheme: light){
   :root:not([data-theme]){
-    --bg:#eef0ea; --bg-2:#e4e7df; --surface:#f7f8f4;
-    --fg:#1c211b; --muted:#5d655a; --signal:#1f7a74; --signal-ink:#f7f8f4;
-    --line:rgba(28,33,27,.12); --line-strong:rgba(28,33,27,.28);
+    --bg:#f3eee4; --bg-2:#ebe4d6; --surface:#faf7f0;
+    --fg:#211c16; --muted:#665d50; --signal:#1d6f69; --signal-ink:#faf7f0;
+    --line:rgba(33,28,22,.12); --line-strong:rgba(33,28,22,.28);
     --ok:#2f7a37; --warn:#8a5d12;
+    --gold:#a8720f;
     color-scheme:light;
   }
 }
@@ -105,6 +108,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero__node .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .hero__node--root .n{font-size:1.5rem;font-style:italic}
 .hero__node:hover .n{color:var(--signal)}
+.hero__node--gold .n,.hero__node--gold:hover .n{color:var(--gold)}
+.hero__node--gold .k{color:var(--gold);opacity:.85}
 .hero__text{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding-block:clamp(40px,9vh,96px) 32px;padding-left:var(--gutter);padding-right:var(--gutter-r);
   display:grid;gap:1rem;pointer-events:none}
 .hero__text > *{max-width:32rem}
@@ -191,9 +196,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* ---------- Sección HIFA ----------
    Territorio de la marca: negro y dorado en cualquier tema del sitio. */
-.hifa{--h-bg:#0b0b0b;--h-gold:#e3a72f;--h-cream:#f3ead8;--h-muted:#b7ab95;--h-line:rgba(227,167,47,.28);
-  background:var(--h-bg);color:var(--h-cream);border-block:1px solid var(--h-line);margin-top:clamp(56px,10vw,112px)}
-.hifa__inner{max-width:var(--max);margin:0 auto;padding-block:clamp(48px,8vw,96px);padding-left:var(--gutter);padding-right:var(--gutter-r);display:grid;gap:clamp(28px,5vw,48px)}
+.hifa{--h-bg:#0e0c0a;--h-gold:#e3a72f;--h-cream:#f3ead8;--h-muted:#b7ab95;--h-line:rgba(227,167,47,.28);
+  max-width:var(--max);margin:clamp(40px,6vw,72px) auto 0;padding-left:var(--gutter);padding-right:var(--gutter-r);color:var(--h-cream)}
+.hifa__inner{background:var(--h-bg);border:1px solid var(--h-line);border-radius:18px;padding:clamp(28px,5vw,64px);display:grid;gap:clamp(28px,5vw,48px);
+  background-image:radial-gradient(90% 70% at 100% 0%,rgba(227,167,47,.10),transparent 60%)}
 .hifa__head{display:grid;gap:1rem;max-width:44rem}
 .hifa__eyebrow{color:var(--h-gold)}
 .hifa__logo{width:min(260px,70vw);height:auto}
