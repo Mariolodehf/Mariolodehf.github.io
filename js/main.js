@@ -145,7 +145,7 @@
       themeBtn.setAttribute('aria-label', v === 'light' ? t('a.themeDark') : t('a.themeLight'));
     }
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', v === 'light' ? '#eef0ea' : '#120e0b');
+    if (meta) meta.setAttribute('content', v === 'light' ? '#f3eee4' : '#120e0b');
     if (save) { try { localStorage.setItem('theme', v); } catch(e) {} }
   }
   if (themeBtn) {
@@ -270,7 +270,7 @@
       nodesEl: document.getElementById('hifa-nodes'),
       logEl: document.getElementById('hifa-log'),
       root: { id:'root', name:t('root.name'), kind:t('root.kind') },
-      nodes: proyectos.map(p => ({ id:p.slug, name:p.nombre, kind:L(p.tipo), big:!!p.destacado })),
+      nodes: proyectos.map(p => ({ id:p.slug, name:p.nombre, kind:L(p.tipo), big:!!p.destacado, gold: p.slug === 'hifa' })),
       seedText: t('seed'),
       onSelect: id => {
         if (id === 'root') { document.getElementById('sobre-mi')?.scrollIntoView(); return; }

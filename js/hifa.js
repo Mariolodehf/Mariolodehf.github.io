@@ -31,7 +31,7 @@
       S.all.forEach(n => {
         const b = document.createElement('button');
         b.type = 'button';
-        b.className = 'hero__node' + (n.root ? ' hero__node--root' : '');
+        b.className = 'hero__node' + (n.root ? ' hero__node--root' : '') + (n.gold ? ' hero__node--gold' : '');
         b.innerHTML = '<span class="n"></span><span class="k"></span>';
         b.addEventListener('click', () => { n.flash = 1; this.burst(n); S.onSelect && S.onSelect(n.id); });
         S.nodesEl.appendChild(b);
@@ -91,6 +91,7 @@
       const cs = getComputedStyle(document.documentElement);
       this.s.fg = hexToRgb(cs.getPropertyValue('--fg') || '#e9dfcb');
       this.s.sig = hexToRgb(cs.getPropertyValue('--signal') || '#8fd6d2');
+      this.s.gold = hexToRgb(cs.getPropertyValue('--gold') || '#e3a72f');
     },
 
     layout(){
@@ -224,9 +225,10 @@
       const S = this.s, c = S.ctx;
       for (const n of S.all) {
         const R = n.r*(3.2 + n.flash*1.8);
+        const col = n.gold ? S.gold : S.sig;   // HIFA brilla en dorado: el puente con su sección
         const g = c.createRadialGradient(n.x,n.y,0,n.x,n.y,R);
-        g.addColorStop(0, 'rgba(' + S.sig + ',' + (.22 + n.flash*.35) + ')');
-        g.addColorStop(1, 'rgba(' + S.sig + ',0)');
+        g.addColorStop(0, 'rgba(' + col + ',' + (.22 + n.flash*.35) + ')');
+        g.addColorStop(1, 'rgba(' + col + ',0)');
         c.fillStyle = g; c.beginPath(); c.arc(n.x,n.y,R,0,6.283); c.fill();
         c.fillStyle = 'rgb(' + S.fg + ')'; c.beginPath(); c.arc(n.x,n.y,n.r*.55,0,6.283); c.fill();
         c.strokeStyle = 'rgba(' + S.fg + ',.35)'; c.lineWidth = 1; c.beginPath(); c.arc(n.x,n.y,n.r+3,0,6.283); c.stroke();
