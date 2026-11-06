@@ -1,26 +1,201 @@
 [
   {
-    "slug": "ubicatec",
-    "nombre": "UbicaTec",
-    "tagline": "Collaborative IoT network to find what matters.",
-    "descripcionCorta": "Collaborative platform using low-power BLE nodes to locate lost items privately, affordably, and at scale.",
-    "descripcionLarga": "UbicaTec combines a distributed network of Bluetooth Low Energy (BLE) micro-beacons with community participation to create an 'urban radar' that helps you recover personal belongings. The approach prioritizes low power consumption, privacy through rotating identifiers, and a scalable architecture designed for integration with mobile apps and web dashboards. End-to-end encryption and coverage analytics are coming soon.",
-    "anio": 2025,
-    "estado": "Early Exploration",
-    "stack": ["BLE", "IoT", "Edge", "JavaScript", "Security"],
-    "repoUrl": "https://github.com/Mariolodehf/UbicaTec", 
+    "slug": "compania",
+    "nombre": "companIA",
+    "tipo": {
+      "es": "Hub",
+      "en": "Hub"
+    },
+    "tagline": {
+      "es": "Un LLM de ciberseguridad, construido a la vista.",
+      "en": "A cybersecurity LLM, built in the open."
+    },
+    "descripcionCorta": {
+      "es": "Startup tech centrada en un modelo de lenguaje de ciberseguridad y en mostrar paso a paso cómo se construye un LLM por dentro, sin cómputo costoso.",
+      "en": "Tech startup focused on a cybersecurity language model and on showing, step by step, how an LLM is built from the inside without expensive compute."
+    },
+    "descripcionLarga": {
+      "es": "companIA es el centro que conecta varios de mis proyectos. Su primer enfoque es un LLM (modelo de lenguaje grande) especializado en ciberseguridad y seguridad de la información. La idea de fondo es que cualquier persona pueda entender cómo se crea un modelo desde cero, con recursos de estudiante, y que con el tiempo se sumen compañeros y profesionales a mejorarlo.",
+      "en": "companIA is the hub that connects several of my projects. Its first focus is an LLM (large language model) specialized in cybersecurity and information security. The underlying idea is that anyone can understand how a model is built from scratch, with student-level resources, and that over time peers and professionals join to improve it."
+    },
+    "anio": 2026,
+    "estado": {
+      "es": "Repo creado",
+      "en": "Repo created"
+    },
+    "stack": [
+      "LLM",
+      "IA",
+      "Ciberseguridad",
+      "Vercel"
+    ],
+    "repoUrl": "https://github.com/Mariolodehf/companIA",
     "demoUrl": null,
     "destacado": true
   },
   {
+    "slug": "hifa",
+    "nombre": "HIFA",
+    "tipo": {
+      "es": "Seguridad",
+      "en": "Security"
+    },
+    "tagline": {
+      "es": "Ciberseguridad para LATAM: lo que pasa por debajo, a la vista.",
+      "en": "Cybersecurity for LATAM: what happens underneath, brought to light."
+    },
+    "descripcionCorta": {
+      "es": "Startup de ciberseguridad (antes IHACK) con tres líneas: auditoría y hardening, investigación de amenazas de IA, y adopción segura de IA con marcos como ISO 27001 y NIST AI RMF.",
+      "en": "Cybersecurity startup (formerly IHACK) with three lines: auditing and hardening, AI threat research, and safe AI adoption with frameworks such as ISO 27001 and NIST AI RMF."
+    },
+    "descripcionLarga": {
+      "es": "HIFA toma su nombre de los filamentos del micelio: una red que nadie ve y que sostiene todo, igual que las comunicaciones de una empresa. HIFA Shield cubre auditorías, pruebas de penetración y hardening. HIFA Intelligence investiga amenazas nuevas como deepfakes e inyección de prompts. HIFA Advisory acompaña a las empresas a adoptar IA de forma segura y a cumplir estándares como ISO 27001 y NIST AI RMF.",
+      "en": "HIFA is named after the filaments of mycelium: an unseen network that holds everything together, just like a company's communications. HIFA Shield covers audits, penetration testing and hardening. HIFA Intelligence researches new threats such as deepfakes and prompt injection. HIFA Advisory helps companies adopt AI safely and meet standards such as ISO 27001 and NIST AI RMF."
+    },
+    "anio": 2026,
+    "estado": {
+      "es": "Nueva marca",
+      "en": "New brand"
+    },
+    "stack": [
+      "Pentesting",
+      "Hardening",
+      "IA",
+      "ISO 27001"
+    ],
+    "repoUrl": null,
+    "demoUrl": null,
+    "destacado": true
+  },
+  {
+    "slug": "me-explicas",
+    "nombre": "Me Explicas",
+    "tipo": {
+      "es": "Aprendizaje",
+      "en": "Learning"
+    },
+    "tagline": {
+      "es": "Manuales personales para volver a entender.",
+      "en": "Personal manuals to understand things again."
+    },
+    "descripcionCorta": {
+      "es": "Un espacio dentro de este sitio con manuales de cómo voy entendiendo las cosas, para consultarlos después y mejorarlos con el tiempo.",
+      "en": "A space within this site with manuals on how I come to understand things, to revisit them later and improve them over time."
+    },
+    "descripcionLarga": {
+      "es": "Me Explicas reúne lo que aprendo escrito a mi manera: conceptos de redes, seguridad e IA explicados como me hubiera gustado que me los explicaran. La idea es que funcione casi como una conversación que puede volver a explicarme algo cuando lo necesite.",
+      "en": "Me Explicas gathers what I learn, written my own way: networking, security and AI concepts explained the way I wish they had been explained to me. The idea is for it to work almost like a conversation that can explain something again when I need it."
+    },
+    "anio": 2026,
+    "estado": {
+      "es": "En diseño",
+      "en": "In design"
+    },
+    "stack": [
+      "Documentación",
+      "Aprendizaje"
+    ],
+    "repoUrl": null,
+    "demoUrl": null,
+    "destacado": false
+  },
+  {
+    "slug": "zerobet",
+    "nombre": "zerobet",
+    "tipo": {
+      "es": "Laboratorio",
+      "en": "Lab"
+    },
+    "tagline": {
+      "es": "Laboratorio de agentes de IA y estadística.",
+      "en": "AI agents and statistics lab."
+    },
+    "descripcionCorta": {
+      "es": "Un agente de IA que investiga cuotas de fútbol profesional masculino según criterios definidos. Su módulo hermano, BTTS Trading, comparte el núcleo estadístico.",
+      "en": "An AI agent that researches odds for top men's professional football according to defined criteria. Its sibling module, BTTS Trading, shares the statistical core."
+    },
+    "descripcionLarga": {
+      "es": "zerobet es mi campo de práctica para construir agentes: recoger datos, compararlos entre fuentes y filtrarlos con reglas claras. BTTS Trading se enfoca en el mercado de ambos equipos marcan y ya tiene una especificación v1.0. Lo trato como laboratorio de aprendizaje, no como fuente de ingresos.",
+      "en": "zerobet is my practice ground for building agents: collecting data, comparing it across sources and filtering it with clear rules. BTTS Trading focuses on the both-teams-to-score market and already has a v1.0 specification. I treat it as a learning lab, not as a source of income."
+    },
+    "anio": 2026,
+    "estado": {
+      "es": "Especificación v1.0",
+      "en": "Spec v1.0"
+    },
+    "stack": [
+      "Agentes IA",
+      "Python",
+      "Estadística"
+    ],
+    "repoUrl": null,
+    "demoUrl": null,
+    "destacado": false
+  },
+  {
+    "slug": "ubicatec",
+    "nombre": "UbicaTec",
+    "tipo": {
+      "es": "IoT",
+      "en": "IoT"
+    },
+    "tagline": {
+      "es": "Red IoT colaborativa para encontrar lo que importa.",
+      "en": "Collaborative IoT network to find what matters."
+    },
+    "descripcionCorta": {
+      "es": "Plataforma colaborativa con nodos BLE de bajo consumo para ubicar objetos perdidos de forma privada, económica y escalable.",
+      "en": "Collaborative platform using low-power BLE nodes to locate lost items privately, affordably, and at scale."
+    },
+    "descripcionLarga": {
+      "es": "UbicaTec combina una red distribuida de micro balizas Bluetooth Low Energy (BLE) con la participación de la comunidad para crear un radar urbano que ayude a recuperar objetos personales. Prioriza el bajo consumo, la privacidad con identificadores rotativos y una arquitectura escalable para integrarse con apps móviles y paneles web. Cifrado de extremo a extremo y análisis de cobertura vienen en camino.",
+      "en": "UbicaTec combines a distributed network of Bluetooth Low Energy (BLE) micro-beacons with community participation to create an urban radar that helps you recover personal belongings. It prioritizes low power consumption, privacy through rotating identifiers, and a scalable architecture designed for integration with mobile apps and web dashboards. End-to-end encryption and coverage analytics are coming soon."
+    },
+    "anio": 2025,
+    "estado": {
+      "es": "Exploración",
+      "en": "Early exploration"
+    },
+    "stack": [
+      "BLE",
+      "IoT",
+      "Edge",
+      "JavaScript"
+    ],
+    "repoUrl": "https://github.com/Mariolodehf/UbicaTec",
+    "demoUrl": null,
+    "destacado": false
+  },
+  {
     "slug": "guardiot",
     "nombre": "GuardIoT",
-    "tagline": "Privacy-focused and resilient IoT architecture.",
-    "descripcionCorta": "Design and implementation of secure IoT systems prioritizing encryption, network segmentation, monitoring, and device integrity.",
-    "descripcionLarga": "GuardIoT is an initiative that merges telecommunications and cybersecurity to build end-to-end protected IoT solutions. It encompasses: threat modeling specific to embedded devices, strong authentication between nodes and gateways, data encryption in transit and at rest, network segmentation (least-privilege principle), useful observability (signed logs and behavioral metrics), and a secure firmware pipeline (integrity verification and version control). The goal is a modular reference enabling IoT vertical deployments with confidentiality, integrity, and availability guarantees from inception.",
+    "tipo": {
+      "es": "IoT seguro",
+      "en": "Secure IoT"
+    },
+    "tagline": {
+      "es": "Arquitectura IoT resiliente y centrada en la privacidad.",
+      "en": "Privacy-focused and resilient IoT architecture."
+    },
+    "descripcionCorta": {
+      "es": "Diseño de sistemas IoT seguros con cifrado, segmentación de red, monitoreo e integridad de los dispositivos.",
+      "en": "Design of secure IoT systems prioritizing encryption, network segmentation, monitoring, and device integrity."
+    },
+    "descripcionLarga": {
+      "es": "GuardIoT une telecomunicaciones y ciberseguridad para construir soluciones IoT protegidas de punta a punta: modelado de amenazas para dispositivos embebidos, autenticación fuerte entre nodos y gateways, cifrado de datos en tránsito y en reposo, segmentación con mínimo privilegio, registros firmados y un flujo de firmware seguro con verificación de integridad.",
+      "en": "GuardIoT merges telecommunications and cybersecurity to build end-to-end protected IoT solutions: threat modeling for embedded devices, strong authentication between nodes and gateways, encryption in transit and at rest, least-privilege segmentation, signed logs, and a secure firmware pipeline with integrity verification."
+    },
     "anio": 2025,
-    "estado": "Design",
-    "stack": ["IoT", "Security", "Firmware", "Networking", "Cryptography"],
+    "estado": {
+      "es": "Diseño",
+      "en": "Design"
+    },
+    "stack": [
+      "IoT",
+      "Firmware",
+      "Redes",
+      "Criptografía"
+    ],
     "repoUrl": null,
     "demoUrl": null,
     "destacado": false

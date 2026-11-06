@@ -2,49 +2,76 @@
   {
     "id": "udea-teleco",
     "tipo": "universidad",
-    "titulo": "Telecommunications Engineering",
+    "titulo": { "es": "Ingeniería de Telecomunicaciones", "en": "Telecommunications Engineering" },
     "entidad": "Universidad de Antioquia",
     "ubicacion": "Medellín, Colombia",
     "inicio": "2024",
     "fin": null,
     "estado": "en-curso",
-    "descripcion": "University program focused on networks, communication systems, and foundations supporting secure infrastructure.",
+    "descripcion": {
+      "es": "Programa universitario centrado en redes, sistemas de comunicación y las bases de una infraestructura segura.",
+      "en": "University program focused on networks, communication systems, and the foundations of secure infrastructure."
+    },
     "enlace": "https://www.udea.edu.co/"
   },
   {
-    "id": "gcloud-cyber",
+    "id": "ejpt",
     "tipo": "certificacion",
-    "titulo": "Google Cloud Cybersecurity Certificate (Enrollment)",
-    "entidad": "Google Career Launchpad Program",
+    "titulo": { "es": "eJPT (Junior Penetration Tester)", "en": "eJPT (Junior Penetration Tester)" },
+    "entidad": "INE Security",
     "ubicacion": "Online",
-    "inicio": "2025",
+    "inicio": "2026",
     "fin": null,
     "estado": "pendiente",
-    "descripcion": "Certification focused on cloud cybersecurity fundamentals and incident response.",
-    "enlace": "https://cloud.google.com/learn/certification"
+    "descripcion": {
+      "es": "Primera certificación de mi ruta en ciberseguridad. Practico a diario en Kali Linux y con la comunidad El Búnker del Pingüino.",
+      "en": "First certification on my cybersecurity path. I practice daily on Kali Linux and with the El Búnker del Pingüino community."
+    },
+    "enlace": null
   },
   {
     "id": "cisco-analista-jr",
     "tipo": "programa",
-    "titulo": "Junior Cybersecurity Analyst Career Path",
+    "titulo": { "es": "Ruta Junior Cybersecurity Analyst", "en": "Junior Cybersecurity Analyst Career Path" },
     "entidad": "Cisco Networking Academy",
     "ubicacion": "Online",
     "inicio": "2025",
     "fin": null,
     "estado": "en-curso",
-    "descripcion": "Hands-on training to acquire defense skills, threat analysis, and enterprise security fundamentals.",
+    "descripcion": {
+      "es": "Formación práctica en defensa, análisis de amenazas y fundamentos de seguridad empresarial.",
+      "en": "Hands-on training in defense, threat analysis, and enterprise security fundamentals."
+    },
     "enlace": "https://www.netacad.com/"
+  },
+  {
+    "id": "gcloud-cyber",
+    "tipo": "certificacion",
+    "titulo": { "es": "Google Cloud Cybersecurity Certificate (inscripción)", "en": "Google Cloud Cybersecurity Certificate (enrollment)" },
+    "entidad": "Google Career Launchpad Program",
+    "ubicacion": "Online",
+    "inicio": "2025",
+    "fin": null,
+    "estado": "pendiente",
+    "descripcion": {
+      "es": "Certificación en fundamentos de ciberseguridad en la nube y respuesta a incidentes.",
+      "en": "Certification in cloud cybersecurity fundamentals and incident response."
+    },
+    "enlace": "https://cloud.google.com/learn/certification"
   },
   {
     "id": "bootcamp-arquitectura-nube-basico",
     "tipo": "certificacion",
-    "titulo": "Cloud Architecture Bootcamp - Basic Level",
-    "entidad": "Ministry of ICT / IU Training / UdeA / Univ. de Caldas",
-    "ubicacion": "Colombia (Hybrid)",
+    "titulo": { "es": "Bootcamp de Arquitectura en la Nube, nivel básico", "en": "Cloud Architecture Bootcamp, basic level" },
+    "entidad": "MinTIC / IU Formación / UdeA / U. de Caldas",
+    "ubicacion": "Colombia (híbrido)",
     "inicio": "2025",
     "fin": "2025",
     "estado": "completado",
-    "descripcion": "159-hour bootcamp: cloud architecture fundamentals, layered model, deployments, and initial best practices.",
+    "descripcion": {
+      "es": "Bootcamp de 159 horas: fundamentos de arquitectura en la nube, modelo por capas, despliegues y buenas prácticas iniciales.",
+      "en": "159-hour bootcamp: cloud architecture fundamentals, layered model, deployments, and initial best practices."
+    },
     "enlace": null
   }
 ]

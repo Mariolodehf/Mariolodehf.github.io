@@ -1,9 +1,10 @@
 ---
-permalink: /blog/posts.json
+permalink: /posts.json
 eleventyExcludeFromCollections: true
+layout: false
 ---
 [
-{% for post in collections.post %}
-  {"title": {{ post.data.title | dump }}, "summary": {{ (post.data.summary or '') | dump }}, "tags": {{ (post.data.tags or []) | dump }}, "url": "{{ post.url }}"}{% if not loop.last %},{% endif %}
-{% endfor %}
+{%- for post in collections.post %}
+  {"title": {{ post.data.title | dump | safe }}, "summary": {{ (post.data.summary or '') | dump | safe }}, "tags": {{ (post.data.tags or []) | dump | safe }}, "date": "{{ post.date | date('%Y-%m-%d') }}", "url": "/blog{{ post.url }}"}{% if not loop.last %},{% endif %}
+{%- endfor %}
 ]

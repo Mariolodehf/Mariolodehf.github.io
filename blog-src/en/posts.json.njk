@@ -1,0 +1,10 @@
+---
+permalink: /en/posts.json
+eleventyExcludeFromCollections: true
+layout: false
+---
+[
+{%- for post in collections.postEn %}
+  {"title": {{ post.data.title | dump | safe }}, "summary": {{ (post.data.summary or '') | dump | safe }}, "tags": {{ (post.data.tags or []) | dump | safe }}, "date": "{{ post.date | date('%Y-%m-%d') }}", "url": "/blog{{ post.url }}"}{% if not loop.last %},{% endif %}
+{%- endfor %}
+]

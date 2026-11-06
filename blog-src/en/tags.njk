@@ -1,0 +1,21 @@
+---
+pagination:
+  data: collections.tagsEn
+  size: 1
+  alias: grupo
+permalink: /en/tag/{{ grupo.tag | slug }}/
+eleventyExcludeFromCollections: true
+eleventyComputed:
+  title: '{{ grupo.tag }}'
+---
+{%- set tx = i18n[lang] or i18n.es -%}
+{%- set home = '/blog/en/' if lang == 'en' else '/blog/' -%}
+<p class="post-meta">{{ tx.tag }}</p>
+<h1>{{ grupo.tag }}</h1>
+<p class="result-info">{{ grupo.posts | length }} {{ tx.articles }}</p>
+<ul class="lista-posts">
+{%- for p in grupo.posts | reverse %}
+  <li class="post-item"><h2><a href="/blog{{ p.url }}">{{ p.data.title }}</a></h2><p class="meta">{{ p.date | date('%Y-%m-%d') }}</p></li>
+{%- endfor %}
+</ul>
+<p><a href="{{ home }}">← {{ tx.back }}</a></p>

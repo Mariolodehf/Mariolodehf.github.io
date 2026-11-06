@@ -1,452 +1,357 @@
-// JS básico inicial para interacción mínima
-(function() {
-  // Reemplaza clase no-js por js para estilos progresivos
-  document.documentElement.classList.remove('no-js');
-  document.documentElement.classList.add('js');
+/* =========================================================
+   mariolodehf.github.io · comportamiento del sitio
+   Idioma (es/en), tema (subsuelo/superficie), menú, proyectos,
+   formación, modal con enlace directo (#proyecto=slug) y la red Hifa.
+   Lo comparte el blog, así que todo revisa si el elemento existe.
+   ========================================================= */
+(function(){
+  'use strict';
+  const root = document.documentElement;
+  root.classList.remove('no-js'); root.classList.add('js');
+
+  // ---------- Textos ----------
+  const T = {
+    es: {
+      'skip':'Saltar al contenido',
+      'nav.projects':'Proyectos','nav.education':'Formación','nav.about':'Sobre mí','nav.contact':'Contacto',
+      'hero.eyebrow':'Capa 1 · física',
+      'hero.title':'Lo que pasa por <em>debajo</em>.',
+      'hero.lead':'Soy Mario de Hoyos, estudiante de Ingeniería de Telecomunicaciones en Medellín. Construyo en ciberseguridad, IoT e IA, y me interesa lo que nadie ve: la red que sostiene todo.',
+      'hero.cta':'Ver proyectos','hero.blog':'Leer el blog',
+      'hero.hint':'Toca un nodo para abrir el proyecto, o arrastra sobre la red para que crezca hacia ti.',
+      'hero.traffic':'Tráfico en la red',
+      'projects.eyebrow':'Nodos','projects.title':'Proyectos',
+      'projects.intro':'Lo que estoy construyendo, del más conectado al más experimental. Toca uno para ver el detalle.',
+      'projects.clear':'Limpiar','projects.loading':'Cargando proyectos…',
+      'projects.error':'No pude cargar los proyectos. Si abriste el archivo directo, usa un servidor local: python3 -m http.server 8000',
+      'projects.empty':'Ningún proyecto coincide con esos filtros.',
+      'edu.eyebrow':'Raíces','edu.title':'Formación y certificaciones',
+      'edu.intro':'La base académica y los programas que fortalecen mi perfil en telecomunicaciones y ciberseguridad.',
+      'edu.error':'No pude cargar la formación.',
+      'edu.present':'Actualidad','edu.more':'Ver más',
+      'edu.state.en-curso':'En curso','edu.state.pendiente':'En preparación','edu.state.completado':'Completado',
+      'edu.type.universidad':'Académico','edu.type.certificacion':'Certificación','edu.type.programa':'Programa',
+      'about.eyebrow':'Sustrato','about.title':'Sobre mí',
+      'about.p1':'Como futuro ingeniero de telecomunicaciones, me apasiona entender los sistemas de comunicación desde su base para poder protegerlos. No me conformo con usar la tecnología: me gusta desarmarla, ver cómo funciona por dentro, configurar redes, endurecer sistemas y escribir scripts que automaticen la seguridad.',
+      'about.p2':'Mi filosofía es simple: no puedes proteger lo que no entiendes. Por eso combino las bases de telecomunicaciones con prácticas de seguridad ofensiva y defensiva, para diseñar arquitecturas de red de verdad resilientes.',
+      'about.hifa':'Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad. Por eso mi empresa de ciberseguridad se llama HIFA.',
+      'contact.eyebrow':'Conexión','contact.title':'Hablemos',
+      'contact.intro':'Si te interesa colaborar en alguno de estos proyectos, o simplemente conversar de redes y seguridad, escríbeme.',
+      'contact.email':'Correo','contact.write':'Escribir','contact.copy':'Copiar','contact.github':'Ver perfil',
+      'contact.copied':'Correo copiado.','contact.selected':'Correo seleccionado, cópialo con tu teclado.',
+      'footer.place':'Medellín, Colombia','footer.note':'Hecho a mano, con hifas y paquetes.',
+      'modal.close':'Cerrar','modal.state':'Estado','modal.year':'Año','modal.repo':'Repositorio','modal.demo':'Demo',
+      'root.name':'Mario','root.kind':'Nodo raíz',
+      'packets':['señal','ACK','sync','dato'],'seed':'↳ sembrando hifas…',
+      'a.lang':'Read in English','a.themeLight':'Cambiar a superficie (tema claro)','a.themeDark':'Cambiar a subsuelo (tema oscuro)',
+      'a.menuOpen':'Abrir menú','a.menuClose':'Cerrar menú','a.open':'Abrir proyecto'
+    },
+    en: {
+      'skip':'Skip to content',
+      'nav.projects':'Projects','nav.education':'Education','nav.about':'About','nav.contact':'Contact',
+      'hero.eyebrow':'Layer 1 · physical',
+      'hero.title':'What happens <em>underneath</em>.',
+      'hero.lead':'I\'m Mario de Hoyos, a Telecommunications Engineering student in Medellín. I build in cybersecurity, IoT and AI, and I care about what nobody sees: the network that holds everything together.',
+      'hero.cta':'See projects','hero.blog':'Read the blog',
+      'hero.hint':'Tap a node to open the project, or drag across the network to make it grow toward you.',
+      'hero.traffic':'Network traffic',
+      'projects.eyebrow':'Nodes','projects.title':'Projects',
+      'projects.intro':'What I\'m building, from the most connected to the most experimental. Tap one for details.',
+      'projects.clear':'Clear','projects.loading':'Loading projects…',
+      'projects.error':'Projects could not load. If you opened the file directly, use a local server: python3 -m http.server 8000',
+      'projects.empty':'No project matches those filters.',
+      'edu.eyebrow':'Roots','edu.title':'Education and certifications',
+      'edu.intro':'The academic base and the programs that strengthen my profile in telecommunications and cybersecurity.',
+      'edu.error':'Education data could not load.',
+      'edu.present':'Present','edu.more':'Learn more',
+      'edu.state.en-curso':'In progress','edu.state.pendiente':'Preparing','edu.state.completado':'Completed',
+      'edu.type.universidad':'Academic','edu.type.certificacion':'Certification','edu.type.programa':'Program',
+      'about.eyebrow':'Substrate','about.title':'About me',
+      'about.p1':'As a future telecommunications engineer, I love understanding communication systems from the ground up so I can protect them. Using technology isn\'t enough for me: I like taking it apart, seeing how it works inside, configuring networks, hardening systems and writing scripts that automate security.',
+      'about.p2':'My philosophy is simple: you can\'t protect what you don\'t understand. That\'s why I combine telecommunications foundations with offensive and defensive security practice, to design network architectures that are truly resilient.',
+      'about.hifa':'Each of the filaments that make up a fungus\'s mycelium. Underground, hyphae weave into plant roots and form a network that moves resources and signals. Threats spread through that same network. That\'s how I see communications and cybersecurity. That\'s why my cybersecurity company is called HIFA.',
+      'contact.eyebrow':'Connection','contact.title':'Let\'s talk',
+      'contact.intro':'If you\'d like to collaborate on any of these projects, or just talk networks and security, write to me.',
+      'contact.email':'Email','contact.write':'Write','contact.copy':'Copy','contact.github':'View profile',
+      'contact.copied':'Email copied.','contact.selected':'Email selected, copy it with your keyboard.',
+      'footer.place':'Medellín, Colombia','footer.note':'Handmade, with hyphae and packets.',
+      'modal.close':'Close','modal.state':'Status','modal.year':'Year','modal.repo':'Repository','modal.demo':'Demo',
+      'root.name':'Mario','root.kind':'Root node',
+      'packets':['signal','ACK','sync','data'],'seed':'↳ seeding hyphae…',
+      'a.lang':'Leer en español','a.themeLight':'Switch to surface (light theme)','a.themeDark':'Switch to underground (dark theme)',
+      'a.menuOpen':'Open menu','a.menuClose':'Close menu','a.open':'Open project'
+    }
+  };
+  let lang = root.getAttribute('lang') === 'en' ? 'en' : 'es';
+  const t = k => (T[lang] && T[lang][k] !== undefined) ? T[lang][k] : (T.es[k] !== undefined ? T.es[k] : k);
+  const L = v => (v && typeof v === 'object' && !Array.isArray(v)) ? (v[lang] || v.es || '') : (v || '');
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function applyTexts(){
+    document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    document.querySelectorAll('[data-blog]').forEach(a => { a.setAttribute('href', lang === 'en' ? '/blog/en/' : '/blog/'); });
+    const lt = document.getElementById('lang-toggle');
+    if (lt) { lt.textContent = lang === 'es' ? 'EN' : 'ES'; lt.setAttribute('aria-label', t('a.lang')); }
+  }
+
+  // ---------- Año ----------
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  // ---------- Menú ----------
   const navToggle = document.querySelector('.nav__toggle');
   const navMenu = document.getElementById('nav-menu');
-  const yearSpan = document.getElementById('year');
-  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-
-  if (navToggle) {
-    const overlay = document.querySelector('[data-nav-overlay]');
-    const openClass = 'nav-open';
-    const closeMenu = (focusToggle = false) => {
-      navMenu.setAttribute('data-open','false');
-      navToggle.setAttribute('aria-expanded','false');
-      navToggle.setAttribute('aria-label','Open navigation menu');
-      navToggle.classList.remove('is-open');
-      document.body.classList.remove(openClass);
-      if(overlay) overlay.hidden = true;
-      if(focusToggle) navToggle.focus();
+  const overlay = document.querySelector('[data-nav-overlay]');
+  if (navToggle && navMenu) {
+    const close = (focus) => {
+      navMenu.setAttribute('data-open','false'); navToggle.setAttribute('aria-expanded','false');
+      navToggle.setAttribute('aria-label', t('a.menuOpen')); navToggle.classList.remove('is-open');
+      if (overlay) overlay.hidden = true; if (focus) navToggle.focus();
     };
-    const openMenu = () => {
-      navMenu.setAttribute('data-open','true');
-      navToggle.setAttribute('aria-expanded','true');
-      navToggle.setAttribute('aria-label','Close navigation menu');
-      navToggle.classList.add('is-open');
-      document.body.classList.add(openClass);
-      if(overlay) overlay.hidden = false;
-      const firstLink = navMenu.querySelector('a');
-      if(firstLink) firstLink.focus({ preventScroll:true });
+    const open = () => {
+      navMenu.setAttribute('data-open','true'); navToggle.setAttribute('aria-expanded','true');
+      navToggle.setAttribute('aria-label', t('a.menuClose')); navToggle.classList.add('is-open');
+      if (overlay) overlay.hidden = false;
     };
-    const toggleMenu = () => {
-      const abierto = navMenu.getAttribute('data-open') === 'true';
-      abierto ? closeMenu() : openMenu();
-    };
-    navToggle.addEventListener('click', toggleMenu);
-    if(overlay){
-      overlay.addEventListener('click', () => closeMenu());
-      overlay.addEventListener('touchstart', () => closeMenu(), { passive:true });
-    }
-    navMenu.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target.tagName === 'A' && window.matchMedia('(max-width: 720px)').matches) {
-        closeMenu();
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && navMenu.getAttribute('data-open') === 'true') {
-        closeMenu(true);
-      }
-    });
-    // Cerrar si se redimensiona a desktop
-    window.addEventListener('resize', () => {
-      if(window.matchMedia('(min-width: 721px)').matches && navMenu.getAttribute('data-open') === 'true') closeMenu();
-    });
+    navToggle.addEventListener('click', () => navMenu.getAttribute('data-open') === 'true' ? close() : open());
+    if (overlay) overlay.addEventListener('click', () => close());
+    navMenu.addEventListener('click', e => { if (e.target.tagName === 'A') close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && navMenu.getAttribute('data-open') === 'true') close(true); });
   }
 
-  // Manejo simple del formulario (frontend demo)
-  const form = document.getElementById('form-contacto');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const estado = form.querySelector('.form__estado');
-      const formData = new FormData(form);
-      const nombre = formData.get('nombre').toString().trim();
-      const email = formData.get('email').toString().trim();
-      const mensaje = formData.get('mensaje').toString().trim();
-
-      if (!nombre || !email || !mensaje) {
-        estado.textContent = 'Please fill in all fields.';
-        estado.className = 'form__estado error';
-        return;
-      }
-
-      // Basic email validation
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-        estado.textContent = 'Invalid email address.';
-        estado.className = 'form__estado error';
-        return;
-      }
-
-      // Simulate submission
-  setTimeout(() => {
-        estado.textContent = 'Message sent (simulation). Thank you!';
-        estado.className = 'form__estado ok';
-        form.reset();
-      }, 600);
-    });
+  // ---------- Tema: subsuelo (oscuro) / superficie (claro) ----------
+  const themeBtn = document.getElementById('theme-toggle');
+  function setTheme(v, save){
+    root.setAttribute('data-theme', v);
+    if (themeBtn) {
+      themeBtn.setAttribute('aria-pressed', String(v === 'light'));
+      themeBtn.setAttribute('aria-label', v === 'light' ? t('a.themeDark') : t('a.themeLight'));
+    }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', v === 'light' ? '#eef0ea' : '#120e0b');
+    if (save) { try { localStorage.setItem('theme', v); } catch(e) {} }
+  }
+  if (themeBtn) {
+    setTheme(root.getAttribute('data-theme') || 'dark');
+    themeBtn.addEventListener('click', () => setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light', true));
   }
 
-  // ========== Carga dinámica de proyectos ==========
-  // Cache en memoria de proyectos cargados para deep-link (hash)
-  let proyectosCache = [];
+  // ---------- Proyectos ----------
+  let proyectos = [];
+  const filtrosActivos = new Set();
+  const lista = document.getElementById('lista-proyectos');
 
-  async function cargarProyectos() {
-    const contenedor = document.getElementById('lista-proyectos');
-    if (!contenedor) return;
-    // Fallback embebido mínimo (se puede actualizar en build)
-    const FALLBACK_PROJECTS = [
-      {
-        nombre: 'UbicaTec',
-        descripcionCorta: 'Collaborative BLE platform to locate personal items privately and efficiently.',
-        stack: ['BLE','IoT','Security'],
-        estado: 'Exploration',
-        anio: new Date().getFullYear(),
-        tagline: 'Collaborative IoT network',
-        destacado: true,
-        repoUrl: 'https://github.com/Mariolodehf/UbicaTec',
-        demoUrl: null
-      }
-    ];
+  function tarjeta(p){
+    const a = document.createElement('article');
+    a.className = 'proyecto'; a.tabIndex = 0; a.setAttribute('role','button');
+    a.setAttribute('aria-label', t('a.open') + ': ' + p.nombre);
+    a.innerHTML =
+      '<div class="proyecto__top"><span class="proyecto__tipo">' + esc(L(p.tipo)) + '</span><span class="proyecto__anio">' + esc(p.anio) + '</span></div>' +
+      '<h3>' + esc(p.nombre) + '</h3>' +
+      '<p>' + esc(L(p.descripcionCorta)) + '</p>' +
+      '<div class="proyecto__tags">' + (p.stack || []).map(s => '<span class="tag">' + esc(s) + '</span>').join('') + '</div>' +
+      '<span class="proyecto__estado">' + esc(L(p.estado)) + '</span>';
+    a.addEventListener('click', () => abrirModal(p));
+    a.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirModal(p); } });
+    return a;
+  }
 
-    // Warn if opened as file:// without server
-    if (location.protocol === 'file:') {
-      contenedor.innerHTML = '<p style="font-size:0.85rem;opacity:.8;">To load dynamic projects, please use a local server (e.g.: <code>python3 -m http.server 8000</code>). Using embedded fallback.</p>';
-      contenedor.appendChild(crearTarjeta(FALLBACK_PROJECTS[0]));
-      contenedor.setAttribute('aria-busy','false');
-      return;
-    }
-    try {
-      const resp = await fetch('data/projects.json', { cache: 'no-store' });
-      if (!resp.ok) throw new Error('No se pudo cargar projects.json');
-  const proyectos = await resp.json();
-  proyectosCache = proyectos; // guardar para búsquedas por hash
-      contenedor.innerHTML = '';
-      contenedor.setAttribute('aria-busy', 'false');
+  function pintarProyectos(){
+    if (!lista) return;
+    const vis = proyectos.filter(p => !filtrosActivos.size || (p.stack || []).some(s => filtrosActivos.has(s)));
+    lista.innerHTML = '';
+    if (!vis.length) { lista.innerHTML = '<p class="estado-carga">' + esc(t('projects.empty')) + '</p>'; return; }
+    vis.forEach(p => lista.appendChild(tarjeta(p)));
+  }
 
-  proyectos.forEach(p => {
-        const tarjeta = crearTarjeta(p);
-        contenedor.appendChild(tarjeta);
+  function pintarFiltros(){
+    const wrap = document.getElementById('filtros'), chips = document.getElementById('chips-stack'), limpiar = document.getElementById('btn-limpiar-filtros');
+    if (!wrap || !chips) return;
+    const stacks = Array.from(new Set(proyectos.flatMap(p => p.stack || []))).sort((a,b) => a.localeCompare(b));
+    chips.innerHTML = '';
+    stacks.forEach(s => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = s;
+      b.setAttribute('aria-pressed', String(filtrosActivos.has(s)));
+      b.addEventListener('click', () => {
+        filtrosActivos.has(s) ? filtrosActivos.delete(s) : filtrosActivos.add(s);
+        b.setAttribute('aria-pressed', String(filtrosActivos.has(s)));
+        if (limpiar) limpiar.hidden = !filtrosActivos.size;
+        pintarProyectos();
       });
-
-      inicializarFiltros(proyectos);
-
-      if (!proyectos.length) {
-        contenedor.innerHTML = '<p>No hay proyectos todavía.</p>';
-      }
-  // Intentar abrir modal si hash ya presente tras carga
-  checkHashProyecto();
-    } catch (err) {
-      console.error(err);
-      contenedor.innerHTML = '<p style="color:#f87171;">Error loading remote projects. Showing local fallback.</p>';
-  const fb = FALLBACK_PROJECTS[0];
-  fb.slug = fb.slug || 'fallback';
-  proyectosCache = [fb];
-  contenedor.appendChild(crearTarjeta(fb));
-      contenedor.setAttribute('aria-busy', 'false');
-  checkHashProyecto();
+      chips.appendChild(b);
+    });
+    wrap.hidden = !stacks.length;
+    if (limpiar && !limpiar.dataset.bound) {
+      limpiar.dataset.bound = '1';
+      limpiar.addEventListener('click', () => { filtrosActivos.clear(); limpiar.hidden = true; pintarFiltros(); pintarProyectos(); });
     }
   }
 
-  function crearTarjeta(p) {
-    const art = document.createElement('article');
-    art.className = 'proyecto';
-    if (p.destacado) art.dataset.destacado = 'true';
-    if (p.slug) art.dataset.slug = p.slug;
-    art.innerHTML = `
-      <h3>${p.nombre}</h3>
-      <p>${p.descripcionCorta}</p>
-      <div class="proyecto-tags">
-        ${Array.isArray(p.stack) ? p.stack.map(tag => `<span class=\"proyecto-tag\">${tag}</span>`).join('') : ''}
-        <span class="proyecto-tag proyecto-tag--estado">${p.estado}</span>
-      </div>
-      <div class="proyecto-meta">
-        <span>${p.anio}</span>
-        ${p.tagline ? `<span>${p.tagline}</span>` : ''}
-      </div>
-      <div class="proyecto-links">
-        ${p.repoUrl ? `<a href="${p.repoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Repository for ${p.nombre}">Code</a>` : ''}
-        ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Demo for ${p.nombre}">Demo</a>` : ''}
-      </div>`;
-    art.tabIndex = 0;
-    art.setAttribute('role','button');
-    art.setAttribute('aria-label', `Open details for project ${p.nombre}`);
-    art.addEventListener('click', ()=> abrirModalProyecto(p));
-    art.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); abrirModalProyecto(p);} });
-    return art;
-  }
-
-  // ========== Modal de proyecto ==========
+  // ---------- Modal con enlace directo ----------
   const modal = document.getElementById('modal-proyecto');
-  let ultimoFoco = null;
+  let ultimoFoco = null, abierto = null;
 
-  let hashAbiertoSlug = null; // track para manipular hash
-
-  function abrirModalProyecto(p){
-    if(!modal) return;
-    ultimoFoco = document.activeElement;
+  function abrirModal(p){
+    if (!modal) return;
+    if (modal.dataset.open !== 'true') ultimoFoco = document.activeElement;
+    abierto = p;
+    modal.querySelector('.modal__tipo').textContent = L(p.tipo);
     modal.querySelector('.modal__title').textContent = p.nombre;
-    modal.querySelector('.modal__tagline').textContent = p.tagline || '';
-    modal.querySelector('.modal__desc').textContent = p.descripcionLarga || p.descripcionCorta;
-    const stackEl = modal.querySelector('.modal__stack');
-    stackEl.innerHTML = (p.stack||[]).map(s=>`<span>${s}</span>`).join('');
-    const linksEl = modal.querySelector('.modal__links');
-    linksEl.innerHTML = '';
-    if(p.repoUrl) linksEl.innerHTML += `<a href="${p.repoUrl}" target="_blank" rel="noopener">Repository</a>`;
-    if(p.demoUrl) linksEl.innerHTML += `<a href="${p.demoUrl}" target="_blank" rel="noopener">Demo</a>`;
-    modal.querySelector('.modal__meta').textContent = `${p.anio} • ${p.estado}`;
-    modal.dataset.open = 'true';
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-    setTimeout(()=>{
-      const focusable = modal.querySelector('.modal__close');
-      if(focusable) focusable.focus();
-    }, 10);
-    document.addEventListener('keydown', handleModalKey);
-    if (p.slug) {
-      hashAbiertoSlug = p.slug;
-      // Actualizar hash sin desplazar: usar history.replaceState si ya coincide
-      const targetHash = `#proyecto=${encodeURIComponent(p.slug)}`;
-      if (location.hash !== targetHash) {
-        history.pushState(null, '', targetHash);
-      }
-    }
+    modal.querySelector('.modal__tagline').textContent = L(p.tagline);
+    modal.querySelector('.modal__desc').textContent = L(p.descripcionLarga) || L(p.descripcionCorta);
+    modal.querySelector('.modal__stack').innerHTML = (p.stack || []).map(s => '<span class="tag">' + esc(s) + '</span>').join('');
+    modal.querySelector('.modal__meta').innerHTML =
+      '<dt>' + esc(t('modal.state')) + '</dt><dd>' + esc(L(p.estado)) + '</dd><dt>' + esc(t('modal.year')) + '</dt><dd>' + esc(p.anio) + '</dd>';
+    const links = modal.querySelector('.modal__links'); links.innerHTML = '';
+    if (p.repoUrl) links.innerHTML += '<a class="btn btn--sm btn--primary" href="' + esc(p.repoUrl) + '" target="_blank" rel="noopener">' + esc(t('modal.repo')) + '</a>';
+    if (p.demoUrl) links.innerHTML += '<a class="btn btn--sm" href="' + esc(p.demoUrl) + '" target="_blank" rel="noopener">' + esc(t('modal.demo')) + '</a>';
+    modal.dataset.open = 'true'; modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const c = modal.querySelector('.modal__close'); if (c) c.focus(); }, 10);
+    const h = '#proyecto=' + encodeURIComponent(p.slug);
+    if (p.slug && location.hash !== h) history.pushState(null, '', h);
   }
-
   function cerrarModal(){
-    if(!modal) return;
-    modal.dataset.open = 'false';
-    modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-    document.removeEventListener('keydown', handleModalKey);
-    if(ultimoFoco) ultimoFoco.focus();
-    if (hashAbiertoSlug && location.hash.startsWith('#proyecto=')) {
-      // Limpiar hash sin provocar salto
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-      hashAbiertoSlug = null;
-    }
+    if (!modal || modal.dataset.open !== 'true') return;
+    modal.dataset.open = 'false'; modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = ''; abierto = null;
+    if (ultimoFoco) ultimoFoco.focus({ preventScroll:true });
+    if (location.hash.startsWith('#proyecto=')) history.replaceState(null, '', location.pathname + location.search);
   }
-
-  function handleModalKey(e){
-    if(e.key==='Escape') { cerrarModal(); }
-    if(e.key==='Tab') {
-      const focusables = modal.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
-      if(!focusables.length) return;
-      const list = Array.from(focusables);
-      const first = list[0];
-      const last = list[list.length-1];
-      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-    }
-  }
-
-  if(modal){
-    modal.addEventListener('click', (e)=>{
-      const target = e.target;
-      if(target.hasAttribute('data-close') || target === modal){ cerrarModal(); }
+  if (modal) {
+    modal.addEventListener('click', e => { if (e.target.hasAttribute('data-close')) cerrarModal(); });
+    document.addEventListener('keydown', e => {
+      if (modal.dataset.open !== 'true') return;
+      if (e.key === 'Escape') cerrarModal();
+      if (e.key === 'Tab') {
+        const f = Array.from(modal.querySelectorAll('button, a[href]'));
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length-1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length-1]) { e.preventDefault(); f[0].focus(); }
+      }
     });
   }
-
-  // ========== Deep link (hash #proyecto=slug) ==========
-  function parseHashProyecto(){
-    if(!location.hash) return null;
+  function revisarHash(){
     const m = location.hash.match(/^#proyecto=([^&]+)/);
-    return m ? decodeURIComponent(m[1]) : null;
+    if (!m) { cerrarModal(); return; }
+    const p = proyectos.find(x => x.slug === decodeURIComponent(m[1]));
+    if (p && abierto !== p) abrirModal(p);
+  }
+  window.addEventListener('hashchange', revisarHash);
+
+  // ---------- Red Hifa ----------
+  let redLista = false;
+  function iniciarRed(){
+    const hero = document.getElementById('red');
+    if (!hero || !window.Hifa || redLista) return;
+    redLista = true;
+    window.Hifa.s = null;
+    window.Hifa.init({
+      hero,
+      canvas: document.getElementById('hifa'),
+      nodesEl: document.getElementById('hifa-nodes'),
+      logEl: document.getElementById('hifa-log'),
+      root: { id:'root', name:t('root.name'), kind:t('root.kind') },
+      nodes: proyectos.map(p => ({ id:p.slug, name:p.nombre, kind:L(p.tipo), big:!!p.destacado })),
+      seedText: t('seed'),
+      onSelect: id => {
+        if (id === 'root') { document.getElementById('sobre-mi')?.scrollIntoView(); return; }
+        const p = proyectos.find(x => x.slug === id); if (p) abrirModal(p);
+      }
+    });
+    window.Hifa.s.packetWords = t('packets');
+  }
+  function etiquetasRed(){
+    if (!redLista || !window.Hifa.s) return;
+    window.Hifa.setLabels([{ id:'root', name:t('root.name'), kind:t('root.kind') }]
+      .concat(proyectos.map(p => ({ id:p.slug, kind:L(p.tipo) }))));
+    window.Hifa.s.packetWords = t('packets');
   }
 
-  function checkHashProyecto(){
-    const slug = parseHashProyecto();
-    if(!slug) return;
-    // Ya abierto ese slug
-    if(hashAbiertoSlug === slug && modal?.dataset.open==='true') return;
-    const p = proyectosCache.find(pr => pr.slug === slug);
-    if(p) abrirModalProyecto(p);
+  async function cargarProyectos(){
+    if (!lista) return;
+    try {
+      const r = await fetch('data/projects.json', { cache:'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      proyectos = await r.json();
+      lista.setAttribute('aria-busy','false');
+      pintarFiltros(); pintarProyectos(); iniciarRed(); revisarHash();
+    } catch (e) {
+      console.error(e);
+      lista.setAttribute('aria-busy','false');
+      lista.innerHTML = '<p class="estado-carga">' + esc(t('projects.error')) + '</p>';
+    }
   }
 
-  window.addEventListener('hashchange', () => {
-    const slug = parseHashProyecto();
-    if(!slug && modal?.dataset.open==='true') { cerrarModal(); return; }
-    if(slug) checkHashProyecto();
+  // ---------- Formación ----------
+  let formacion = [];
+  const linea = document.getElementById('linea-formacion');
+  function pintarFormacion(){
+    if (!linea) return;
+    const orden = { 'en-curso':1, 'pendiente':2, 'completado':3 };
+    const items = formacion.slice().sort((a,b) => (b.inicio||'').localeCompare(a.inicio||'') || (orden[a.estado]||9) - (orden[b.estado]||9));
+    linea.innerHTML = items.map(it => {
+      const fin = it.fin || (it.estado === 'en-curso' ? t('edu.present') : '');
+      const periodo = fin && fin !== it.inicio ? it.inicio + ' – ' + fin : it.inicio;
+      return '<li class="timeline__item" data-estado="' + esc(it.estado) + '">' +
+        '<div class="timeline__meta"><span>' + esc(periodo) + '</span><span>' + esc(t('edu.type.' + it.tipo)) + '</span>' +
+        '<span class="timeline__estado timeline__estado--' + esc(it.estado) + '">' + esc(t('edu.state.' + it.estado)) + '</span></div>' +
+        '<h3 class="timeline__titulo">' + esc(L(it.titulo)) + '</h3>' +
+        '<p class="timeline__desc">' + esc(it.entidad) + (it.ubicacion ? ' · ' + esc(it.ubicacion) : '') + '</p>' +
+        '<p class="timeline__desc">' + esc(L(it.descripcion)) + '</p>' +
+        (it.enlace ? '<p class="timeline__desc"><a href="' + esc(it.enlace) + '" target="_blank" rel="noopener">' + esc(t('edu.more')) + '</a></p>' : '') +
+        '</li>';
+    }).join('');
+  }
+  async function cargarFormacion(){
+    if (!linea) return;
+    try {
+      const r = await fetch('data/formacion.json', { cache:'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      formacion = await r.json();
+      linea.setAttribute('aria-busy','false');
+      pintarFormacion();
+    } catch (e) {
+      console.error(e);
+      linea.setAttribute('aria-busy','false');
+      linea.innerHTML = '<li class="timeline__desc">' + esc(t('edu.error')) + '</li>';
+    }
+  }
+
+  // ---------- Copiar correo ----------
+  const copiar = document.getElementById('btn-copiar');
+  if (copiar) copiar.addEventListener('click', () => {
+    const estado = document.getElementById('copiar-estado');
+    const valor = document.getElementById('email-valor');
+    const seleccionar = () => {
+      const r = document.createRange(); r.selectNodeContents(valor);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      if (estado) estado.textContent = t('contact.selected');
+    };
+    try {
+      navigator.clipboard.writeText(valor.textContent.trim())
+        .then(() => { if (estado) estado.textContent = t('contact.copied'); })
+        .catch(seleccionar);
+    } catch (e) { seleccionar(); }
   });
 
+  // ---------- Cambio de idioma ----------
+  const langBtn = document.getElementById('lang-toggle');
+  function setLang(v){
+    lang = v; root.setAttribute('lang', v);
+    try { localStorage.setItem('lang', v); } catch(e) {}
+    applyTexts();
+    if (themeBtn) setTheme(root.getAttribute('data-theme') || 'dark');
+    if (proyectos.length) { pintarFiltros(); pintarProyectos(); }
+    if (formacion.length) pintarFormacion();
+    if (abierto) abrirModal(abierto);
+    etiquetasRed();
+  }
+  if (langBtn) langBtn.addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
+
+  if (langBtn) applyTexts();
   cargarProyectos();
-
-  // ========== Formación / Certificaciones ==========
-  async function cargarFormacion(){
-    const cont = document.getElementById('linea-formacion');
-    if(!cont) return;
-    try {
-      const resp = await fetch('data/formacion.json', { cache: 'no-store' });
-      if(!resp.ok) throw new Error('No se pudo cargar formacion.json');
-      const items = await resp.json();
-      cont.setAttribute('aria-busy','false');
-      // Mapear fallback existentes por id (si hay) o por título como respaldo
-      const fallbackMap = new Map();
-      cont.querySelectorAll('.timeline__item[data-fallback]').forEach(node => {
-        const id = node.getAttribute('data-id');
-        const titulo = node.querySelector('.timeline__titulo')?.textContent.trim();
-        if(id) fallbackMap.set(id, node);
-        else if(titulo) fallbackMap.set(`t:${titulo.toLowerCase()}`, node);
-      });
-      // Orden cronológico descendente
-      items.sort((a,b)=> (b.inicio||'').localeCompare(a.inicio||''));
-      items.forEach(it => {
-        const key = it.id ? it.id : `t:${(it.titulo||'').toLowerCase()}`;
-        const existente = fallbackMap.get(key);
-        const nodoNuevo = crearNodoFormacion(it);
-        if(existente) existente.replaceWith(nodoNuevo); else cont.appendChild(nodoNuevo);
-      });
-
-      // Reordenamiento global: reunir todos los items y ordenar por inicio desc, luego estado prioridad
-      const prioridadEstado = { 'en-curso':1, 'pendiente':2, 'completado':3 };
-      const nodos = Array.from(cont.querySelectorAll('.timeline__item'));
-      // Extraer datos para ordenar (infiriendo desde texto periodo si no hay data)
-      const parseInicio = (n)=>{
-        const periodo = n.querySelector('.timeline__periodo')?.textContent || '';
-        const match = periodo.match(/^(\d{4})/);
-        return match ? match[1] : '0000';
-      };
-      nodos.sort((a,b)=>{
-        const ia = parseInicio(a);
-        const ib = parseInicio(b);
-        if(ia !== ib) return ib.localeCompare(ia); // desc
-        const ea = a.getAttribute('data-estado') || 'pendiente';
-        const eb = b.getAttribute('data-estado') || 'pendiente';
-        return (prioridadEstado[ea]||9) - (prioridadEstado[eb]||9);
-      });
-      nodos.forEach(n=> cont.appendChild(n));
-    } catch(e){
-      console.error(e);
-      cont.innerHTML = '<p style="font-size:.8rem;color:#f87171;">Failed to load education data.</p>';
-      cont.setAttribute('aria-busy','false');
-    }
-  }
-
-  function crearNodoFormacion(item){
-    const el = document.createElement('div');
-    el.className = 'timeline__item';
-    if(item.estado === 'en-curso') el.dataset.estado = 'en-curso';
-  const periodo = item.fin ? `${item.inicio} – ${item.fin}` : `${item.inicio} – ${item.estado==='pendiente' ? 'Pending' : (item.estado==='completado' ? item.inicio : 'Present')}`;
-  const badgeMapa = { 'universidad':'Academic', 'certificacion':'Certification', 'programa':'Program' };
-  const badge = badgeMapa[item.tipo] || 'Education';
-  const estadoClase = item.estado === 'pendiente' ? 'timeline__badge--pendiente' : item.estado === 'completado' ? 'timeline__badge--completado' : 'timeline__badge--en-curso';
-  el.innerHTML = `
-      <div class="timeline__entidad">
-        <span class="timeline__periodo" aria-label="Periodo">${periodo}</span>
-        <span class="timeline__badge ${estadoClase}" aria-label="Tipo">${badge}</span>
-      </div>
-      <h3 class="timeline__titulo">${item.titulo}</h3>
-      <p class="timeline__desc">${item.entidad}${item.ubicacion ? ' · ' + item.ubicacion : ''}</p>
-      <p class="timeline__desc">${item.descripcion}</p>
-      ${item.enlace ? `<p class="timeline__desc"><a class="link" href="${item.enlace}" target="_blank" rel="noopener">Learn more</a></p>` : ''}
-    `;
-  if(item.id) el.setAttribute('data-id', item.id);
-    return el;
-  }
-
   cargarFormacion();
-
-  // ========== Filtrado de proyectos ==========
-  function inicializarFiltros(proyectos){
-    const filtrosWrap = document.getElementById('filtros');
-    if(!filtrosWrap || !proyectos.length) return;
-    filtrosWrap.hidden = false;
-    const chipsStackCtn = document.getElementById('chips-stack');
-    const chipsEstadoCtn = document.getElementById('chips-estado');
-    if(!chipsStackCtn || !chipsEstadoCtn) return;
-
-    // Derivar conjuntos únicos
-    const setStacks = new Set();
-    const setEstados = new Set();
-    proyectos.forEach(p => {
-      (p.stack||[]).forEach(s => setStacks.add(s));
-      if(p.estado) setEstados.add(p.estado);
-    });
-
-    const crearChip = (valor, tipo) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'chip';
-      btn.textContent = valor;
-      btn.setAttribute('data-valor', valor);
-      btn.setAttribute('data-tipo', tipo);
-      btn.setAttribute('aria-pressed','false');
-      btn.addEventListener('click', () => {
-        const activo = btn.getAttribute('data-activo') === 'true';
-        btn.setAttribute('data-activo', (!activo).toString());
-        btn.setAttribute('aria-pressed', (!activo).toString());
-        aplicarFiltros();
-      });
-      return btn;
-    };
-
-    Array.from(setStacks).sort().forEach(s => chipsStackCtn.appendChild(crearChip(s,'stack')));
-    Array.from(setEstados).sort().forEach(e => chipsEstadoCtn.appendChild(crearChip(e,'estado')));
-
-    const btnLimpiar = document.getElementById('btn-limpiar-filtros');
-    if(btnLimpiar){
-      btnLimpiar.addEventListener('click', () => {
-        filtrosWrap.querySelectorAll('.chip[data-activo="true"]').forEach(ch => {
-          ch.setAttribute('data-activo','false');
-          ch.setAttribute('aria-pressed','false');
-        });
-        aplicarFiltros();
-      });
-    }
-  }
-
-  function aplicarFiltros(){
-    const contenedor = document.getElementById('lista-proyectos');
-    if(!contenedor) return;
-    const chipsActivosStack = Array.from(document.querySelectorAll('.chip[data-tipo="stack"][data-activo="true"]')).map(c=>c.getAttribute('data-valor'));
-    const chipsActivosEstado = Array.from(document.querySelectorAll('.chip[data-tipo="estado"][data-activo="true"]')).map(c=>c.getAttribute('data-valor'));
-
-    // Si no hay filtros activos mostrar todos (regenerar DOM para simular filtrado simple)
-    const proyectosFiltrados = proyectosCache.filter(p => {
-      const matchStack = !chipsActivosStack.length || (p.stack||[]).some(s => chipsActivosStack.includes(s));
-      const matchEstado = !chipsActivosEstado.length || chipsActivosEstado.includes(p.estado);
-      return matchStack && matchEstado;
-    });
-
-    contenedor.innerHTML = '';
-    proyectosFiltrados.forEach(p => contenedor.appendChild(crearTarjeta(p)));
-    if(!proyectosFiltrados.length){
-      contenedor.innerHTML = '<p style="opacity:.75; font-size:.85rem;">No results match the applied filters.</p>';
-    }
-  }
-
-  // ========== Toggle de tema (light/dark) ==========
-  (function initThemeToggle(){
-    const btn = document.getElementById('theme-toggle');
-    if(!btn) return;
-    const root = document.documentElement;
-    const setVisual = (tema)=>{
-      root.setAttribute('data-theme', tema);
-      btn.setAttribute('aria-pressed', tema === 'light');
-      btn.setAttribute('aria-label', tema === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-      const iconSpan = btn.querySelector('.theme-icon');
-      if(iconSpan) iconSpan.textContent = tema === 'light' ? '☀️' : '🌙';
-      // Ajuste theme-color para móviles
-      const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', tema === 'light' ? '#f5f7fb' : '#0e1116');
-    };
-    let temaActual = root.getAttribute('data-theme') || 'dark';
-    setVisual(temaActual);
-    btn.addEventListener('click', ()=>{
-      temaActual = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
-      setVisual(temaActual);
-      try { localStorage.setItem('theme', temaActual); } catch(e) {}
-    });
-    // Escucha cambios del sistema si el usuario no ha elegido explícito
-    try {
-      if(!localStorage.getItem('theme')) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-          const preferido = e.matches ? 'dark' : 'light';
-          setVisual(preferido);
-        });
-      }
-    } catch(e) {}
-  })();
 })();
