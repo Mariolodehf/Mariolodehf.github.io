@@ -189,6 +189,32 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .site-footer p{margin:0}
 .site-footer .mono{font-size:.72rem}
 
+/* ---------- Sección HIFA ----------
+   Territorio de la marca: negro y dorado en cualquier tema del sitio. */
+.hifa{--h-bg:#0b0b0b;--h-gold:#e3a72f;--h-cream:#f3ead8;--h-muted:#b7ab95;--h-line:rgba(227,167,47,.28);
+  background:var(--h-bg);color:var(--h-cream);border-block:1px solid var(--h-line);margin-top:clamp(56px,10vw,112px)}
+.hifa__inner{max-width:var(--max);margin:0 auto;padding-block:clamp(48px,8vw,96px);padding-left:var(--gutter);padding-right:var(--gutter-r);display:grid;gap:clamp(28px,5vw,48px)}
+.hifa__head{display:grid;gap:1rem;max-width:44rem}
+.hifa__eyebrow{color:var(--h-gold)}
+.hifa__logo{width:min(260px,70vw);height:auto}
+.hifa__title{color:var(--h-cream);font-size:clamp(2rem,5vw,3.2rem)}
+.hifa__lead{margin:0;color:var(--h-muted);font-size:1.05rem;max-width:58ch}
+.hifa__lineas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:1px;background:var(--h-line);border:1px solid var(--h-line);border-radius:var(--radius);overflow:hidden}
+.hifa__linea{background:var(--h-bg);padding:22px 20px;display:grid;gap:.5rem;align-content:start}
+.hifa__linea h3{color:var(--h-cream);font-size:1.6rem}
+.hifa__linea p{margin:0;color:var(--h-muted);font-size:.95rem}
+.hifa__num{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--h-gold)}
+.hifa__foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.hifa__estado{margin:0;font-size:.74rem;color:var(--h-muted);letter-spacing:.06em}
+.hifa__estado::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--h-gold);margin-right:8px;vertical-align:1px}
+.hifa__cta{display:flex;flex-wrap:wrap;gap:10px}
+.hifa__btn{color:var(--h-cream);border-color:rgba(243,234,216,.3)}
+.hifa__btn:hover{color:var(--h-gold);border-color:var(--h-gold)}
+.hifa__btn--primary{background:var(--h-gold);border-color:var(--h-gold);color:var(--h-bg)}
+.hifa__btn--primary:hover{background:transparent;color:var(--h-gold)}
+.hifa a:focus-visible{outline-color:var(--h-gold)}
+.hifa + .seccion{padding-top:clamp(56px,10vw,112px)}
+
 /* ---------- Lluvia binaria (js/rain.js) ----------
    Muy tenue a propósito: se nota solo si te fijas. */
 .rain{position:absolute;pointer-events:none;z-index:0;overflow:hidden}

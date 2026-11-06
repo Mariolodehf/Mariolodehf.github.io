@@ -1,39 +1,5 @@
 [
   {
-    "slug": "compania",
-    "nombre": "companIA",
-    "tipo": {
-      "es": "Hub",
-      "en": "Hub"
-    },
-    "tagline": {
-      "es": "Un LLM de ciberseguridad, construido a la vista.",
-      "en": "A cybersecurity LLM, built in the open."
-    },
-    "descripcionCorta": {
-      "es": "Startup tech centrada en un modelo de lenguaje de ciberseguridad y en mostrar paso a paso cómo se construye un LLM por dentro, sin cómputo costoso.",
-      "en": "Tech startup focused on a cybersecurity language model and on showing, step by step, how an LLM is built from the inside without expensive compute."
-    },
-    "descripcionLarga": {
-      "es": "companIA es el centro que conecta varios de mis proyectos. Su primer enfoque es un LLM (modelo de lenguaje grande) especializado en ciberseguridad y seguridad de la información. La idea de fondo es que cualquier persona pueda entender cómo se crea un modelo desde cero, con recursos de estudiante, y que con el tiempo se sumen compañeros y profesionales a mejorarlo.",
-      "en": "companIA is the hub that connects several of my projects. Its first focus is an LLM (large language model) specialized in cybersecurity and information security. The underlying idea is that anyone can understand how a model is built from scratch, with student-level resources, and that over time peers and professionals join to improve it."
-    },
-    "anio": 2026,
-    "estado": {
-      "es": "Repo creado",
-      "en": "Repo created"
-    },
-    "stack": [
-      "LLM",
-      "IA",
-      "Ciberseguridad",
-      "Vercel"
-    ],
-    "repoUrl": "https://github.com/Mariolodehf/companIA",
-    "demoUrl": null,
-    "destacado": true
-  },
-  {
     "slug": "hifa",
     "nombre": "HIFA",
     "tipo": {
@@ -66,6 +32,40 @@
     "repoUrl": null,
     "demoUrl": null,
     "destacado": true
+  },
+  {
+    "slug": "compania",
+    "nombre": "companIA",
+    "tipo": {
+      "es": "Hub",
+      "en": "Hub"
+    },
+    "tagline": {
+      "es": "Un LLM de ciberseguridad, construido a la vista.",
+      "en": "A cybersecurity LLM, built in the open."
+    },
+    "descripcionCorta": {
+      "es": "Startup tech centrada en un modelo de lenguaje de ciberseguridad y en mostrar paso a paso cómo se construye un LLM por dentro, sin cómputo costoso.",
+      "en": "Tech startup focused on a cybersecurity language model and on showing, step by step, how an LLM is built from the inside without expensive compute."
+    },
+    "descripcionLarga": {
+      "es": "companIA es el centro que conecta varios de mis proyectos. Su primer enfoque es un LLM (modelo de lenguaje grande) especializado en ciberseguridad y seguridad de la información. La idea de fondo es que cualquier persona pueda entender cómo se crea un modelo desde cero, con recursos de estudiante, y que con el tiempo se sumen compañeros y profesionales a mejorarlo.",
+      "en": "companIA is the hub that connects several of my projects. Its first focus is an LLM (large language model) specialized in cybersecurity and information security. The underlying idea is that anyone can understand how a model is built from scratch, with student-level resources, and that over time peers and professionals join to improve it."
+    },
+    "anio": 2026,
+    "estado": {
+      "es": "Repo creado",
+      "en": "Repo created"
+    },
+    "stack": [
+      "LLM",
+      "IA",
+      "Ciberseguridad",
+      "Vercel"
+    ],
+    "repoUrl": "https://github.com/Mariolodehf/companIA",
+    "demoUrl": null,
+    "destacado": false
   },
   {
     "slug": "me-explicas",
