@@ -9,7 +9,7 @@ canonicalPath: /blog/
 ---
 <h1>Blog</h1>
 <p class="lead">Articles, notes, and experiences in telecommunications, security, and innovation.</p>
-<input id="busqueda" type="search" placeholder="Search..." aria-label="Search articles" class="blog-search" />
+<input id="busqueda" type="search" placeholder="Buscar…" aria-label="Buscar artículos" class="blog-search" />
 <ul class="lista-posts" id="lista-posts" data-count="{{ posts.length }}">
 {% for post in posts | reverse %}
   <li class="post-item" data-url="/blog{{ post.url }}" data-tags="{% if post.data.tags %}{{ post.data.tags | join(',') }}{% endif %}">

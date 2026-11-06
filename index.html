@@ -1,239 +1,199 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Mario De Hoyos</title>
-  <meta name="description" content="Professional portfolio of Mario De Hoyos: projects, experience, and contact." />
-  <meta name="theme-color" content="#0e1116" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Mario de Hoyos · Hifa</title>
+  <meta name="description" content="Mario de Hoyos: telecomunicaciones, ciberseguridad e IA desde Medellín. Una red viva de proyectos, aprendizaje y experimentos." />
+  <meta name="theme-color" content="#120e0b" />
   <meta name="color-scheme" content="dark light" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://mariolodehf.github.io/" />
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="Mario De Hoyos Portfolio" />
-  <meta property="og:title" content="Portfolio | Mario De Hoyos" />
-  <meta property="og:description" content="Project portfolio: telecommunications, information security, and innovation." />
+  <meta property="og:site_name" content="Mario de Hoyos" />
+  <meta property="og:title" content="Mario de Hoyos · Lo que pasa por debajo" />
+  <meta property="og:description" content="Telecomunicaciones, ciberseguridad e IA. Una red viva de proyectos inspirada en el micelio." />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta property="og:url" content="https://mariolodehf.github.io/" />
   <meta property="og:image" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
-  <meta property="og:image:secure_url" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
-  <meta property="og:image:type" content="image/svg+xml" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Mario De Hoyos Portfolio - Telecommunications and Security" />
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Portfolio | Mario De Hoyos" />
-  <meta name="twitter:description" content="Projects and learning in telecommunications and cybersecurity." />
+  <meta name="twitter:title" content="Mario de Hoyos · Lo que pasa por debajo" />
+  <meta name="twitter:description" content="Telecomunicaciones, ciberseguridad e IA desde Medellín." />
   <meta name="twitter:image" content="https://mariolodehf.github.io/assets/img/og-default.svg" />
-  <!-- Author / Theme -->
-  <meta name="author" content="Mario De Hoyos F" />
-  <meta name="keywords" content="telecommunications, information security, cybersecurity, IoT, BLE, portfolio" />
+  <meta name="author" content="Mario de Hoyos F" />
   <script>
-    // Pre-load: set theme before paint to avoid flash
+    // Aplica tema e idioma antes de pintar, para evitar parpadeos
     (function(){
       try {
-        const almacenado = localStorage.getItem('theme');
-        const preferido = almacenado || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        document.documentElement.setAttribute('data-theme', preferido);
-      } catch(e) { /* noop */ }
+        var t = localStorage.getItem('theme');
+        var pref = t || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', pref);
+        var l = localStorage.getItem('lang');
+        if (l === 'en' || l === 'es') document.documentElement.setAttribute('lang', l);
+      } catch(e) {}
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" />
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- JSON-LD Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Mario De Hoyos",
-    "description": "Telecommunications Engineering student focused on information security and IoT.",
+    "name": "Mario de Hoyos",
+    "description": "Estudiante de Ingeniería de Telecomunicaciones enfocado en ciberseguridad, IoT e IA.",
     "url": "https://mariolodehf.github.io/",
-    "sameAs": [],
+    "sameAs": ["https://github.com/Mariolodehf"],
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Universidad de Antioquia",
       "address": {"@type": "PostalAddress", "addressLocality": "Medellín", "addressCountry": "CO"}
-    },
-    "hasCredential": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Google Cloud Cybersecurity Certificate",
-        "provider": {"@type": "Organization", "name": "Google", "url": "https://cloud.google.com/learn"},
-        "credentialCategory": "ProfessionalCertificate",
-        "educationalLevel": "Beginner",
-        "description": "Cybersecurity certification enrollment in progress (Career Launchpad Program).",
-        "url": "https://cloud.google.com/learn/certification"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Junior Cybersecurity Analyst Career Path",
-        "provider": {"@type": "Organization", "name": "Cisco Networking Academy", "url": "https://www.netacad.com/"},
-        "credentialCategory": "ProfessionalProgram",
-        "description": "Training program for defensive skills and cybersecurity fundamentals.",
-        "url": "https://www.netacad.com/"
-      }
-    ],
-    "hasPart": [
-      {
-        "@type": "CreativeWork",
-        "name": "UbicaTec",
-        "about": "Collaborative IoT network using BLE to locate objects.",
-        "dateCreated": "2025-01-01",
-        "inLanguage": "en",
-        "url": "https://mariolodehf.github.io/#proyecto=ubicatec"
-      }
-    ]
+    }
   }
   </script>
 </head>
 <body>
-  <a href="#inicio" class="skip-link">Skip to content</a>
+  <a href="#red" class="skip-link" data-i18n="skip">Saltar al contenido</a>
+
   <header class="site-header">
     <nav class="nav" aria-label="Principal">
-      <a class="logo" href="#">Mario De Hoyos<span>.</span></a>
+      <a class="logo" href="#red"><span class="logo__dot" aria-hidden="true"></span>Mario de Hoyos</a>
       <div class="nav__actions">
-        <button id="theme-toggle" class="btn-theme" aria-label="Switch to light theme" aria-pressed="false" title="Toggle theme" type="button">
-          <span class="theme-icon" aria-hidden="true">🌙</span>
+        <button id="lang-toggle" class="btn-icon" type="button" aria-label="Read in English">EN</button>
+        <button id="theme-toggle" class="btn-icon" type="button" aria-pressed="false" aria-label="Cambiar a superficie">
+          <span class="theme-icon" aria-hidden="true"></span>
         </button>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu" type="button">
-          <span class="nav__toggle-inner" aria-hidden="true"><span class="nav__toggle-bar"></span></span>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú" type="button">
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
         </button>
       </div>
       <ul id="nav-menu" class="nav__menu">
-        <li><a href="#inicio">Home</a></li>
-        <li><a href="#proyectos">Projects</a></li>
-  <li><a href="#formacion">Education</a></li>
-        <li><a href="#sobre-mi">About Me</a></li>
-        <li><a href="#contacto">Contact</a></li>
-  <li><a href="/blog/">Blog</a></li>
+        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#formacion" data-i18n="nav.education">Formación</a></li>
+        <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+        <li><a href="/blog/">Blog</a></li>
       </ul>
     </nav>
   </header>
   <div class="nav__overlay" data-nav-overlay hidden></div>
 
-  <main id="inicio" class="main">
-    <section class="hero" aria-labelledby="hero-title">
-  <h1 id="hero-title">Hi, I'm <span class="resaltado">Mario De Hoyos</span></h1>
-  <p class="lead">Telecommunications Engineering student specializing in Information Security. This space documents my journey: from a deep curiosity about understanding connectivity at a fundamental level, to its practical application in network security, cloud architectures, ethical hacking, and protecting the ever-growing IoT landscape.</p>
-      <a href="#proyectos" class="btn primario">View Projects</a>
-    </section>
-
-    <section id="formacion" class="seccion" aria-labelledby="formacion-title">
-      <h2 id="formacion-title">Education & Certifications</h2>
-      <p class="intro-formacion">Academic background and professional programs that strengthen my technical profile in telecommunications and cybersecurity.</p>
-      <div id="linea-formacion" class="timeline" aria-live="polite" aria-busy="true">
-        <!-- Fallback estático (se reemplaza tras fetch) -->
-  <div class="timeline__item" data-estado="en-curso" data-fallback="true" data-id="udea-teleco">
-          <div class="timeline__entidad">
-            <span class="timeline__periodo" aria-label="Period">2024 – Present</span>
-            <span class="timeline__badge" aria-label="Type">Academic</span>
-          </div>
-          <h3 class="timeline__titulo">Telecommunications Engineering</h3>
-          <p class="timeline__desc">Universidad de Antioquia · Medellín, Colombia</p>
-          <p class="timeline__desc">University program focused on networks, communication systems, and secure infrastructure.</p>
-          <p class="timeline__desc"><a class="link" href="https://www.udea.edu.co/" target="_blank" rel="noopener">Learn more</a></p>
+  <main class="main">
+    <!-- La red viva: cada nodo es un proyecto de data/projects.json -->
+    <section id="red" class="hero" aria-labelledby="hero-title">
+      <canvas class="hero__canvas" id="hifa" aria-hidden="true"></canvas>
+      <div class="hero__nodes" id="hifa-nodes" role="group" aria-label="Red de proyectos"></div>
+      <div class="hero__text">
+        <span class="eyebrow" data-i18n="hero.eyebrow">Capa 1 · física</span>
+        <h1 id="hero-title" data-i18n-html="hero.title">Lo que pasa por <em>debajo</em>.</h1>
+        <p class="lead" data-i18n="hero.lead">Soy Mario de Hoyos, estudiante de Ingeniería de Telecomunicaciones en Medellín. Construyo en ciberseguridad, IoT e IA, y me interesa lo que nadie ve: la red que sostiene todo.</p>
+        <div class="hero__cta">
+          <a href="#proyectos" class="btn btn--primary" data-i18n="hero.cta">Ver proyectos</a>
+          <a href="/blog/" class="btn" data-i18n="hero.blog">Leer el blog</a>
         </div>
-  <div class="timeline__item" data-estado="en-curso" data-fallback="true" data-id="cisco-analista-jr">
-          <div class="timeline__entidad">
-            <span class="timeline__periodo" aria-label="Period">2025 – Present</span>
-            <span class="timeline__badge" aria-label="Type">Program</span>
-          </div>
-            <h3 class="timeline__titulo">Junior Cybersecurity Analyst Career Path</h3>
-            <p class="timeline__desc">Cisco Networking Academy · Online</p>
-            <p class="timeline__desc">Hands-on training: defense, threat analysis, and enterprise security fundamentals.</p>
-            <p class="timeline__desc"><a class="link" href="https://www.netacad.com/" target="_blank" rel="noopener">Learn more</a></p>
-        </div>
-  <div class="timeline__item" data-fallback="true" data-id="gcloud-cyber">
-          <div class="timeline__entidad">
-            <span class="timeline__periodo" aria-label="Period">2025 – Pending</span>
-            <span class="timeline__badge" aria-label="Type">Certification</span>
-          </div>
-          <h3 class="timeline__titulo">Google Cloud Cybersecurity Certificate (Enrollment)</h3>
-          <p class="timeline__desc">Google Career Launchpad Program · Online</p>
-          <p class="timeline__desc">Certification focused on cloud cybersecurity fundamentals and incident response (enrollment verification in progress).</p>
-          <p class="timeline__desc"><a class="link" href="https://cloud.google.com/learn/certification" target="_blank" rel="noopener">Learn more</a></p>
+        <p class="hero__hint" data-i18n="hero.hint">Toca un nodo para abrir el proyecto, o arrastra sobre la red para que crezca hacia ti.</p>
+        <div class="hero__log" aria-hidden="true">
+          <span class="hero__log-label" data-i18n="hero.traffic">Tráfico en la red</span>
+          <div id="hifa-log"></div>
         </div>
       </div>
     </section>
 
     <section id="proyectos" class="seccion" aria-labelledby="proyectos-title">
-      <h2 id="proyectos-title">Featured Projects</h2>
-      <!-- Filter controls -->
+      <div class="seccion__head">
+        <span class="eyebrow" data-i18n="projects.eyebrow">Nodos</span>
+        <h2 id="proyectos-title" data-i18n="projects.title">Proyectos</h2>
+        <p class="seccion__intro" data-i18n="projects.intro">Lo que estoy construyendo, del más conectado al más experimental. Toca uno para ver el detalle.</p>
+      </div>
       <div class="filtros" id="filtros" hidden>
-        <form id="form-filtros" aria-label="Project filters" onsubmit="return false" novalidate>
-          <div class="filtros__grupo" id="filtros-stack-grupo">
-            <span class="filtros__label">Stack:</span>
-            <div class="filtros__chips" role="group" aria-label="Technologies" id="chips-stack"></div>
-          </div>
-          <div class="filtros__grupo" id="filtros-estado-grupo">
-            <span class="filtros__label">Status:</span>
-            <div class="filtros__chips" role="group" aria-label="Status" id="chips-estado"></div>
-          </div>
-          <div class="filtros__acciones">
-            <button type="button" class="btn btn--sm" id="btn-limpiar-filtros" aria-label="Clear active filters">Clear</button>
-          </div>
-        </form>
+        <div class="filtros__chips" role="group" aria-label="Tecnologías" id="chips-stack"></div>
+        <button type="button" class="btn btn--sm" id="btn-limpiar-filtros" data-i18n="projects.clear" hidden>Limpiar</button>
       </div>
       <div class="grid-proyectos" id="lista-proyectos" aria-live="polite" aria-busy="true">
-        <article class="proyecto placeholder" id="proyectos-loading">
-          <h3>Loading projects...</h3>
-          <p>Preparing collaborative network of ideas.</p>
-        </article>
-      </div>
-      <div class="proyectos-actions" hidden>
-        <button class="btn" id="btn-ver-todos" type="button">View all</button>
+        <p class="estado-carga" data-i18n="projects.loading">Cargando proyectos…</p>
       </div>
     </section>
 
-    <section id="sobre-mi" class="seccion" aria-labelledby="sobre-title">
-      <h2 id="sobre-title">About Me</h2>
-  <p>As a future Telecommunications Engineer, my passion lies in understanding communication systems from the ground up so I can effectively protect them. I don't settle for being just a technology user—I explore its inner workings, from network configuration and system hardening to writing scripts that automate security.</p>
-  <p>My philosophy is simple: you can't protect what you don't understand. That's why my goal is to combine my telecommunications foundations with both offensive and defensive security practices to design and maintain truly resilient network architectures.</p>
+    <section id="formacion" class="seccion" aria-labelledby="formacion-title">
+      <div class="seccion__head">
+        <span class="eyebrow" data-i18n="edu.eyebrow">Raíces</span>
+        <h2 id="formacion-title" data-i18n="edu.title">Formación y certificaciones</h2>
+        <p class="seccion__intro" data-i18n="edu.intro">La base académica y los programas que fortalecen mi perfil en telecomunicaciones y ciberseguridad.</p>
+      </div>
+      <ol id="linea-formacion" class="timeline" aria-busy="true"></ol>
+    </section>
+
+    <section id="sobre-mi" class="seccion seccion--about" aria-labelledby="sobre-title">
+      <div class="seccion__head">
+        <span class="eyebrow" data-i18n="about.eyebrow">Sustrato</span>
+        <h2 id="sobre-title" data-i18n="about.title">Sobre mí</h2>
+      </div>
+      <div class="about">
+        <div class="about__text">
+          <p data-i18n="about.p1">Como futuro ingeniero de telecomunicaciones, me apasiona entender los sistemas de comunicación desde su base para poder protegerlos. No me conformo con usar la tecnología: me gusta desarmarla, ver cómo funciona por dentro, configurar redes, endurecer sistemas y escribir scripts que automaticen la seguridad.</p>
+          <p data-i18n="about.p2">Mi filosofía es simple: no puedes proteger lo que no entiendes. Por eso combino las bases de telecomunicaciones con prácticas de seguridad ofensiva y defensiva, para diseñar arquitecturas de red de verdad resilientes.</p>
+        </div>
+        <aside class="about__hifa" aria-labelledby="hifa-title">
+          <h3 id="hifa-title"><span class="mono">hifa</span> <span class="about__pron">/ˈi.fa/</span></h3>
+          <p data-i18n="about.hifa">Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad.</p>
+        </aside>
+      </div>
     </section>
 
     <section id="contacto" class="seccion" aria-labelledby="contacto-title">
-      <h2 id="contacto-title">Contact</h2>
-      <form id="form-contacto" class="form" novalidate>
-        <label>Name
-          <input name="nombre" required />
-        </label>
-        <label>Email
-          <input type="email" name="email" required />
-        </label>
-        <label>Message
-          <textarea name="mensaje" rows="5" required></textarea>
-        </label>
-        <button type="submit" class="btn primario">Send</button>
-        <p class="form__estado" aria-live="polite"></p>
-      </form>
+      <div class="seccion__head">
+        <span class="eyebrow" data-i18n="contact.eyebrow">Conexión</span>
+        <h2 id="contacto-title" data-i18n="contact.title">Hablemos</h2>
+        <p class="seccion__intro" data-i18n="contact.intro">Si te interesa colaborar en alguno de estos proyectos, o simplemente conversar de redes y seguridad, escríbeme.</p>
+      </div>
+      <div class="contacto">
+        <div class="contacto__item">
+          <span class="contacto__label" data-i18n="contact.email">Correo</span>
+          <span class="contacto__valor" id="email-valor">mariolodehf@gmail.com</span>
+          <div class="contacto__acciones">
+            <a class="btn btn--sm btn--primary" href="mailto:mariolodehf@gmail.com" data-i18n="contact.write">Escribir</a>
+            <button class="btn btn--sm" type="button" id="btn-copiar" data-i18n="contact.copy">Copiar</button>
+          </div>
+        </div>
+        <div class="contacto__item">
+          <span class="contacto__label">GitHub</span>
+          <span class="contacto__valor">Mariolodehf</span>
+          <div class="contacto__acciones">
+            <a class="btn btn--sm" href="https://github.com/Mariolodehf" target="_blank" rel="noopener" data-i18n="contact.github">Ver perfil</a>
+          </div>
+        </div>
+        <p class="contacto__estado" id="copiar-estado" aria-live="polite"></p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Mario De Hoyos. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Mario de Hoyos · <span data-i18n="footer.place">Medellín, Colombia</span></p>
+    <p class="mono" data-i18n="footer.note">Hecho a mano, con hifas y paquetes.</p>
   </footer>
 
-  <!-- Modal de detalle de proyecto -->
   <div id="modal-proyecto" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-proyecto-titulo" tabindex="-1">
     <div class="modal__overlay" data-close="true"></div>
     <div class="modal__dialog" role="document">
-      <button class="modal__close" type="button" aria-label="Close details" data-close="true">×</button>
-      <header class="modal__header">
-        <h2 id="modal-proyecto-titulo" class="modal__title"></h2>
-        <p class="modal__tagline"></p>
-      </header>
-      <div class="modal__body">
-        <p class="modal__desc"></p>
-        <div class="modal__stack" aria-label="Technologies"></div>
-        <div class="modal__links"></div>
+      <div class="modal__top">
+        <span class="eyebrow modal__tipo"></span>
+        <button class="modal__close" type="button" data-close="true" data-i18n="modal.close">Cerrar</button>
       </div>
-      <footer class="modal__footer">
-        <small class="modal__meta"></small>
-      </footer>
+      <h2 id="modal-proyecto-titulo" class="modal__title"></h2>
+      <p class="modal__tagline"></p>
+      <p class="modal__desc"></p>
+      <div class="modal__stack"></div>
+      <dl class="modal__meta"></dl>
+      <div class="modal__links"></div>
     </div>
   </div>
 
+  <script src="js/hifa.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

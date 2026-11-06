@@ -2,6 +2,14 @@
 
 Portafolio profesional en construcción continua: proyectos, aprendizaje en telecomunicaciones y seguridad de la información.
 
+## Rediseño Hifa (octubre 2026)
+La portada es una red viva inspirada en el micelio: las hifas crecen entre nodos, y cada nodo es un proyecto de `data/projects.json`. Por los caminos completos viajan pulsos de luz como paquetes de datos.
+
+- `js/hifa.js`: el motor de la red (canvas). Se pausa cuando no está en pantalla y respeta `prefers-reduced-motion`.
+- `js/main.js`: idioma (español por defecto, botón EN), tema (subsuelo oscuro / superficie claro), proyectos, formación y modal con enlace directo `#proyecto=slug`.
+- Los textos de `data/*.json` son bilingües: `{ "es": "...", "en": "..." }`.
+- Para sumar un nodo a la red basta con agregar un proyecto al JSON; `"destacado": true` lo hace un poco más grande.
+
 ## Estructura
 ```
 .
