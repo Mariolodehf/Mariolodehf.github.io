@@ -1,12 +1,20 @@
+{%- set tx = i18n[lang] or i18n.es -%}
+{%- set isPost = '/posts/' in page.filePathStem -%}
+{%- set alt = page.url | altUrl(lang, collections.post, collections.postEn) -%}
+{%- set home = '/blog/en/' if lang == 'en' else '/blog/' -%}
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="{{ lang }}" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>{% if title %}{{ title }} | Blog | Mario De Hoyos F{% else %}Blog | Mario De Hoyos F{% endif %}</title>
-  <meta name="description" content="{% if summary %}{{ summary | safe }}{% else %}Articles and experiences by Mario De Hoyos in telecommunications and cybersecurity.{% endif %}" />
+  <title>{% if title %}{{ title }} | {% endif %}{{ tx.siteTitle }}</title>
+  <meta name="description" content="{% if summary %}{{ summary }}{% else %}{{ tx.description }}{% endif %}" />
   <link rel="canonical" href="https://mariolodehf.github.io/blog{{ page.url }}" />
+  <link rel="alternate" hreflang="{{ lang }}" href="https://mariolodehf.github.io/blog{{ page.url }}" />
+  <link rel="alternate" hreflang="{{ tx.langCode }}" href="https://mariolodehf.github.io/blog{{ alt }}" />
+  <link rel="alternate" type="application/rss+xml" title="{{ tx.siteTitle }}" href="{{ home }}feed.xml" />
   <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#120e0b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" />
@@ -14,21 +22,21 @@
   <script>
     (function(){
       try {
-        const stored = localStorage.getItem('theme');
-        const preferred = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var stored = localStorage.getItem('theme');
+        var preferred = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
         document.documentElement.setAttribute('data-theme', preferred);
       } catch(e) {}
     })();
   </script>
-  {# Open Graph & JSON-LD solo para posts con front matter #}
-  {% if '/posts/' in page.filePathStem %}
-    {% set ogTitle = title + ' | Blog | Mario De Hoyos F' %}
-    {% set ogDesc = summary or site.description %}
+  {% if isPost %}
+    {% set ogTitle = title + ' | ' + tx.siteTitle %}
+    {% set ogDesc = summary or tx.description %}
     {% if cover %}<meta property="og:image" content="https://mariolodehf.github.io{{ cover }}" />{% endif %}
     <meta property="og:type" content="article" />
+    <meta property="og:locale" content="{{ tx.locale }}" />
     <meta property="og:title" content="{{ ogTitle }}" />
     <meta property="og:description" content="{{ ogDesc }}" />
-  <meta property="og:url" content="https://mariolodehf.github.io/blog{{ page.url }}" />
+    <meta property="og:url" content="https://mariolodehf.github.io/blog{{ page.url }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ ogTitle }}" />
     <meta name="twitter:description" content="{{ ogDesc }}" />
@@ -36,51 +44,61 @@
     <script type="application/ld+json">{
       "@context": "https://schema.org",
       "@type": "Article",
-  "mainEntityOfPage": {"@type":"WebPage","@id":"https://mariolodehf.github.io/blog{{ page.url }}"},
+      "inLanguage": "{{ lang }}",
+      "mainEntityOfPage": {"@type":"WebPage","@id":"https://mariolodehf.github.io/blog{{ page.url }}"},
       "headline": {{ ogTitle | dump }},
       {% if cover %}"image": ["https://mariolodehf.github.io{{ cover }}"],{% endif %}
       "datePublished": "{{ page.date | date('%Y-%m-%d') }}",
       "dateModified": "{{ page.date | date('%Y-%m-%d') }}",
-      "author": {"@type":"Person","name":"Mario De Hoyos F"},
-      "publisher": {"@type":"Person","name":"Mario De Hoyos F"},
+      "author": {"@type":"Person","name":"Mario de Hoyos"},
+      "publisher": {"@type":"Person","name":"Mario de Hoyos"},
       "description": {{ ogDesc | dump }}
     }</script>
   {% endif %}
 </head>
 <body class="blog-body">
   <header class="site-header">
-    <nav class="nav" aria-label="Principal">
+    <nav class="nav" aria-label="{{ tx.navNetwork }}">
       <a class="logo" href="/"><span class="logo__dot" aria-hidden="true"></span>Mario de Hoyos</a>
       <div class="nav__actions">
-        <button id="theme-toggle" class="btn-icon" type="button" aria-pressed="false" aria-label="Cambiar tema"><span class="theme-icon" aria-hidden="true"></span></button>
-        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú" type="button">
+        <a id="blog-lang" class="btn-icon" href="/blog{{ alt }}" hreflang="{{ tx.langCode }}" lang="{{ tx.langCode }}" aria-label="{{ tx.langLabel }}" data-lang="{{ tx.langCode }}">{{ tx.langShort }}</a>
+        <button id="theme-toggle" class="btn-icon" type="button" aria-pressed="false" aria-label="{{ tx.navTheme }}"><span class="theme-icon" aria-hidden="true"></span></button>
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="{{ tx.navMenu }}" type="button">
           <span class="nav__toggle-bar" aria-hidden="true"></span>
         </button>
       </div>
       <ul id="nav-menu" class="nav__menu">
-        <li><a href="/">Red</a></li>
-        <li><a href="/#proyectos">Proyectos</a></li>
-        <li><a href="/#formacion">Formación</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/">{{ tx.navNetwork }}</a></li>
+        <li><a href="/#proyectos">{{ tx.navProjects }}</a></li>
+        <li><a href="/#formacion">{{ tx.navEducation }}</a></li>
+        <li><a href="{{ home }}">Blog</a></li>
       </ul>
     </nav>
   </header>
   <div class="nav__overlay" data-nav-overlay hidden></div>
   <main class="main">
     <div class="prose">
-  {% if '/posts/' in page.filePathStem %}
+      {% if isPost %}
         <h1 class="post-title">{{ title }}</h1>
-        <p class="post-meta">
-          Publicado el {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} min de lectura
-        </p>
+        <p class="post-meta">{{ tx.published }} {{ page.date | date('%Y-%m-%d') }} · {{ content | readTime }} {{ tx.readTime }}</p>
       {% endif %}
       {{ content | safe }}
+      {% if isPost and tags %}<p class="tags post-tags">{% for t in tags %}<a class="tag" href="{{ home }}tag/{{ t | slug }}/">{{ t }}</a>{% endfor %}</p>{% endif %}
     </div>
   </main>
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> Mario de Hoyos · Medellín, Colombia</p>
-    <p class="mono">Hecho a mano, con hifas y paquetes.</p>
+    <div class="rain rain--footer" data-rain aria-hidden="true"></div>
+    <p>&copy; <span id="year"></span> Mario de Hoyos · {{ tx.footerPlace }}</p>
+    <p class="mono">{{ tx.footerNote }}</p>
   </footer>
+  <script>
+    // Guarda el idioma elegido para que el resto del sitio lo recuerde
+    (function(){
+      var a = document.getElementById('blog-lang');
+      if (a) a.addEventListener('click', function(){ try { localStorage.setItem('lang', a.dataset.lang); } catch(e) {} });
+    })();
+  </script>
+  <script src="/js/rain.js" defer></script>
   <script src="/js/main.js" defer></script>
 </body>
 </html>

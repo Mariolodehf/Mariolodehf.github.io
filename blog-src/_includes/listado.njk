@@ -1,0 +1,57 @@
+{#- Listado de artículos con búsqueda. Lo usan blog-src/index.njk (español) y blog-src/en/index.njk (inglés). -#}
+{%- set tx = i18n[lang] or i18n.es -%}
+{%- set base = '/blog/en/' if lang == 'en' else '/blog/' -%}
+<h1>Blog</h1>
+<p class="lead">{{ tx.lead }}</p>
+<input id="busqueda" type="search" placeholder="{{ tx.searchPlaceholder }}" aria-label="{{ tx.searchLabel }}" class="blog-search" />
+<ul class="lista-posts" id="lista-posts" data-count="{{ posts.length }}">
+{% for post in posts | reverse %}
+  <li class="post-item">
+    <article>
+      <h2><a href="/blog{{ post.url }}">{{ post.data.title }}</a></h2>
+      <p class="meta">{{ post.date | date("%Y-%m-%d") }} · {{ post.templateContent | readTime }} min</p>
+      {% if post.data.summary %}<p class="summary">{{ post.data.summary }}</p>{% endif %}
+      {% if post.data.tags %}<p class="tags">{% for tag in post.data.tags %}<a class="tag" href="{{ base }}tag/{{ tag | slug }}/">{{ tag }}</a>{% endfor %}</p>{% endif %}
+    </article>
+  </li>
+{% endfor %}
+</ul>
+<p id="resultados-info" class="result-info" aria-live="polite"></p>
+<script>
+(function(){
+  var input = document.getElementById('busqueda');
+  var lista = document.getElementById('lista-posts');
+  var info = document.getElementById('resultados-info');
+  var original = lista.innerHTML;
+  var indice = [];
+  fetch('{{ base }}posts.json')
+    .then(function(r){ return r.json(); })
+    .then(function(json){ indice = json; })
+    .catch(function(){ indice = []; });
+  function n(t){ return (t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function score(p, q){
+    var s = 0;
+    if (n(p.title).includes(q)) s += 3;
+    if (n((p.tags || []).join(' ')).includes(q)) s += 2;
+    if (n(p.summary).includes(q)) s += 1;
+    return s;
+  }
+  function actualizar(q){
+    q = n(q);
+    if (!q) { lista.innerHTML = original; info.textContent = ''; return; }
+    var r = indice.map(function(p){ return { p: p, s: score(p, q) }; })
+      .filter(function(x){ return x.s > 0; })
+      .sort(function(a, b){ return b.s - a.s; });
+    lista.innerHTML = r.map(function(x){
+      var p = x.p;
+      return '<li class="post-item"><article><h2><a href="' + esc(p.url) + '">' + esc(p.title) + '</a></h2>' +
+        '<p class="meta">' + esc(p.date || '') + '</p>' +
+        (p.summary ? '<p class="summary">' + esc(p.summary) + '</p>' : '') +
+        '</article></li>';
+    }).join('');
+    info.textContent = r.length + ' {{ tx.results }}';
+  }
+  if (input) input.addEventListener('input', function(){ actualizar(input.value.trim()); });
+})();
+</script>

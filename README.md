@@ -2,7 +2,7 @@
 
 Portafolio profesional en construcción continua: proyectos, aprendizaje en telecomunicaciones y seguridad de la información.
 
-## Rediseño Hifa (octubre 2026)
+## Rediseño con la red de hifas (octubre 2026)
 La portada es una red viva inspirada en el micelio: las hifas crecen entre nodos, y cada nodo es un proyecto de `data/projects.json`. Por los caminos completos viajan pulsos de luz como paquetes de datos.
 
 - `js/hifa.js`: el motor de la red (canvas). Se pausa cuando no está en pantalla y respeta `prefers-reduced-motion`.

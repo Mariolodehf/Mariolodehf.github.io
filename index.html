@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Mario de Hoyos · Hifa</title>
+  <title>Mario de Hoyos · Lo que pasa por debajo</title>
   <meta name="description" content="Mario de Hoyos: telecomunicaciones, ciberseguridad e IA desde Medellín. Una red viva de proyectos, aprendizaje y experimentos." />
   <meta name="theme-color" content="#120e0b" />
   <meta name="color-scheme" content="dark light" />
@@ -77,7 +77,7 @@
         <li><a href="#formacion" data-i18n="nav.education">Formación</a></li>
         <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
         <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/" data-blog>Blog</a></li>
       </ul>
     </nav>
   </header>
@@ -94,7 +94,7 @@
         <p class="lead" data-i18n="hero.lead">Soy Mario de Hoyos, estudiante de Ingeniería de Telecomunicaciones en Medellín. Construyo en ciberseguridad, IoT e IA, y me interesa lo que nadie ve: la red que sostiene todo.</p>
         <div class="hero__cta">
           <a href="#proyectos" class="btn btn--primary" data-i18n="hero.cta">Ver proyectos</a>
-          <a href="/blog/" class="btn" data-i18n="hero.blog">Leer el blog</a>
+          <a href="/blog/" class="btn" data-blog data-i18n="hero.blog">Leer el blog</a>
         </div>
         <p class="hero__hint" data-i18n="hero.hint">Toca un nodo para abrir el proyecto, o arrastra sobre la red para que crezca hacia ti.</p>
         <div class="hero__log" aria-hidden="true">
@@ -139,8 +139,9 @@
           <p data-i18n="about.p2">Mi filosofía es simple: no puedes proteger lo que no entiendes. Por eso combino las bases de telecomunicaciones con prácticas de seguridad ofensiva y defensiva, para diseñar arquitecturas de red de verdad resilientes.</p>
         </div>
         <aside class="about__hifa" aria-labelledby="hifa-title">
+          <div class="rain rain--card" data-rain data-speed="0.7" aria-hidden="true"></div>
           <h3 id="hifa-title"><span class="mono">hifa</span> <span class="about__pron">/ˈi.fa/</span></h3>
-          <p data-i18n="about.hifa">Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad.</p>
+          <p data-i18n="about.hifa">Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad. Por eso mi empresa de ciberseguridad se llama HIFA.</p>
         </aside>
       </div>
     </section>
@@ -173,6 +174,7 @@
   </main>
 
   <footer class="site-footer">
+    <div class="rain rain--footer" data-rain aria-hidden="true"></div>
     <p>&copy; <span id="year"></span> Mario de Hoyos · <span data-i18n="footer.place">Medellín, Colombia</span></p>
     <p class="mono" data-i18n="footer.note">Hecho a mano, con hifas y paquetes.</p>
   </footer>
@@ -194,6 +196,7 @@
   </div>
 
   <script src="js/hifa.js" defer></script>
+  <script src="js/rain.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -34,7 +34,7 @@
       'about.eyebrow':'Sustrato','about.title':'Sobre mí',
       'about.p1':'Como futuro ingeniero de telecomunicaciones, me apasiona entender los sistemas de comunicación desde su base para poder protegerlos. No me conformo con usar la tecnología: me gusta desarmarla, ver cómo funciona por dentro, configurar redes, endurecer sistemas y escribir scripts que automaticen la seguridad.',
       'about.p2':'Mi filosofía es simple: no puedes proteger lo que no entiendes. Por eso combino las bases de telecomunicaciones con prácticas de seguridad ofensiva y defensiva, para diseñar arquitecturas de red de verdad resilientes.',
-      'about.hifa':'Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad.',
+      'about.hifa':'Cada uno de los filamentos que forman el micelio de un hongo. Bajo el suelo, las hifas se entrelazan con las raíces de las plantas y forman una red que mueve recursos y señales. Por esa misma red también se propagan amenazas. Así veo las comunicaciones y la ciberseguridad. Por eso mi empresa de ciberseguridad se llama HIFA.',
       'contact.eyebrow':'Conexión','contact.title':'Hablemos',
       'contact.intro':'Si te interesa colaborar en alguno de estos proyectos, o simplemente conversar de redes y seguridad, escríbeme.',
       'contact.email':'Correo','contact.write':'Escribir','contact.copy':'Copiar','contact.github':'Ver perfil',
@@ -69,7 +69,7 @@
       'about.eyebrow':'Substrate','about.title':'About me',
       'about.p1':'As a future telecommunications engineer, I love understanding communication systems from the ground up so I can protect them. Using technology isn\'t enough for me: I like taking it apart, seeing how it works inside, configuring networks, hardening systems and writing scripts that automate security.',
       'about.p2':'My philosophy is simple: you can\'t protect what you don\'t understand. That\'s why I combine telecommunications foundations with offensive and defensive security practice, to design network architectures that are truly resilient.',
-      'about.hifa':'Each of the filaments that make up a fungus\'s mycelium. Underground, hyphae weave into plant roots and form a network that moves resources and signals. Threats spread through that same network. That\'s how I see communications and cybersecurity.',
+      'about.hifa':'Each of the filaments that make up a fungus\'s mycelium. Underground, hyphae weave into plant roots and form a network that moves resources and signals. Threats spread through that same network. That\'s how I see communications and cybersecurity. That\'s why my cybersecurity company is called HIFA.',
       'contact.eyebrow':'Connection','contact.title':'Let\'s talk',
       'contact.intro':'If you\'d like to collaborate on any of these projects, or just talk networks and security, write to me.',
       'contact.email':'Email','contact.write':'Write','contact.copy':'Copy','contact.github':'View profile',
@@ -90,6 +90,7 @@
   function applyTexts(){
     document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
     document.querySelectorAll('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    document.querySelectorAll('[data-blog]').forEach(a => { a.setAttribute('href', lang === 'en' ? '/blog/en/' : '/blog/'); });
     const lt = document.getElementById('lang-toggle');
     if (lt) { lt.textContent = lang === 'es' ? 'EN' : 'ES'; lt.setAttribute('aria-label', t('a.lang')); }
   }

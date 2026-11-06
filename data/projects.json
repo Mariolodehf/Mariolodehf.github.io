@@ -2,7 +2,10 @@
   {
     "slug": "compania",
     "nombre": "companIA",
-    "tipo": { "es": "Hub", "en": "Hub" },
+    "tipo": {
+      "es": "Hub",
+      "en": "Hub"
+    },
     "tagline": {
       "es": "Un LLM de ciberseguridad, construido a la vista.",
       "en": "A cybersecurity LLM, built in the open."
@@ -16,31 +19,50 @@
       "en": "companIA is the hub that connects several of my projects. Its first focus is an LLM (large language model) specialized in cybersecurity and information security. The underlying idea is that anyone can understand how a model is built from scratch, with student-level resources, and that over time peers and professionals join to improve it."
     },
     "anio": 2026,
-    "estado": { "es": "Repo creado", "en": "Repo created" },
-    "stack": ["LLM", "IA", "Ciberseguridad", "Vercel"],
+    "estado": {
+      "es": "Repo creado",
+      "en": "Repo created"
+    },
+    "stack": [
+      "LLM",
+      "IA",
+      "Ciberseguridad",
+      "Vercel"
+    ],
     "repoUrl": "https://github.com/Mariolodehf/companIA",
     "demoUrl": null,
     "destacado": true
   },
   {
-    "slug": "ihack",
-    "nombre": "IHACK",
-    "tipo": { "es": "Seguridad", "en": "Security" },
+    "slug": "hifa",
+    "nombre": "HIFA",
+    "tipo": {
+      "es": "Seguridad",
+      "en": "Security"
+    },
     "tagline": {
-      "es": "Ciberseguridad para LATAM, de la auditoría a la IA segura.",
-      "en": "Cybersecurity for LATAM, from audits to safe AI."
+      "es": "Ciberseguridad para LATAM: lo que pasa por debajo, a la vista.",
+      "en": "Cybersecurity for LATAM: what happens underneath, brought to light."
     },
     "descripcionCorta": {
-      "es": "Startup de ciberseguridad con tres líneas: auditoría y hardening, investigación de amenazas de IA, y adopción segura de IA con marcos como ISO 27001 y NIST AI RMF.",
-      "en": "Cybersecurity startup with three lines: auditing and hardening, AI threat research, and safe AI adoption with frameworks such as ISO 27001 and NIST AI RMF."
+      "es": "Startup de ciberseguridad (antes IHACK) con tres líneas: auditoría y hardening, investigación de amenazas de IA, y adopción segura de IA con marcos como ISO 27001 y NIST AI RMF.",
+      "en": "Cybersecurity startup (formerly IHACK) with three lines: auditing and hardening, AI threat research, and safe AI adoption with frameworks such as ISO 27001 and NIST AI RMF."
     },
     "descripcionLarga": {
-      "es": "Shield cubre auditorías, pruebas de penetración y hardening. Intelligence investiga amenazas nuevas como deepfakes e inyección de prompts. Advisory acompaña a las empresas a adoptar IA de forma segura y a cumplir estándares como ISO 27001 y NIST AI RMF. La marca está en revisión para alinearse con la idea de la red subterránea.",
-      "en": "Shield covers audits, penetration testing and hardening. Intelligence researches new threats such as deepfakes and prompt injection. Advisory helps companies adopt AI safely and meet standards such as ISO 27001 and NIST AI RMF. The brand is under review to align with the underground network concept."
+      "es": "HIFA toma su nombre de los filamentos del micelio: una red que nadie ve y que sostiene todo, igual que las comunicaciones de una empresa. HIFA Shield cubre auditorías, pruebas de penetración y hardening. HIFA Intelligence investiga amenazas nuevas como deepfakes e inyección de prompts. HIFA Advisory acompaña a las empresas a adoptar IA de forma segura y a cumplir estándares como ISO 27001 y NIST AI RMF.",
+      "en": "HIFA is named after the filaments of mycelium: an unseen network that holds everything together, just like a company's communications. HIFA Shield covers audits, penetration testing and hardening. HIFA Intelligence researches new threats such as deepfakes and prompt injection. HIFA Advisory helps companies adopt AI safely and meet standards such as ISO 27001 and NIST AI RMF."
     },
     "anio": 2026,
-    "estado": { "es": "Nombre en revisión", "en": "Name under review" },
-    "stack": ["Pentesting", "Hardening", "IA", "ISO 27001"],
+    "estado": {
+      "es": "Nueva marca",
+      "en": "New brand"
+    },
+    "stack": [
+      "Pentesting",
+      "Hardening",
+      "IA",
+      "ISO 27001"
+    ],
     "repoUrl": null,
     "demoUrl": null,
     "destacado": true
@@ -48,7 +70,10 @@
   {
     "slug": "me-explicas",
     "nombre": "Me Explicas",
-    "tipo": { "es": "Aprendizaje", "en": "Learning" },
+    "tipo": {
+      "es": "Aprendizaje",
+      "en": "Learning"
+    },
     "tagline": {
       "es": "Manuales personales para volver a entender.",
       "en": "Personal manuals to understand things again."
@@ -62,8 +87,14 @@
       "en": "Me Explicas gathers what I learn, written my own way: networking, security and AI concepts explained the way I wish they had been explained to me. The idea is for it to work almost like a conversation that can explain something again when I need it."
     },
     "anio": 2026,
-    "estado": { "es": "En diseño", "en": "In design" },
-    "stack": ["Documentación", "Aprendizaje"],
+    "estado": {
+      "es": "En diseño",
+      "en": "In design"
+    },
+    "stack": [
+      "Documentación",
+      "Aprendizaje"
+    ],
     "repoUrl": null,
     "demoUrl": null,
     "destacado": false
@@ -71,7 +102,10 @@
   {
     "slug": "zerobet",
     "nombre": "zerobet",
-    "tipo": { "es": "Laboratorio", "en": "Lab" },
+    "tipo": {
+      "es": "Laboratorio",
+      "en": "Lab"
+    },
     "tagline": {
       "es": "Laboratorio de agentes de IA y estadística.",
       "en": "AI agents and statistics lab."
@@ -85,8 +119,15 @@
       "en": "zerobet is my practice ground for building agents: collecting data, comparing it across sources and filtering it with clear rules. BTTS Trading focuses on the both-teams-to-score market and already has a v1.0 specification. I treat it as a learning lab, not as a source of income."
     },
     "anio": 2026,
-    "estado": { "es": "Especificación v1.0", "en": "Spec v1.0" },
-    "stack": ["Agentes IA", "Python", "Estadística"],
+    "estado": {
+      "es": "Especificación v1.0",
+      "en": "Spec v1.0"
+    },
+    "stack": [
+      "Agentes IA",
+      "Python",
+      "Estadística"
+    ],
     "repoUrl": null,
     "demoUrl": null,
     "destacado": false
@@ -94,7 +135,10 @@
   {
     "slug": "ubicatec",
     "nombre": "UbicaTec",
-    "tipo": { "es": "IoT", "en": "IoT" },
+    "tipo": {
+      "es": "IoT",
+      "en": "IoT"
+    },
     "tagline": {
       "es": "Red IoT colaborativa para encontrar lo que importa.",
       "en": "Collaborative IoT network to find what matters."
@@ -108,8 +152,16 @@
       "en": "UbicaTec combines a distributed network of Bluetooth Low Energy (BLE) micro-beacons with community participation to create an urban radar that helps you recover personal belongings. It prioritizes low power consumption, privacy through rotating identifiers, and a scalable architecture designed for integration with mobile apps and web dashboards. End-to-end encryption and coverage analytics are coming soon."
     },
     "anio": 2025,
-    "estado": { "es": "Exploración", "en": "Early exploration" },
-    "stack": ["BLE", "IoT", "Edge", "JavaScript"],
+    "estado": {
+      "es": "Exploración",
+      "en": "Early exploration"
+    },
+    "stack": [
+      "BLE",
+      "IoT",
+      "Edge",
+      "JavaScript"
+    ],
     "repoUrl": "https://github.com/Mariolodehf/UbicaTec",
     "demoUrl": null,
     "destacado": false
@@ -117,7 +169,10 @@
   {
     "slug": "guardiot",
     "nombre": "GuardIoT",
-    "tipo": { "es": "IoT seguro", "en": "Secure IoT" },
+    "tipo": {
+      "es": "IoT seguro",
+      "en": "Secure IoT"
+    },
     "tagline": {
       "es": "Arquitectura IoT resiliente y centrada en la privacidad.",
       "en": "Privacy-focused and resilient IoT architecture."
@@ -131,8 +186,16 @@
       "en": "GuardIoT merges telecommunications and cybersecurity to build end-to-end protected IoT solutions: threat modeling for embedded devices, strong authentication between nodes and gateways, encryption in transit and at rest, least-privilege segmentation, signed logs, and a secure firmware pipeline with integrity verification."
     },
     "anio": 2025,
-    "estado": { "es": "Diseño", "en": "Design" },
-    "stack": ["IoT", "Firmware", "Redes", "Criptografía"],
+    "estado": {
+      "es": "Diseño",
+      "en": "Design"
+    },
+    "stack": [
+      "IoT",
+      "Firmware",
+      "Redes",
+      "Criptografía"
+    ],
     "repoUrl": null,
     "demoUrl": null,
     "destacado": false

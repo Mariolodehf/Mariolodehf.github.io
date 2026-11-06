@@ -41,9 +41,35 @@ module.exports = function(eleventyConfig) {
       .replace(/"/g,'&quot;');
   });
 
-  // Collection posts sin drafts
+  // Colecciones: artículos en español (por defecto) y su versión en inglés, sin borradores
   eleventyConfig.addCollection('post', collectionApi => {
     return collectionApi.getFilteredByGlob('blog-src/posts/*.md').filter(item => !item.data.draft);
+  });
+  eleventyConfig.addCollection('postEn', collectionApi => {
+    return collectionApi.getFilteredByGlob('blog-src/en/posts/*.md').filter(item => !item.data.draft);
+  });
+
+  // Etiquetas por idioma: [{ tag, posts }], para generar /blog/tag/x/ y /blog/en/tag/x/
+  const tagsDe = (api, glob) => {
+    const m = new Map();
+    api.getFilteredByGlob(glob).filter(i => !i.data.draft).forEach(i => {
+      (i.data.tags || []).forEach(t => { if (!m.has(t)) m.set(t, []); m.get(t).push(i); });
+    });
+    return Array.from(m, ([tag, posts]) => ({ tag, posts })).sort((a, b) => a.tag.localeCompare(b.tag));
+  };
+  eleventyConfig.addCollection('tagsEs', api => tagsDe(api, 'blog-src/posts/*.md'));
+  eleventyConfig.addCollection('tagsEn', api => tagsDe(api, 'blog-src/en/posts/*.md'));
+
+  // URL de la misma página en el otro idioma. Si el artículo no tiene traducción,
+  // lleva al índice del blog en ese idioma.
+  //   español: /posts/x/   inglés: /en/posts/x/
+  eleventyConfig.addFilter('altUrl', (url, lang, postsEs, postsEn) => {
+    const toEn = lang !== 'en';
+    const target = toEn ? '/en' + url : url.replace(/^\/en(?=\/)/, '');
+    const pool = toEn ? (postsEn || []) : (postsEs || []);
+    const isIndex = url === '/' || url === '/en/';
+    if (isIndex || pool.some(p => p.url === target)) return target;
+    return toEn ? '/en/' : '/';
   });
 
   // Shortcode para imágenes responsivas simples
@@ -55,6 +81,8 @@ module.exports = function(eleventyConfig) {
   // Layout por defecto para todo (posts, index, tags) salvo que se sobreescriba
   eleventyConfig.addGlobalData('layout', 'layout.njk');
   eleventyConfig.addGlobalData('blogBase', '/blog');
+  // Idioma por defecto del blog; la carpeta en/ lo cambia a inglés (blog-src/en/en.json)
+  eleventyConfig.addGlobalData('lang', 'es');
 
   // No generar salida para drafts: permalink false
   eleventyConfig.addGlobalData('eleventyComputed', {
