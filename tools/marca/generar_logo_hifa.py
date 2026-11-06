@@ -44,18 +44,22 @@ def svg(w, h, body, title):
 
 # 1. Logo completo (insignia circular)
 d_hifa, _ = texto('HIFA', 'montserrat-latin-800-normal.woff', 66, 200, 292, spacing=12)
-d_tag, _ = texto('SEGURIDAD DESDE LA RAÍZ', 'montserrat-latin-500-normal.woff', 12.5, 200, 328, spacing=1.8)
+_tsize = 12.5
+d_tag, _tw = texto('CIBERSEGURIDAD DESDE LA RAÍZ', 'montserrat-latin-500-normal.woff', _tsize, 200, 328, spacing=1.6)
+if _tw > 226:  # que quepa dentro del anillo
+    _tsize = 12.5 * 226 / _tw
+    d_tag, _tw = texto('CIBERSEGURIDAD DESDE LA RAÍZ', 'montserrat-latin-500-normal.woff', _tsize, 200, 328, spacing=1.6 * 226 / _tw)
 body = (f'<circle cx="200" cy="200" r="194" fill="{INK}"/>'
         f'<circle cx="200" cy="200" r="182" fill="none" stroke="{GOLD}" stroke-width="7"/>'
         + escudo(122, 46, 1.56) +
         f'<path d="{d_hifa}" fill="{CREAM}"/><rect x="130" y="306" width="140" height="2" fill="{GOLD}"/>'
         f'<path d="{d_tag}" fill="{GOLD}"/>')
-open(f'{OUT}/hifa-logo.svg', 'w').write(svg(400, 400, body, 'HIFA, seguridad desde la raíz'))
+open(f'{OUT}/hifa-logo.svg', 'w').write(svg(400, 400, body, 'HIFA, ciberseguridad desde la raíz'))
 
 # 2. Horizontal (para encabezados), versión para fondo oscuro y para fondo claro
 for nombre, txt, fondo_escudo in [('hifa-horizontal-oscuro', CREAM, INK), ('hifa-horizontal-claro', INK, '#FFFFFF')]:
     d_h, wh = texto('HIFA', 'montserrat-latin-800-normal.woff', 58, 112, 76, spacing=10, anchor='start')
-    d_t, wt = texto('SEGURIDAD DESDE LA RAÍZ', 'montserrat-latin-500-normal.woff', 12.5, 114, 104, spacing=2, anchor='start')
+    d_t, wt = texto('CIBERSEGURIDAD DESDE LA RAÍZ', 'montserrat-latin-500-normal.woff', 12.5, 114, 104, spacing=2, anchor='start')
     W = int(112 + max(wh, wt) + 12)
     body = escudo(0, 4, 1.0, fondo=fondo_escudo) + f'<path d="{d_h}" fill="{txt}"/><path d="{d_t}" fill="{GOLD}"/>'
     open(f'{OUT}/{nombre}.svg', 'w').write(svg(W, 116, body, 'HIFA'))
